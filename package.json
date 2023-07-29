@@ -1,0 +1,62 @@
+{
+  "name": "the_stripes_nft_dapp",
+  "version": "1.0.0",
+  "description": "The Stripes NFT minting dapp is a quick and easy way to connect your smart contract and start minting NFTs.",
+  "private": true,
+  "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@headlessui/react": "1.7.14",
+    "@heroicons/react": "2.0.18",
+    "@material-tailwind/react": "^2.0.0",
+    "@mui/icons-material": "^5.11.16",
+    "@mui/material": "^5.14.1",
+    "@mui/styles": "5.13.1",
+    "alchemy-sdk": "^2.9.2",
+    "ethers": "^6.4.0",
+    "framer-motion": "^6.4.1",
+    "js-base64": "^3.7.5",
+    "material-react-table": "^1.13.0",
+    "parse-json": "^7.0.0",
+    "preline": "^1.9.0",
+    "react": "^17.0.2",
+    "react-copy-to-clipboard": "^5.1.0",
+    "react-dom": "^17.0.2",
+    "react-redux": "^7.2.4",
+    "react-router-dom": "^6.11.1",
+    "react-scripts": "4.0.3",
+    "redux": "^4.1.1",
+    "redux-thunk": "^2.3.0",
+    "styled-components": "^5.3.0",
+    "tailwindcss": "3.2.7",
+    "util": "^0.12.5",
+    "web-vitals": "^1.0.1",
+    "web3": "^1.5.1",
+    "web3-eth-contract": "^1.5.2"
+  },
+  "author": "Ali Solanki, Daniel Eugene Botha",
+  "license": "MIT",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "engines": {
+    "node": "16.x"
+  },
+  "devDependencies": {
+    "prettier": "^3.0.0",
+    "prettier-plugin-tailwindcss": "^0.4.1"
+  }
+}
