@@ -3,39 +3,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { connect } from "./redux/blockchain/blockchainActions";
 import { fetchData } from "./redux/data/dataActions";
-import { Base64 } from "js-base64";
-import * as s from "./styles/globalStyles";
-import { styled } from "@mui/material/styles";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Paper from "@mui/material/Paper";
-import Grid from "@mui/material/Grid";
-import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
 
-import Container from "@mui/material/Container";
-import Button from "@mui/material/Button";
-import MenuItem from "@mui/material/MenuItem";
-import Stack from "@mui/material/Stack";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
-import ConfirmationNumberIcon from "@mui/icons-material/ConfirmationNumber";
-import CssBaseline from "@mui/material/CssBaseline";
-import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import { CardActionArea } from "@mui/material";
-import BoltIcon from "@mui/icons-material/Bolt";
-import MenuIcon from "@mui/icons-material/Menu";
-import { makeStyles } from "@mui/styles";
-import ButtonGroup from "@mui/material/ButtonGroup";
-import { Fragment } from "react";
-import { Dialog } from "@headlessui/react";
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import { Menu, Transition } from "@headlessui/react";
-import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import Web3 from "web3";
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -1441,7 +1409,7 @@ const Profile = () => {
         <>
           <div>
             <div
-              class="fixed bottom-5 right-5 z-50  max-w-sm rounded-md  bg-teal-900/40 text-sm font-bold text-white shadow-lg dark:bg-gray-900"
+              class="fixed bottom-5 right-5 z-50  max-w-sm rounded-md  bg-teal-900/40 text-sm font-bold text-white shadow-lg "
               role="alert"
             >
               <div class="flex p-4">

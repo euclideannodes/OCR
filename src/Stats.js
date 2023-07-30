@@ -40,7 +40,7 @@ const All = () => {
     const columns = useMemo(
         () => [
             {
-                accessorKey: "0", //access nested data with dot notation
+                accessorKey: "0",
                 header: "Address",
                 size: 150
             },
@@ -50,7 +50,7 @@ const All = () => {
                 size: 150
             },
             {
-                accessorKey: "2", //normal accessorKey
+                accessorKey: "2", 
                 header: "Map ID",
                 size: 200
             },

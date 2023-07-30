@@ -105,7 +105,6 @@ const All = () => {
         .call()
         .then((result) => {
           setResultWinData(result);
-          console.log(result);
         })
         .catch((error) => {
           console.error(error);
@@ -119,7 +118,6 @@ const All = () => {
         .call()
         .then((result2) => {
           setResultAllData(result2);
-          console.log(result2);
         })
         .catch((error) => {
           console.error(error);
@@ -174,11 +172,50 @@ const All = () => {
   }, [resultAllData]);
   return (
     <>
+      {(() => {
+        if (blockchain.account == null) {
+          return (
+            <>
+              <div className="from-bgc to-bgc animate-pulse bg-gradient-to-r via-teal-900 text-center leading-normal tracking-normal hs-removing:-translate-y-full">
+                <div className="mx-auto max-w-full px-4 py-1 sm:px-6 lg:px-8">
+                  <div className="">
+                    <span className=" text-xs font-bold  text-white lg:text-lg">
+                      <strong className="text-amber-600"> Win </strong>
+                      the Race → Get{" "}
+                      <strong className="text-amber-600">5 Free</strong> Credits
+                      →<strong className="text-amber-600"> Swap</strong>{" "}
+                      <div className="   inline-flex items-center   ">
+                        MATIC
+                        <svg
+                          className=" ml-2 h-3 w-3"
+                          fill="#8247E5"
+                          viewBox="0 0 38 33"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M29,10.2c-0.7-0.4-1.6-0.4-2.4,0L21,13.5l-3.8,2.1l-5.5,3.3c-0.7,0.4-1.6,0.4-2.4,0L5,16.3 c-0.7-0.4-1.2-1.2-1.2-2.1v-5c0-0.8,0.4-1.6,1.2-2.1l4.3-2.5c0.7-0.4,1.6-0.4,2.4,0L16,7.2c0.7,0.4,1.2,1.2,1.2,2.1v3.3l3.8-2.2V7 c0-0.8-0.4-1.6-1.2-2.1l-8-4.7c-0.7-0.4-1.6-0.4-2.4,0L1.2,5C0.4,5.4,0,6.2,0,7v9.4c0,0.8,0.4,1.6,1.2,2.1l8.1,4.7 c0.7,0.4,1.6,0.4,2.4,0l5.5-3.2l3.8-2.2l5.5-3.2c0.7-0.4,1.6-0.4,2.4,0l4.3,2.5c0.7,0.4,1.2,1.2,1.2,2.1v5c0,0.8-0.4,1.6-1.2,2.1 L29,28.8c-0.7,0.4-1.6,0.4-2.4,0l-4.3-2.5c-0.7-0.4-1.2-1.2-1.2-2.1V21l-3.8,2.2v3.3c0,0.8,0.4,1.6,1.2,2.1l8.1,4.7 c0.7,0.4,1.6,0.4,2.4,0l8.1-4.7c0.7-0.4,1.2-1.2,1.2-2.1V17c0-0.8-0.4-1.6-1.2-2.1L29,10.2z"
+                            clipRule="evenodd"
+                          ></path>
+                        </svg>
+                      </div>
+                        or use for the Next Races! 
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </>
+          );
+        } else {
+          return <></>;
+        }
+      })()}
+
       <div className="container my-5 mx-auto ">
-        <div class="container mx-auto grid grid-cols-1 gap-4 p-6 lg:grid-cols-6">
-          <div class=" col-span-4 flex flex-col border-2 bg-transparent p-4">
+        <div className="container mx-auto grid grid-cols-1 gap-4 p-6 lg:grid-cols-6">
+          <div className=" col-span-4 flex flex-col border-2 bg-transparent p-4">
             <h1 className=" mb-4  max-w-2xl from-sky-400 text-justify text-4xl font-extrabold leading-none tracking-tight text-teal-600 md:text-5xl xl:text-6xl ">
-              Welcome to OnChain Race!
+              Welcome to OnChain Races!
             </h1>
             <p className="text-md mb-6 max-w-2xl text-justify  font-light  leading-relaxed tracking-tight text-slate-300 md:text-lg lg:mb-8 lg:text-xl ">
               Real-Time Excitement and Rewards on the Polygon! Get credits and
@@ -186,11 +223,11 @@ const All = () => {
               in a race, your speeds change completely randomly, offering an
               on-chain experience in each race. The blue 3 checkpoints on the
               map are lines that alter your vehicle's speed. The winners not
-              only become the owner of the map but also receive 2 credit
-              rewards. You can use these valuable credits to enhance your races
-              or swap them to MATIC.{" "}
+              only become the owner of the map but also receive 5 credit
+              rewards. You can use these credits to join another races or Swap
+              them to MATIC.{" "}
             </p>
-            <div class="mt-auto flex flex-wrap pt-3 text-xs">
+            <div className="mt-auto flex flex-wrap pt-3 text-xs">
               <Link to={`/credit/`}>
                 <a
                   href=""
@@ -199,6 +236,25 @@ const All = () => {
                   Get Credit and Play !
                 </a>
               </Link>
+              <p className="text-md  text-justify  leading-6  tracking-tight text-gray-500 ">
+                <a
+                  className="text-sky-400/60"
+                  href="https://twitter.com/OnChainRace/"
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  <div className=" text-md  justify-left   inline-flex items-center  rounded-lg  py-3 px-3 text-start  text-sm   font-medium  text-slate-300 shadow-sm  hover:shadow-slate-500  ">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-5 w-5"
+                      fill="#34a2ec"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
+                    </svg>
+                  </div>
+                </a>
+              </p>
             </div>
           </div>
 
@@ -211,22 +267,22 @@ const All = () => {
                       <div className="mx-auto max-w-2xl lg:max-w-4xl">
                         <figure>
                           <blockquote className="mt-5 animate-pulse text-center text-xl font-semibold leading-8 text-teal-600 sm:text-2xl sm:leading-9">
-                            <div className=" row-start-2 inline-flex animate-pulse items-center    ">
+                            <div className=" row-start-2 inline-flex animate-pulse items-center  pl-4 pr-4 lg:pl-1 lg:pr-1  ">
                               <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 fill="none"
                                 viewBox="0 0 24 24"
-                                stroke-width="1.5"
+                                strokeWidth="1.5"
                                 stroke="currentColor"
                                 className="h-5 w-5 text-teal-600 lg:h-7  lg:w-7"
                               >
                                 <path
-                                  stroke-linecap="round"
-                                  stroke-linejoin="round"
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
                                   d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z"
                                 />
                               </svg>
-                              <p className="text-md  grid text-center lg:text-xl ">
+                              <p className="text-md  grid  text-center lg:text-xl ">
                                 <span className=" ml-2   text-center font-bold ">
                                   {" "}
                                   Please Connect Your Wallet
@@ -243,23 +299,17 @@ const All = () => {
             } else {
               return (
                 <>
-                  <div class=" mx-x-auto  from-bgc/50 col-span-2 flex max-w-full  flex-col rounded-2xl  border-2  border-solid border-slate-500/20 bg-transparent bg-gradient-to-b shadow-2xl ">
+                  <div className=" mx-x-auto  from-bgc/50 col-span-2 flex max-w-full  flex-col rounded-2xl  border-2  border-solid border-slate-500/20 bg-transparent bg-gradient-to-b shadow-2xl ">
                     <p className=" animate-pulse  py-2  text-center text-lg tracking-tight text-teal-600">
                       OnChainRace #{String(getSupply)}: Waiting to Players{" "}
                     </p>
                     <hr className="h-px  border-0 bg-slate-200/20 " />
-                    <table className="mt-3 w-full text-center text-sm text-gray-500  ">
-                      <thead className="text-sm uppercase  text-gray-400  ">
+                    <table className="mt-3 w-full text-center text-sm text-gray-500">
+                      <thead className="text-sm uppercase text-gray-400">
                         <tr>
-                          <th scope="col" className="">
-                            Color
-                          </th>
-                          <th scope="col" className="">
-                            Player ID
-                          </th>
-                          <th scope="col" className="">
-                            Wallet Address
-                          </th>
+                          <th scope="col">Color</th>
+                          <th scope="col">Player ID</th>
+                          <th scope="col">Wallet Address</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -267,39 +317,38 @@ const All = () => {
                           resultData.length !== null &&
                           resultData.map((item, index) => (
                             <React.Fragment key={index}>
-                              <tr className=" border-b ">
-                                <th
+                              <tr className="border-b">
+                                <td
                                   scope="row"
-                                  className="whitespace-nowrap px-6 py-2 font-medium "
+                                  className="whitespace-nowrap px-6 py-2 font-medium"
                                 >
-                                  <text className={`text-${colors[index]}`}>
-                                    {" "}
-                                    ⬤{" "}
-                                  </text>
-                                </th>
-                                <td className="px-2 py-2 lg:px-6">
-                                  {`Player #${index + 1}`}
+                                  <span className={`text-${colors[index]}`}>
+                                    ⬤
+                                  </span>
                                 </td>
-                                <td className="px-2 py-2 lg:px-6 ">
-                                  {`${trunceString(item)}`}
-                                </td>
+                                <td className="px-2 py-2 lg:px-6">{`Player #${
+                                  index + 1
+                                }`}</td>
+                                <td className="px-2 py-2 lg:px-6">{`${trunceString(
+                                  item,
+                                )}`}</td>
                               </tr>
                             </React.Fragment>
                           ))}
-                        <tr className=" content-end  border-b">
-                          <th
+                        <tr className="content-end border-b">
+                          <td
                             scope="row"
-                            className="whitespace-nowrap px-6 py-2  font-medium"
-                          ></th>
+                            className="whitespace-nowrap px-6 py-2 font-medium"
+                          ></td>
                           <td className="px-6 py-1"></td>
                           <td className="px-6 py-1 text-center"></td>
                         </tr>
                       </tbody>
                     </table>
-                    <div class="mt-auto  flex flex-wrap pt-3 text-xs">
-                      <div class="grid   w-full grid-cols-1 divide-x divide-gray-900/5">
+                    <div className="mt-auto  flex flex-wrap pt-3 text-xs">
+                      <div className="grid   w-full grid-cols-1 divide-x divide-gray-900/5">
                         <Link to={`/Race/${getSupply}`}>
-                          <a class="text-md  flex items-center justify-center p-3 text-slate-100 text-gray-900 ">
+                          <a className="text-md  flex items-center justify-center p-3 text-slate-100">
                             Go to Last Race
                             <svg
                               className="ml-2 -mr-1 h-3 w-3"
@@ -308,9 +357,9 @@ const All = () => {
                               xmlns="http://www.w3.org/2000/svg"
                             >
                               <path
-                                fill-rule="evenodd"
+                                fillRule="evenodd"
                                 d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                                clip-rule="evenodd"
+                                clipRule="evenodd"
                               ></path>
                             </svg>
                           </a>
@@ -330,7 +379,7 @@ const All = () => {
                 Fully-OnChain!
               </h1>
               <p className="font-tight mb-6 max-w-2xl  text-justify font-light leading-relaxed text-slate-300 md:text-lg lg:mb-8 lg:text-xl ">
-                OnChain Race is empowered with
+                OnChain Races is empowered with
                 <a
                   className="text-sky-600 after:content-['↗_']"
                   href="https://docs.chain.link/vrf/v2/introduction"
@@ -373,8 +422,8 @@ const All = () => {
                 <section className="bg-transparent ">
                   <div className="mx-auto grid max-w-full p-8 lg:grid-cols-12 lg:gap-8 lg:py-16 xl:gap-0">
                     <div className="mr-auto place-self-center lg:col-span-8">
-                      <h1 className=" mb-4 max-w-2xl text-justify text-4xl font-extrabold leading-none tracking-tight text-transparent text-teal-500/80 md:text-5xl xl:text-6xl ">
-                        OnChainRace Table{" "}
+                      <h1 className=" mb-4 max-w-2xl text-justify text-4xl font-extrabold leading-none tracking-tight  text-teal-500/80 md:text-5xl xl:text-6xl ">
+                        OnChain Races Table{" "}
                       </h1>
                     </div>
                     <div className="  mx-x-auto from-bgc/50 max-w-full rounded-2xl  border border-solid border-slate-500/20 bg-gradient-to-b shadow-2xl duration-300 hover:scale-105 lg:col-span-4 lg:mt-0 ">
@@ -404,7 +453,7 @@ const All = () => {
                                     <tr key={key}>
                                       <td className="whitespace-nowrap px-6 py-2 font-light text-teal-500/60 underline decoration-dashed underline-offset-2">
                                         <Link to={`/Race/${key}`}>
-                                          OnChainRace #{key}{" "}
+                                          OnChain Races #{key}{" "}
                                         </Link>
                                       </td>
                                       <td className="whitespace-nowrap px-6 py-2 font-light text-teal-500/60 underline decoration-dashed underline-offset-2">
@@ -491,36 +540,74 @@ const All = () => {
           } else {
           }
         })()}
-        <section class="bg-transparent dark:bg-gray-900">
-          <div class="container mx-auto px-6 py-12">
-            <h1 class="mb-8 text-4xl font-extrabold tracking-tight text-teal-600">
+        <section className="">
+          <div class="rounded-2xl  py-24 shadow-2xl sm:py-32">
+            <div class="mx-auto max-w-full ">
+              <dl class="grid grid-cols-1  gap-y-16 text-center lg:grid-cols-2">
+                <div class="mx-auto flex max-w-md flex-col gap-y-6">
+                  <dt class="leading-7 text-slate-100">
+                    <p className="mt-6 text-justify text-lg leading-8 text-slate-300">
+                      The Season 1 map has{" "}
+                      <strong className="text-teal-600">3</strong> speed
+                      check-points in total. There are{" "}
+                      <strong className="text-teal-600">5</strong> light
+                      corners, <strong className="text-teal-600">7</strong>{" "}
+                      sharp corners,{" "}
+                      <strong className="text-teal-600">3</strong> fast corners,
+                      <strong className="text-teal-600">5</strong> short
+                      straights, and{" "}
+                      <strong className="text-teal-600">1</strong> long straight
+                      in this map.
+                    </p>
+                  </dt>
+                  <dd class="order-first text-2xl font-semibold tracking-normal text-slate-100 sm:text-4xl">
+                    OnChain Races: Season #1
+                  </dd>
+                </div>
+                <div class="mx-auto flex max-w-full flex-col gap-y-6">
+                  <dd class="order-first text-3xl font-semibold tracking-tight text-gray-900 sm:text-5xl">
+                    <img
+                      className="w-full rounded-lg "
+                      src="season1.svg"
+                      alt="season 1"
+                    />
+                  </dd>
+                </div>
+              </dl>
+            </div>
+          </div>
+        </section>
+        <section className="bg-transparent">
+          <div className="container mx-auto px-6 py-12">
+            <h1 className="mb-8 text-4xl font-extrabold tracking-tight text-teal-600">
               Frequently asked questions.
             </h1>
-            <div class="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 lg:mt-16 xl:grid-cols-3">
+            <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 lg:mt-16 xl:grid-cols-3">
               <div>
                 <div>
-                  <h1 class="text-xl font-semibold text-gray-400 dark:text-white">
+                  <h1 className="text-xl font-semibold text-gray-400 ">
                     {" "}
-                    What is the OnChain Race ?
+                    What is the OnChain Races ?
                   </h1>
-                  <p class="text-md mt-2  text-justify leading-6 text-gray-500 ">
-                    OnChain Race is a Fully On-Chain and Chance-Based racing
-                    game available on the Polygon.
+                  <p className="text-md mt-2  text-justify leading-6 text-gray-500 ">
+                    OnChain Races is a Fully On-Chain and Chance-Based racing
+                    game available on the Polygon. Players show their luck by
+                    participating in an entirely fair race.
                   </p>
                 </div>
               </div>
               <div>
-                <h1 class="text-xl font-semibold text-gray-400 dark:text-white">
+                <h1 className="text-xl font-semibold text-gray-400 ">
                   What are the Rules of the Game?
                 </h1>
                 <ul className="list-disc   text-justify  leading-6 tracking-tight text-gray-500 antialiased ">
                   <li className=" mb-3 mt-3">
-                    First of all, the player buys credits to participate in the
-                    last race.
+                    The player buys credits to participate in the race.
                   </li>
                   <li className="mb-3 mt-3">
                     Participates in the last race with purchased credits and
-                    spends one credit.
+                    spends one credit. A player cannot attend the same race with
+                    the same address more than once.
                   </li>
                   <li className="mb-3 mt-3">
                     The race starts only when a total of 10 player participate.
@@ -537,16 +624,16 @@ const All = () => {
                     (If there are racers who finish in equal time, the first
                     racers to join the race among these racers is deemed to have
                     won the race). As a reward, racers gets the right to claim
-                    won race as NFT and get free 2 credits. If the racer wishes,
+                    won race as NFT and get free 5 credits. If the racer wishes,
                     racers can claim NFT later.{" "}
                   </li>
                   <li className="mb-3 mt-3">
                     The racer can participate in new races with two free credits
-                    or swap these credits for MATIC on the Swap page (if there
+                    or Swap these credits for MATIC on the Swap page (if there
                     are enough MATICs in the pool).{" "}
                   </li>
                   <li className="mb-3 mt-3">
-                    If a swap is made, the rate of 1 Credit = 0.5 MATIC will
+                    If a Swap is made, the rate of 1 Credit = 0.9 MATIC will
                     apply. The right to change this rate belongs to the contract
                     owner.
                   </li>
@@ -557,14 +644,13 @@ const All = () => {
                 </ul>
               </div>
               <div>
-                <h1 class="text-xl font-semibold text-gray-400 dark:text-white">
+                <h1 className="text-xl font-semibold text-gray-400 ">
                   How to Random Numbers Generate ?
                 </h1>
-                <p class="text-md mt-2   text-justify  leading-6  tracking-tight text-gray-500 ">
-                  When the racers joins a race for the first time, a seed value
-                  is assigned to him wholly and randomly within the contract.
+                <p className="text-md mt-2   text-justify  leading-6  tracking-tight text-gray-500 ">
+                  Via
                   <a
-                    class="text-sky-400/60 after:content-['↗_']"
+                    className="text-sky-400/60 after:content-['↗_']"
                     href="https://docs.chain.link/vrf/v2/introduction"
                     rel="noreferrer"
                     target="_blank"
@@ -572,8 +658,7 @@ const All = () => {
                     {" "}
                     Chainlink VRF
                   </a>
-                  assigns this value to generate random numbers in all races.
-                  Racers can change their seed numbers by spending two credits.
+                  generate random numbers in all races.
                 </p>
               </div>
             </div>

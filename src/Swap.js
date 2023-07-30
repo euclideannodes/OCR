@@ -238,12 +238,6 @@ const Swap = () => {
                     if (blockchain.account !== null) {
                       return (
                         <>
-                          <p className="grid  text-2xl text-slate-100 ">
-                            <span className="mb-3 text-left text-xl font-bold ">
-                              {" "}
-                              Swap Page
-                            </span>
-                          </p>
                           <p className="mb-1 grid text-sm  text-slate-400 ">
                             <span className="text-left "> From</span>
                           </p>
@@ -571,7 +565,7 @@ const Swap = () => {
             <>
               <div>
                 <div
-                  class="fixed bottom-5 right-5 z-50  max-w-sm rounded-md  bg-teal-900/40 text-sm font-bold text-white shadow-lg dark:bg-gray-900"
+                  class="fixed bottom-5 right-5 z-50  max-w-sm rounded-md  bg-teal-900/40 text-sm font-bold text-white shadow-lg "
                   role="alert"
                 >
                   <div class="flex p-4">

@@ -9,15 +9,7 @@ import { styled } from "@mui/material/styles";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
-import Paper from "@mui/material/Paper";
-import Grid from "@mui/material/Grid";
-import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
-import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
-
 import BoltIcon from "@mui/icons-material/Bolt";
 import MenuIcon from "@mui/icons-material/Menu";
 import { makeStyles } from "@mui/styles";
@@ -46,11 +38,9 @@ const Header = () => {
   const [claimingNft, setClaimingNft] = useState(false);
   const [buyCredit, setBuyCredit] = useState(false);
   const [xNft, setxNft] = useState(false);
-  const [feedback, setFeedback] = useState(`Click buy to mint your NFT.`);
-  const [mintAmount, setMintAmount] = useState(1);
-  const [creditAmount, setCreditAmount] = useState(10);
   let [showCredit, setShowCredit] = useState(null);
   let [showBalance, setShowBalance] = useState(null);
+  const [getSupply, setSupply] = useState(null);
 
   const [CONFIG, SET_CONFIG] = useState({
     CONTRACT_ADDRESS: "",
@@ -105,7 +95,19 @@ const Header = () => {
         });
     }
   }, [blockchain.account, showCredit]);
-
+  useEffect(() => {
+    if (blockchain && blockchain.account !== null) {
+      blockchain.smartContract.methods
+        .totalSupply()
+        .call()
+        .then((result) => {
+          setSupply(result);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
+  }, [blockchain.account, blockchain.smartContract]);
   useEffect(() => {
     if (blockchain && blockchain.account !== null) {
       blockchain.smartContract.methods
@@ -135,8 +137,8 @@ const Header = () => {
   return (
     <>
       <header>
-        <nav class=" border-b border-solid border-teal-600/20 border-slate-500/30   px-4  py-2.5 hover:shadow-slate-500  lg:px-6 ">
-          <div class="max-w-screen-3xl mx-auto flex flex-wrap items-center justify-between">
+        <nav className=" border-b border-solid border-teal-600/20   px-4  py-2.5 hover:shadow-slate-500  lg:px-6 ">
+          <div className="max-w-screen-3xl mx-auto flex flex-wrap items-center justify-between">
             <div className="relative  inline-flex items-center self-center whitespace-nowrap  rounded-lg p-2 text-center text-xs font-semibold text-teal-600  duration-300 hover:scale-105 lg:text-xl">
               OnChain Races
               <span className="sr-only">Notifications</span>
@@ -144,7 +146,17 @@ const Header = () => {
                 Beta
               </div>
             </div>
-            <div class="flex items-center lg:order-2">
+            <div className="flex items-center lg:order-2">
+              <div className="hidden w-full items-center justify-between lg:order-1 lg:flex lg:w-auto">
+                <ul className="mt-4 flex flex-col font-medium lg:mt-0 lg:flex-row lg:space-x-8">
+                  <div
+                    className="block border-b border-gray-100 py-2 pr-4 pl-3 text-slate-300 hover:bg-gray-50 lg:border-0 lg:p-0 lg:hover:bg-transparent lg:hover:text-teal-600"
+                    aria-current="page"
+                  >
+                    Season #1: {Number(getSupply)}/{String(250)}
+                  </div>
+                </ul>
+              </div>
               <div className="flex md:order-2">
                 {blockchain.account === "" ||
                 blockchain.smartContract === null ? (
@@ -179,7 +191,7 @@ const Header = () => {
                     <s.SpacerSmall />
                     <Menu as="div" className="relative inline-block text-left ">
                       <div>
-                        <Menu.Button className="mr-2 mb-2 inline-flex w-full justify-center gap-x-1.5 rounded-md rounded-lg py-2.5 px-5 text-xs  text-slate-50 shadow shadow-teal-500/50 lg:text-sm">
+                        <Menu.Button className="mr-2 mb-2 inline-flex w-full items-center justify-center gap-x-1.5  rounded-lg py-2.5 px-5 text-xs  text-slate-50 shadow shadow-teal-500/50 lg:text-sm">
                           {claimingNft
                             ? "  " + truncate(blockchain.account, 10)
                             : "  " + truncate(blockchain.account, 10)}
@@ -199,7 +211,7 @@ const Header = () => {
                         leaveFrom="transform opacity-100 scale-100"
                         leaveTo="transform opacity-0 scale-95"
                       >
-                        <Menu.Items className="bg-bgc absolute right-0 z-40 mt-2 w-56 origin-top-right rounded-md  rounded-lg shadow shadow-teal-500/50">
+                        <Menu.Items className="bg-bgc absolute right-0 z-40 mt-2 w-56 origin-top-right  rounded-lg shadow shadow-teal-500/50">
                           <div className="rounded-lg py-1 shadow shadow-teal-500/50">
                             <Menu.Item>
                               {({ active }) => (
@@ -247,76 +259,7 @@ const Header = () => {
                                 </Link>
                               )}
                             </Menu.Item>
-                            <div className="block md:hidden">
-                              <Menu.Item>
-                                {({ active }) => (
-                                  <Link to={`/`}>
-                                    <a
-                                      href="#"
-                                      className={classNames(
-                                        active
-                                          ? "bg-teal-900/60  text-slate-50"
-                                          : "text-slate-50",
-                                        "block px-4 py-2 text-sm",
-                                      )}
-                                    >
-                                      Home2
-                                    </a>
-                                  </Link>
-                                )}
-                              </Menu.Item>
-                              <Menu.Item>
-                                {({ active }) => (
-                                  <Link to={`/Race`}>
-                                    <a
-                                      href="#"
-                                      className={classNames(
-                                        active
-                                          ? "bg-teal-900/60 text-slate-50"
-                                          : "text-slate-50",
-                                        "block px-4 py-2 text-sm",
-                                      )}
-                                    >
-                                      Race
-                                    </a>
-                                  </Link>
-                                )}
-                              </Menu.Item>
-                              <Menu.Item>
-                                {({ active }) => (
-                                  <Link to={`/Credit`}>
-                                    <a
-                                      href="#"
-                                      className={classNames(
-                                        active
-                                          ? "bg-teal-900/60 text-slate-50"
-                                          : "text-slate-50",
-                                        "block px-4 py-2 text-sm",
-                                      )}
-                                    >
-                                      Credit
-                                    </a>
-                                  </Link>
-                                )}
-                              </Menu.Item>
-                              <Menu.Item>
-                                {({ active }) => (
-                                  <Link to={`/Swap`}>
-                                    <a
-                                      href="#"
-                                      className={classNames(
-                                        active
-                                          ? "bg-teal-900/60 text-slate-50"
-                                          : "text-slate-50",
-                                        "block px-4 py-2 text-sm",
-                                      )}
-                                    >
-                                      Swap
-                                    </a>
-                                  </Link>
-                                )}
-                              </Menu.Item>
-                            </div>
+
                             <form>
                               <Menu.Item>
                                 {({ active }) => (
@@ -326,7 +269,7 @@ const Header = () => {
                                       active
                                         ? "bg-gray-100 text-gray-900"
                                         : "text-slate-50",
-                                      "block w-full px-4 py-2 text-left text-sm",
+                                      "block w-full px-4 py-2 text-left text-sm uppercase",
                                     )}
                                   >
                                     Disconnect
@@ -344,47 +287,47 @@ const Header = () => {
               <button
                 data-collapse-toggle="mobile-menu-2"
                 type="button"
-                class="ml-1 inline-flex items-center rounded-lg p-2 text-sm text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 lg:hidden"
+                className="ml-1 inline-flex items-center rounded-lg p-2 text-sm text-gray-200 hover:bg-teal-700/40 focus:outline-none focus:ring-1 focus:ring-gray-200 lg:hidden"
                 aria-controls="mobile-menu-2"
                 aria-expanded="false"
               >
-                <span class="sr-only">Open main menu</span>
+                <span className="sr-only">Open main menu</span>
                 <svg
-                  class="h-6 w-6"
+                  className="h-6 w-6"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
-                    fill-rule="evenodd"
+                    fillRule="evenodd"
                     d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-                    clip-rule="evenodd"
+                    clipRule="evenodd"
                   ></path>
                 </svg>
                 <svg
-                  class="hidden h-6 w-6"
+                  className="hidden h-6 w-6"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
-                    fill-rule="evenodd"
+                    fillRule="evenodd"
                     d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                    clip-rule="evenodd"
+                    clipRule="evenodd"
                   ></path>
                 </svg>
               </button>
             </div>
             <div
-              class="hidden w-full items-center justify-between lg:order-1 lg:flex lg:w-auto"
+              className="hidden w-full items-center justify-between lg:order-1 lg:flex lg:w-auto"
               id="mobile-menu-2"
             >
-              <ul class="mt-4 flex flex-col font-medium lg:mt-0 lg:flex-row lg:space-x-8">
+              <ul className="mt-4 flex flex-col font-medium lg:mt-0 lg:flex-row lg:space-x-8">
                 <li>
                   <Link to={`/`}>
                     <a
                       href=""
-                      class="block rounded bg-teal-700 py-2 pr-4 pl-3 text-slate-200 lg:bg-transparent lg:p-0 lg:text-slate-200 "
+                      className="block rounded bg-teal-700 py-2 pr-4 pl-3 text-slate-200 lg:bg-transparent lg:p-0 lg:text-slate-200 "
                       aria-current="page"
                     >
                       Home
@@ -392,10 +335,10 @@ const Header = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link to={`/Race/1`}>
+                  <Link to={`/Race/${Number(getSupply)}`}>
                     <a
                       href=""
-                      class="block border-b border-gray-100 py-2 pr-4 pl-3 text-slate-300 hover:bg-gray-50 lg:border-0 lg:p-0 lg:hover:bg-transparent lg:hover:text-teal-600"
+                      className="block border-b border-gray-100 py-2 pr-4 pl-3 text-slate-300 hover:bg-gray-50 lg:border-0 lg:p-0 lg:hover:bg-transparent lg:hover:text-teal-600"
                       aria-current="page"
                     >
                       Race
@@ -406,7 +349,7 @@ const Header = () => {
                   <Link to={`/Credit`}>
                     <a
                       href=""
-                      class="block border-b border-gray-100 py-2 pr-4 pl-3 text-slate-300 hover:bg-gray-50 lg:border-0 lg:p-0 lg:hover:bg-transparent lg:hover:text-teal-600"
+                      className="block border-b border-gray-100 py-2 pr-4 pl-3 text-slate-300 hover:bg-gray-50 lg:border-0 lg:p-0 lg:hover:bg-transparent lg:hover:text-teal-600"
                       aria-current="page"
                     >
                       Credit
@@ -417,7 +360,7 @@ const Header = () => {
                   <Link to={`/Swap`}>
                     <a
                       href=""
-                      class="block border-b border-gray-100 py-2 pr-4 pl-3 text-slate-300 hover:bg-gray-50 lg:border-0 lg:p-0 lg:hover:bg-transparent lg:hover:text-teal-600"
+                      className="block border-b border-gray-100 py-2 pr-4 pl-3 text-slate-300 hover:bg-gray-50 lg:border-0 lg:p-0 lg:hover:bg-transparent lg:hover:text-teal-600"
                       aria-current="page"
                     >
                       Swap
@@ -428,7 +371,7 @@ const Header = () => {
                   <Link to={`/Stats`}>
                     <a
                       href=""
-                      class="block border-b border-gray-100 py-2 pr-4 pl-3 text-slate-300 hover:bg-gray-50 lg:border-0 lg:p-0 lg:hover:bg-transparent lg:hover:text-teal-600"
+                      className="block border-b border-gray-100 py-2 pr-4 pl-3 text-slate-300 hover:bg-gray-50 lg:border-0 lg:p-0 lg:hover:bg-transparent lg:hover:text-teal-600"
                       aria-current="page"
                     >
                       Stats
@@ -440,6 +383,41 @@ const Header = () => {
           </div>
         </nav>
       </header>
+      <div className="from-bgc to-bgc animate-pulse bg-gradient-to-r via-rose-900/30 text-center leading-normal tracking-normal hs-removing:-translate-y-full">
+        <div className="mx-auto max-w-full px-4 py-2 sm:px-6 lg:px-8">
+          <div className="">
+            <span className=" text-xs font-normal  text-white lg:text-lg">
+               OnChain Races Public Beta is LIVE on{" "}
+              <div className="   inline-flex items-center   ">
+                <svg
+                  className=" mr-2 h-4 w-4"
+                  fill="#8247E5"
+                  viewBox="0 0 38 33"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M29,10.2c-0.7-0.4-1.6-0.4-2.4,0L21,13.5l-3.8,2.1l-5.5,3.3c-0.7,0.4-1.6,0.4-2.4,0L5,16.3 c-0.7-0.4-1.2-1.2-1.2-2.1v-5c0-0.8,0.4-1.6,1.2-2.1l4.3-2.5c0.7-0.4,1.6-0.4,2.4,0L16,7.2c0.7,0.4,1.2,1.2,1.2,2.1v3.3l3.8-2.2V7 c0-0.8-0.4-1.6-1.2-2.1l-8-4.7c-0.7-0.4-1.6-0.4-2.4,0L1.2,5C0.4,5.4,0,6.2,0,7v9.4c0,0.8,0.4,1.6,1.2,2.1l8.1,4.7 c0.7,0.4,1.6,0.4,2.4,0l5.5-3.2l3.8-2.2l5.5-3.2c0.7-0.4,1.6-0.4,2.4,0l4.3,2.5c0.7,0.4,1.2,1.2,1.2,2.1v5c0,0.8-0.4,1.6-1.2,2.1 L29,28.8c-0.7,0.4-1.6,0.4-2.4,0l-4.3-2.5c-0.7-0.4-1.2-1.2-1.2-2.1V21l-3.8,2.2v3.3c0,0.8,0.4,1.6,1.2,2.1l8.1,4.7 c0.7,0.4,1.6,0.4,2.4,0l8.1-4.7c0.7-0.4,1.2-1.2,1.2-2.1V17c0-0.8-0.4-1.6-1.2-2.1L29,10.2z"
+                    clipRule="evenodd"
+                  ></path>
+                </svg>
+              </div>
+              Polygon Mumbai Testnet. Please Test the Web App and Game. We Want
+              Your Feedback via{" "}
+              <a
+                className="text-sky-400/60 underline"
+                href="https://twitter.com/OnChainRace/"
+                rel="noreferrer"
+                target="_blank"
+              >
+                {" "}
+                Twitter DM
+              </a>
+              . You will be Rewarded.
+            </span>
+          </div>
+        </div>
+      </div>
     </>
   );
 };

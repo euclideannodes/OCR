@@ -1,6 +1,6 @@
 {
   "CONTRACT_ADDRESS": "0x7456a3DE5d14151747E880c9911E6f9BaC225300",
-  "SCAN_LINK": "https://polygonscan.com/token/0xfe02387cfe6f806e0f3c25bcb07a36fb3aa16f79",
+  "SCAN_LINK": "https://polygonscan.com/token/0x7456a3DE5d14151747E880c9911E6f9BaC225300",
 
   "NETWORK": {
     "NAME": "Polygon Mumbai",
@@ -8,9 +8,9 @@
     "HOST": "https://rpc.ankr.com/polygon_mumbai",
     "ID": "80001"
   },
-  "NFT_NAME": "The Stripes NFT",
-  "SYMBOL": "TSNFT",
-  "MAX_SUPPLY": 992,
+  "NFT_NAME": "OnChain Race",
+  "SYMBOL": "OCR",
+  "MAX_SUPPLY": 250,
   "WEI_COST": 1500000016000000,
   "DISPLAY_COST": 4,
   "GAS_LIMIT": 600000,
