@@ -501,7 +501,7 @@ const Address = () => {
                             <td className="px-3 py-1 text-gray-500">{s2}</td>
                             <td className="px-3 py-1 text-gray-500">{s3}</td>
                             <td className="px-3 py-1 text-gray-500">
-                              <div class="sm:col-span-2 md:grow">
+                              <div className="sm:col-span-2 md:grow">
                                 <button
                                   className="  rounded-lg  border border-dotted  border-teal-500/50  p-1  text-sm font-light text-teal-600/70 shadow-sm  transition-all   "
                                   onClick={(e) => {
@@ -598,13 +598,13 @@ const Address = () => {
         <>
           <div>
             <div
-              class="fixed bottom-5 right-5 z-50  max-w-sm rounded-md  bg-teal-900/40 text-sm font-bold text-white shadow-lg"
+              className="fixed bottom-5 right-5 z-50  max-w-sm rounded-md  bg-teal-900/40 text-sm font-bold text-white shadow-lg"
               role="alert"
             >
-              <div class="flex p-4">
-                <div class="flex-shrink-0">
+              <div className="flex p-4">
+                <div className="flex-shrink-0">
                   <svg
-                    class="mt-0.5 mr-2 h-4 w-4 text-green-500"
+                    className="mt-0.5 mr-2 h-4 w-4 text-green-500"
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"
                     height="16"
@@ -615,13 +615,13 @@ const Address = () => {
                   </svg>
                 </div>
                 Successful Claimed !
-                <div class="ml-auto">
+                <div className="ml-auto">
                   <button
                     onClick={() => setShowModal(false)}
                     type="button"
-                    class="inline-flex h-4 w-4 flex-shrink-0 items-center justify-center rounded-md text-sm text-white/[.9] transition-all hover:text-white focus:outline-none focus:ring-2 focus:ring-gray-600 focus:ring-offset-2 focus:ring-offset-gray-800 "
+                    className="inline-flex h-4 w-4 flex-shrink-0 items-center justify-center rounded-md text-sm text-white/[.9] transition-all hover:text-white focus:outline-none focus:ring-2 focus:ring-gray-600 focus:ring-offset-2 focus:ring-offset-gray-800 "
                   >
-                    <span class="sr-only">Close</span>
+                    <span className="sr-only">Close</span>
                     <svg
                       className="ml-1 h-3.5 w-3.5"
                       width="16"
@@ -645,13 +645,13 @@ const Address = () => {
       {showModal2 ? (
         <div>
           <div
-            class="fixed bottom-5 right-5 z-50  max-w-sm rounded-md  bg-blue-700/40 text-sm font-bold text-white shadow-lg "
+            className="fixed bottom-5 right-5 z-50  max-w-sm rounded-md  bg-blue-700/40 text-sm font-bold text-white shadow-lg "
             role="alert"
           >
-            <div class="flex p-4">
+            <div className="flex p-4">
               <svg
                 aria-hidden="true"
-                class="mr-2 h-5 w-5 animate-spin fill-blue-500 text-gray-200 "
+                className="mr-2 h-5 w-5 animate-spin fill-blue-500 text-gray-200 "
                 viewBox="0 0 100 101"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -666,15 +666,15 @@ const Address = () => {
                 />
               </svg>
               Claiming NFT...
-              <div class="ml-auto">
+              <div className="ml-auto">
                 <button
                   onClick={() => setShowModal2(false)}
                   type="button"
-                  class="ml-2 inline-flex h-4 w-4 flex-shrink-0 items-center justify-center rounded-md text-sm text-white/[.9] transition-all hover:text-white focus:outline-none focus:ring-2 focus:ring-gray-600 focus:ring-offset-2 focus:ring-offset-gray-800 "
+                  className="ml-2 inline-flex h-4 w-4 flex-shrink-0 items-center justify-center rounded-md text-sm text-white/[.9] transition-all hover:text-white focus:outline-none focus:ring-2 focus:ring-gray-600 focus:ring-offset-2 focus:ring-offset-gray-800 "
                 >
-                  <span class="sr-only">Close</span>
+                  <span className="sr-only">Close</span>
                   <svg
-                    class="h-3.5 w-3.5"
+                    className="h-3.5 w-3.5"
                     width="16"
                     height="16"
                     viewBox="0 0 16 16"
@@ -696,10 +696,10 @@ const Address = () => {
         <>
           <div>
             <div
-              class="fixed bottom-5 right-5 z-50  max-w-sm rounded-md  bg-rose-900/40 text-sm font-bold text-rose-200 shadow-lg "
+              className="fixed bottom-5 right-5 z-50  max-w-sm rounded-md  bg-rose-900/40 text-sm font-bold text-rose-200 shadow-lg "
               role="alert"
             >
-              <div class="flex p-4">
+              <div className="flex p-4">
                 <svg
                   className="mt-0.5 mr-1 h-4 w-4 text-rose-500"
                   xmlns="http://www.w3.org/2000/svg"
@@ -711,15 +711,15 @@ const Address = () => {
                   <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z" />
                 </svg>{" "}
                 Something Went Wrong!
-                <div class="ml-auto">
+                <div className="ml-auto">
                   <button
                     onClick={() => setShowModal3(false)}
                     type="button"
-                    class="ml-2 inline-flex h-4 w-4 flex-shrink-0 items-center justify-center rounded-md text-sm text-white/[.9] transition-all hover:text-white focus:outline-none focus:ring-2 focus:ring-gray-600 focus:ring-offset-2 focus:ring-offset-gray-800 "
+                    className="ml-2 inline-flex h-4 w-4 flex-shrink-0 items-center justify-center rounded-md text-sm text-white/[.9] transition-all hover:text-white focus:outline-none focus:ring-2 focus:ring-gray-600 focus:ring-offset-2 focus:ring-offset-gray-800 "
                   >
-                    <span class="sr-only">Close</span>
+                    <span className="sr-only">Close</span>
                     <svg
-                      class="h-3.5 w-3.5"
+                      className="h-3.5 w-3.5"
                       width="16"
                       height="16"
                       viewBox="0 0 16 16"

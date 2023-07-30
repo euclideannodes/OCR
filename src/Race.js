@@ -58,9 +58,9 @@ const Race = () => {
   const [getSupply, setSupply] = useState(null);
   let [resultData, setResultData] = useState(null);
   function trunceString(string) {
-    const start = string.slice(0, 4);
+    const start = string.slice(0, 7);
     const middle = "...";
-    const last = string.slice(-5);
+    const last = string.slice(-7);
     const newString = `${start}${middle}${last}`;
     return newString;
   }
@@ -345,18 +345,18 @@ const Race = () => {
     <>
       <section className="">
         <div className="mx-auto max-w-screen-xl text-center lg:py-5 lg:px-12 lg:pb-5">
-          <div className="flex flex-wrap items-center justify-center py-3    md:py-3">
+          <div className="lg:text-md flex flex-wrap items-center justify-center  py-3 text-xs font-bold  md:py-3">
             {blockchain.account === "" || blockchain.smartContract === null ? (
               <Container>{blockchain.errorMsg !== "" ? <></> : null}</Container>
             ) : (
               <>
                 <s.SpacerSmall />
-                <Menu as="div" className="relative inline-block text-left">
+                <Menu as="div" className="relative inline-block text-center ">
                   <div>
                     <Link to={`/Race/${Number(1)}`}>
                       <button
                         type="button"
-                        className="mx-0.5 inline-flex items-center rounded-lg border border-solid  border-slate-600/30 px-4  py-2 text-sm  text-teal-600 shadow-sm  hover:shadow-slate-500  "
+                        className="relative mx-0.5 mb-1 inline-block rounded-lg border border-solid border-teal-600/30 px-2 py-1 text-center  text-teal-600 shadow-sm hover:shadow-slate-500 lg:px-4 lg:py-2 "
                       >
                         &#60;&#60;
                       </button>
@@ -364,7 +364,7 @@ const Race = () => {
                     <Link to={`/Race/${Number(id) - 1}`}>
                       <button
                         type="button"
-                        className={`mx-0.5 inline-flex items-center rounded-lg border border-solid border-teal-600/30 px-4  py-2 text-sm  text-teal-600 shadow-sm hover:shadow-slate-500  ${
+                        className={`mx-0.5 mb-1 inline-flex items-center rounded-lg border border-solid border-teal-600/30 px-2 py-1   text-teal-600 shadow-sm hover:shadow-slate-500 lg:px-4 lg:py-2  ${
                           Number(id) - 1 <= 0 ? "hidden" : ""
                         }`}
                       >
@@ -379,7 +379,7 @@ const Race = () => {
                         return (
                           <button
                             type="button"
-                            className="relative mx-0.5 inline-block rounded-lg border border-solid border-teal-600/30  px-4 py-2  text-center text-sm  text-teal-600 shadow-sm  hover:shadow-slate-500 "
+                            className="relative mx-0.5 inline-block rounded-lg border border-solid border-teal-600/30  px-2 py-1 text-center  text-teal-600 shadow-sm  hover:shadow-slate-500 lg:px-4  lg:py-2 "
                             disabled={claimingNft ? 1 : 0}
                             onClick={(e) => {
                               e.preventDefault();
@@ -405,9 +405,9 @@ const Race = () => {
                           <button
                             onClick={() => setShowModal5(true)}
                             type="button"
-                            className="mx-0.5 inline-flex items-center rounded-lg border border-solid  border-slate-600/30 px-4  py-2 text-sm  text-teal-600 shadow-sm  hover:shadow-slate-500"
+                            className="mx-0.5 inline-flex items-center rounded-lg border border-solid  border-slate-600/30 px-2  py-1  text-teal-600 shadow-sm  hover:shadow-slate-500 lg:px-4 lg:py-2"
                           >
-                            Join Racess
+                            Join Races
                           </button>
                         );
                       }
@@ -435,7 +435,9 @@ const Race = () => {
                         const colorComponents = matchingIndexes.map((index) => {
                           return (
                             <>
-                              <span className={`text-${colors[index]}`}>
+                              <span
+                                className={`text-${colors[index]} lg:text-md text-[10px]`}
+                              >
                                 ⬤{" "}
                               </span>
                             </>
@@ -448,7 +450,7 @@ const Race = () => {
                               <button
                                 type="button"
                                 disabled
-                                className="relative mx-0.5 inline-block rounded-lg border border-solid border-teal-600/30 px-4 py-2 text-center text-sm text-teal-600 shadow-sm hover:shadow-slate-500"
+                                className="relative mx-0.5 inline-block rounded-lg border border-solid border-teal-600/30 px-2 py-1 text-center  text-teal-600 shadow-sm hover:shadow-slate-500 lg:px-4 lg:py-2"
                               >
                                 Your Car: {colorComponents}
                               </button>
@@ -461,7 +463,7 @@ const Race = () => {
                     <Link to={`/Race/${Number(id) + 1}`}>
                       <button
                         type="button"
-                        className={`mx-0.5 inline-flex items-center rounded-lg border border-solid border-teal-600/30 px-4  py-2 text-sm  text-teal-600 shadow-sm hover:shadow-slate-500  ${
+                        className={`mx-0.5 inline-flex items-center rounded-lg border border-solid border-teal-600/30 px-2  py-1  text-teal-600 shadow-sm  hover:shadow-slate-500 lg:px-4 lg:py-2  ${
                           Number(id) == Number(totalSupply) ? "hidden" : ""
                         }`}
                       >
@@ -474,7 +476,7 @@ const Race = () => {
                           <Link to={`/Race/${Number(totalSupply) - 1}`}>
                             <button
                               type="button"
-                              className="mx-0.5 inline-flex items-center rounded-lg border border-solid border-teal-600/30 px-4  py-2 text-sm  text-teal-600 shadow-sm hover:shadow-slate-500 "
+                              className="mx-0.5 inline-flex items-center rounded-lg border border-solid border-teal-600/30 px-2  py-1  text-teal-600 shadow-sm  hover:shadow-slate-500 lg:px-4 lg:py-2 "
                             >
                               &#62;&#62;
                             </button>
@@ -485,7 +487,7 @@ const Race = () => {
                           <Link to={`/Race/${Number(totalSupply)}`}>
                             <button
                               type="button"
-                              className="mx-0.5 inline-flex items-center rounded-lg px-4 py-2 text-sm text-teal-600 shadow shadow-cyan-500/50 hover:shadow-slate-500 "
+                              className="relative mx-0.5  inline-block rounded-lg border border-solid border-teal-600/30 px-2 py-1 text-center  text-teal-600 shadow-sm hover:shadow-slate-500 lg:px-4 lg:py-2"
                             >
                               &#62;&#62;
                             </button>
@@ -595,51 +597,59 @@ const Race = () => {
         if (blockchain.account !== null) {
           return (
             <>
-              <div className=" mx-auto max-w-screen-xl text-center lg:py-5 lg:px-12 lg:pb-5 ">
-                <div className=" mx-x-auto  from-bgc/50 mt-10 max-w-full rounded-2xl  border border-solid border-teal-500 border-opacity-20 bg-gradient-to-b shadow-2xl lg:col-span-4 lg:mt-0  ">
-                  <div className=" items-center">
-                    <p className=" animate-pulse  py-2  text-center   text-lg tracking-tight text-teal-600">
-                      OnChainRace #{String(id)} Players
-                    </p>
+              <section className="">
+                <div className=" mx-auto max-w-screen-xl px-6 text-center lg:py-5 lg:px-12 lg:pb-5">
+                  <div className=" from-bgc/50 mt-10    rounded-2xl  border border-solid border-teal-500 border-opacity-20 bg-gradient-to-b shadow-2xl lg:col-span-4 lg:mt-0  ">
+                    <div className=" items-center">
+                      <p className=" animate-pulse py-2  text-center  text-xs    tracking-tight  text-teal-600 lg:text-lg">
+                        OnChainRace #{String(id)} Players
+                      </p>
+                    </div>
+                    <hr className="h-px  border-0 bg-slate-200/20 " />
+                    <table className="lg:text-md w-full text-center text-xs text-gray-500 ">
+                      <thead className=" uppercase  text-gray-400  ">
+                        <tr>
+                          <th scope="col" className="px-1 py-2 lg:px-6">
+                            Color
+                          </th>
+                          <th scope="col" className="px-0 py-2 lg:px-6">
+                            Player ID
+                          </th>
+                          <th scope="col" className="px-1 py-2 lg:px-6">
+                            Wallet Addresss
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {resultData &&
+                          resultData.length !== null &&
+                          resultData.map((item, index) => (
+                            <React.Fragment key={index}>
+                              <tr className="border-b">
+                                <th
+                                  scope="row"
+                                  className="whitespace-nowrap py-2 font-medium"
+                                >
+                                  <p className={`text-${colors[index]} `}>⬤ </p>
+                                </th>
+                                <td className="px-0 py-2 lg:px-6">{`Player #${
+                                  index + 1
+                                }`}</td>
+
+                                <td className=" px-1 py-2   text-teal-500/50 underline decoration-dashed underline-offset-2 lg:px-6">
+                                  {" "}
+                                  <Link to={`/Address/${item}`}>
+                                    {trunceString(item)}
+                                  </Link>
+                                </td>
+                              </tr>
+                            </React.Fragment>
+                          ))}
+                      </tbody>
+                    </table>
                   </div>
-                  <hr className="h-px  border-0 bg-slate-200/20 " />
-                  <table className="w-full text-center text-sm text-gray-500 ">
-                    <thead className="text-sm uppercase  text-gray-400  ">
-                      <tr>
-                        <th scope="col" className="px-2 py-2 lg:px-6">
-                          Color
-                        </th>
-                        <th scope="col" className="px-2 py-2 lg:px-6">
-                          Player ID
-                        </th>
-                        <th scope="col" className="px-2 py-2 lg:px-6">
-                          Wallet Address
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {resultData &&
-                        resultData.length !== null &&
-                        resultData.map((item, index) => (
-                          <React.Fragment key={index}>
-                            <tr className="border-b">
-                              <th
-                                scope="row"
-                                className="whitespace-nowrap px-6 py-2 font-medium"
-                              >
-                                <p className={`text-${colors[index]}`}>⬤ </p>
-                              </th>
-                              <td className="px-2 py-2 lg:px-6">{`Player #${
-                                index + 1
-                              }`}</td>
-                              <td className="px-2 py-2 lg:px-6">{`${item}`}</td>
-                            </tr>
-                          </React.Fragment>
-                        ))}
-                    </tbody>
-                  </table>
                 </div>
-              </div>
+              </section>
             </>
           );
         } else {
@@ -653,9 +663,9 @@ const Race = () => {
               <div className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto overflow-x-hidden outline-none focus:outline-none">
                 <div className="bg-bgc relative my-6 mx-auto w-auto max-w-3xl rounded-lg  border  border-gray-200 shadow ">
                   <div className="relative flex w-full flex-col rounded-lg border-0 shadow-lg  outline-none focus:outline-none ">
-                    <div class="to-bgc group flex h-full flex-col rounded-xl border border-gray-200 bg-gradient-to-r from-teal-900 shadow-sm">
-                      <div class="p-4 md:p-6">
-                        <span class="mb-1 block text-center text-lg font-normal text-gray-200 lg:text-2xl">
+                    <div className="to-bgc group flex h-full flex-col rounded-xl border border-gray-200 bg-gradient-to-r from-teal-900 shadow-sm">
+                      <div className="p-4 md:p-6">
+                        <span className="mb-1 block text-center text-lg font-normal text-gray-200 lg:text-2xl">
                           <div className=" inline-flex  items-center  justify-center    ">
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
@@ -674,15 +684,15 @@ const Race = () => {
                             Congratulations!
                           </div>
                         </span>
-                        <h3 class="animate-pulse text-center text-lg   font-semibold text-gray-200 lg:text-2xl">
+                        <h3 className="animate-pulse text-center text-lg   font-semibold text-gray-200 lg:text-2xl">
                           🎉🎉🎉 You Won OnChain Race #{id} 🎉🎉🎉
                         </h3>
-                        <p class="mt-3 text-gray-200">
+                        <p className="mt-3 text-gray-200">
                           You Won 2 Credits and Also You Can Free Claim OnChain
                           Race #{id}
                         </p>
                       </div>
-                      <div class="mt-auto flex divide-x divide-gray-200/10 border-t border-solid border-gray-400">
+                      <div className="mt-auto flex divide-x divide-gray-200/10 border-t border-solid border-gray-400">
                         <button
                           className="inline-flex w-full items-center justify-center gap-2 rounded-bl-xl py-3 px-4 align-middle text-sm font-medium text-gray-200 shadow-sm transition-all hover:bg-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-600 focus:ring-offset-2 focus:ring-offset-white  sm:p-4"
                           type="button"
@@ -740,13 +750,13 @@ const Race = () => {
             <>
               <div>
                 <div
-                  class="fixed bottom-5 right-5 z-50  max-w-sm rounded-md  bg-teal-900/40 text-sm font-bold text-white shadow-lg "
+                  className="fixed bottom-5 right-5 z-50  max-w-sm rounded-md  bg-teal-900/40 text-sm font-bold text-white shadow-lg "
                   role="alert"
                 >
-                  <div class="flex p-4">
-                    <div class="flex-shrink-0">
+                  <div className="flex p-4">
+                    <div className="flex-shrink-0">
                       <svg
-                        class="mt-0.5 mr-2 h-4 w-4 text-green-500"
+                        className="mt-0.5 mr-2 h-4 w-4 text-green-500"
                         xmlns="http://www.w3.org/2000/svg"
                         width="16"
                         height="16"
@@ -757,15 +767,15 @@ const Race = () => {
                       </svg>
                     </div>
                     Success! You have successfully join the last race.
-                    <div class="ml-auto">
+                    <div className="ml-auto">
                       <button
                         onClick={() => setShowModal2(false)}
                         type="button"
-                        class="inline-flex h-4 w-4 flex-shrink-0 items-center justify-center rounded-md text-sm text-white/[.9] transition-all hover:text-white focus:outline-none focus:ring-2 focus:ring-gray-600 focus:ring-offset-2 focus:ring-offset-gray-800 "
+                        className="inline-flex h-4 w-4 flex-shrink-0 items-center justify-center rounded-md text-sm text-white/[.9] transition-all hover:text-white focus:outline-none focus:ring-2 focus:ring-gray-600 focus:ring-offset-2 focus:ring-offset-gray-800 "
                       >
-                        <span class="sr-only">Close</span>
+                        <span className="sr-only">Close</span>
                         <svg
-                          class="h-3.5 w-3.5"
+                          className="h-3.5 w-3.5"
                           width="16"
                           height="16"
                           viewBox="0 0 16 16"
@@ -788,13 +798,13 @@ const Race = () => {
             <>
               <div>
                 <div
-                  class="fixed bottom-5 right-5 z-50  max-w-sm rounded-md  bg-blue-700/40 text-sm font-bold text-white shadow-lg "
+                  className="fixed bottom-5 right-5 z-50  max-w-sm rounded-md  bg-blue-700/40 text-sm font-bold text-white shadow-lg "
                   role="alert"
                 >
-                  <div class="flex p-4">
+                  <div className="flex p-4">
                     <svg
                       aria-hidden="true"
-                      class="mr-2 h-5 w-5 animate-spin fill-teal-600 text-gray-200 "
+                      className="mr-2 h-5 w-5 animate-spin fill-teal-600 text-gray-200 "
                       viewBox="0 0 100 101"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
@@ -809,15 +819,15 @@ const Race = () => {
                       />
                     </svg>
                     Joining to Last Race
-                    <div class="ml-auto">
+                    <div className="ml-auto">
                       <button
                         onClick={() => setShowModal3(false)}
                         type="button"
-                        class="ml-2 inline-flex h-4 w-4 flex-shrink-0 items-center justify-center rounded-md text-sm text-white/[.9] transition-all hover:text-white focus:outline-none focus:ring-2 focus:ring-gray-600 focus:ring-offset-2 focus:ring-offset-gray-800 "
+                        className="ml-2 inline-flex h-4 w-4 flex-shrink-0 items-center justify-center rounded-md text-sm text-white/[.9] transition-all hover:text-white focus:outline-none focus:ring-2 focus:ring-gray-600 focus:ring-offset-2 focus:ring-offset-gray-800 "
                       >
-                        <span class="sr-only">Close</span>
+                        <span className="sr-only">Close</span>
                         <svg
-                          class="h-3.5 w-3.5"
+                          className="h-3.5 w-3.5"
                           width="16"
                           height="16"
                           viewBox="0 0 16 16"
@@ -840,10 +850,10 @@ const Race = () => {
             <>
               <div>
                 <div
-                  class="fixed bottom-5 right-5 z-50  max-w-sm rounded-md  bg-rose-900/40 text-sm font-bold text-rose-200 shadow-lg "
+                  className="fixed bottom-5 right-5 z-50  max-w-sm rounded-md  bg-rose-900/40 text-sm font-bold text-rose-200 shadow-lg "
                   role="alert"
                 >
-                  <div class="flex p-4">
+                  <div className="flex p-4">
                     <svg
                       className="mt-0.5 mr-1 h-4 w-4 text-rose-500"
                       xmlns="http://www.w3.org/2000/svg"
@@ -855,15 +865,15 @@ const Race = () => {
                       <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z" />
                     </svg>
                     Sorry, something went wrong please try again later.
-                    <div class="ml-auto">
+                    <div className="ml-auto">
                       <button
                         onClick={() => setShowModal4(false)}
                         type="button"
-                        class="ml-2 inline-flex h-4 w-4 flex-shrink-0 items-center justify-center rounded-md text-sm text-white/[.9] transition-all hover:text-white focus:outline-none focus:ring-2 focus:ring-gray-600 focus:ring-offset-2 focus:ring-offset-gray-800 "
+                        className="ml-2 inline-flex h-4 w-4 flex-shrink-0 items-center justify-center rounded-md text-sm text-white/[.9] transition-all hover:text-white focus:outline-none focus:ring-2 focus:ring-gray-600 focus:ring-offset-2 focus:ring-offset-gray-800 "
                       >
-                        <span class="sr-only">Close</span>
+                        <span className="sr-only">Close</span>
                         <svg
-                          class="h-3.5 w-3.5"
+                          className="h-3.5 w-3.5"
                           width="16"
                           height="16"
                           viewBox="0 0 16 16"
@@ -886,10 +896,10 @@ const Race = () => {
             <>
               <div>
                 <div
-                  class="fixed bottom-5 right-5 z-50  max-w-lg rounded-md  bg-rose-900/40 text-sm font-bold text-rose-200 shadow-lg "
+                  className="fixed bottom-5 right-5 z-50  max-w-lg rounded-md  bg-rose-900/40 text-sm font-bold text-rose-200 shadow-lg "
                   role="alert"
                 >
-                  <div class="flex p-4">
+                  <div className="flex p-4">
                     <svg
                       className="mt-0.5 mr-1 h-4 w-4 text-rose-500"
                       xmlns="http://www.w3.org/2000/svg"
@@ -902,15 +912,15 @@ const Race = () => {
                     </svg>
                     Sorry, you do not have enough credits (1 credit per race) to
                     enter the race. Please add credit.
-                    <div class="ml-auto">
+                    <div className="ml-auto">
                       <button
                         onClick={() => setShowModal5(false)}
                         type="button"
-                        class="ml-2 inline-flex h-4 w-4 flex-shrink-0 items-center justify-center rounded-md text-sm text-white/[.9] transition-all hover:text-white focus:outline-none focus:ring-2 focus:ring-gray-600 focus:ring-offset-2 focus:ring-offset-gray-800 "
+                        className="ml-2 inline-flex h-4 w-4 flex-shrink-0 items-center justify-center rounded-md text-sm text-white/[.9] transition-all hover:text-white focus:outline-none focus:ring-2 focus:ring-gray-600 focus:ring-offset-2 focus:ring-offset-gray-800 "
                       >
-                        <span class="sr-only">Close</span>
+                        <span className="sr-only">Close</span>
                         <svg
-                          class="h-3.5 w-3.5"
+                          className="h-3.5 w-3.5"
                           width="16"
                           height="16"
                           viewBox="0 0 16 16"

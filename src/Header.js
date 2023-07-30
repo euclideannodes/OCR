@@ -384,9 +384,9 @@ const Header = () => {
         </nav>
       </header>
       <div className="from-bgc to-bgc animate-pulse bg-gradient-to-r via-rose-900/30 text-center leading-normal tracking-normal hs-removing:-translate-y-full">
-        <div className="mx-auto max-w-full px-4 py-2 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-full px-4 py-2 text-justify text-xs   text-white  antialiased sm:px-6 lg:px-8 lg:text-center lg:text-lg">
           <div className="">
-            <span className=" text-xs font-normal  text-white lg:text-lg">
+            <span>
                OnChain Races Public Beta is LIVE on{" "}
               <div className="   inline-flex items-center   ">
                 <svg

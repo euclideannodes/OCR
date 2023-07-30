@@ -210,168 +210,176 @@ const All = () => {
           return <></>;
         }
       })()}
-
       <div className="container my-5 mx-auto ">
-        <div className="container mx-auto grid grid-cols-1 gap-4 p-6 lg:grid-cols-6">
-          <div className=" col-span-4 flex flex-col border-2 bg-transparent p-4">
-            <h1 className=" mb-4  max-w-2xl from-sky-400 text-justify text-4xl font-extrabold leading-none tracking-tight text-teal-600 md:text-5xl xl:text-6xl ">
-              Welcome to OnChain Races!
-            </h1>
-            <p className="text-md mb-6 max-w-2xl text-justify  font-light  leading-relaxed tracking-tight text-slate-300 md:text-lg lg:mb-8 lg:text-xl ">
-              Real-Time Excitement and Rewards on the Polygon! Get credits and
-              join thrilling races. In races where a total of 10 racers compete
-              in a race, your speeds change completely randomly, offering an
-              on-chain experience in each race. The blue 3 checkpoints on the
-              map are lines that alter your vehicle's speed. The winners not
-              only become the owner of the map but also receive 5 credit
-              rewards. You can use these credits to join another races or Swap
-              them to MATIC.{" "}
-            </p>
-            <div className="mt-auto flex flex-wrap pt-3 text-xs">
-              <Link to={`/credit/`}>
-                <a
-                  href=""
-                  className="text-md justify-left mx-0.5 mr-3  inline-flex items-center rounded-lg border border-solid border-slate-500/30 py-3  px-4  text-base font-medium  text-slate-300 shadow-sm  hover:shadow-slate-500"
-                >
-                  Get Credit and Play !
-                </a>
-              </Link>
-              <p className="text-md  text-justify  leading-6  tracking-tight text-gray-500 ">
-                <a
-                  className="text-sky-400/60"
-                  href="https://twitter.com/OnChainRace/"
-                  rel="noreferrer"
-                  target="_blank"
-                >
-                  <div className=" text-md  justify-left   inline-flex items-center  rounded-lg  py-3 px-3 text-start  text-sm   font-medium  text-slate-300 shadow-sm  hover:shadow-slate-500  ">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      class="h-5 w-5"
-                      fill="#34a2ec"
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
-                    </svg>
-                  </div>
-                </a>
+        <section className="bg-transparent ">
+          <div className="mx-auto grid max-w-full p-8 lg:grid-cols-12 lg:gap-8 lg:py-16 xl:gap-0">
+            <div className="mr-auto place-self-center tracking-tight lg:col-span-8 ">
+              <h1 className=" mb-4  max-w-2xl from-sky-400 text-justify text-4xl font-extrabold leading-none tracking-tight text-teal-600 md:text-5xl xl:text-6xl ">
+                Welcome to OnChain Races!
+              </h1>
+              <p className="text-md mb-6 max-w-2xl text-justify  font-light  leading-relaxed tracking-tight text-slate-300 md:text-lg lg:mb-8 lg:text-xl ">
+                Real-Time Excitement and Rewards on the Polygon! Get credits and
+                join thrilling races. In races where a total of 10 racers
+                compete in a race, your speeds change completely randomly,
+                offering an on-chain experience in each race. The blue 3
+                checkpoints on the map are lines that alter your vehicle's
+                speed. The winners not only become the owner of the map but also
+                receive 5 credit rewards. You can use these credits to join
+                another races or Swap them to MATIC.{" "}
               </p>
+              <div className="mt-auto flex flex-wrap pt-3 text-xs">
+                <Link to={`/credit/`}>
+                  <a
+                    href=""
+                    className="text-md justify-left mx-0.5 mr-3  inline-flex items-center rounded-lg border border-solid border-slate-500/30 py-3  px-4  text-base font-medium  text-slate-300 shadow-sm  hover:shadow-slate-500"
+                  >
+                    Get Credit and Play !
+                  </a>
+                </Link>
+                <p className="text-md  text-justify  leading-6  tracking-tight text-gray-500 ">
+                  <a
+                    className="text-sky-400/60"
+                    href="https://twitter.com/OnChainRace/"
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    <div className=" text-md  justify-left   inline-flex items-center  rounded-lg  py-3 px-3 text-start  text-sm   font-medium  text-slate-300 shadow-sm  hover:shadow-slate-500  ">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-5 w-5"
+                        fill="#34a2ec"
+                        viewBox="0 0 24 24"
+                      >
+                        <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
+                      </svg>
+                    </div>
+                  </a>
+                </p>
+              </div>
+            </div>
+
+            <div className="  mx-x-auto from-bgc/50 max-w-full rounded-2xl  border border-solid border-slate-500/20 bg-gradient-to-b shadow-2xl duration-300 hover:scale-105 lg:col-span-4 lg:mt-0">
+              <>
+                <div className="h-100  flex w-full justify-center ">
+                  {(() => {
+                    if (blockchain.account == null) {
+                      return (
+                        <>
+                          <section>
+                            <div className="mx-auto max-w-2xl lg:max-w-4xl">
+                              <figure>
+                                <blockquote className="animate-pulse p-4 text-center text-lg font-semibold  text-teal-600 sm:text-xl sm:leading-9">
+                                  <div className=" row-start-2 inline-flex animate-pulse items-center  pl-2 pr-2 lg:pl-1 lg:pr-1  ">
+                                    <svg
+                                      xmlns="http://www.w3.org/2000/svg"
+                                      fill="none"
+                                      viewBox="0 0 24 24"
+                                      strokeWidth="1.5"
+                                      stroke="currentColor"
+                                      className="mr-2 h-5 w-5 text-teal-600 lg:h-7  lg:w-7"
+                                    >
+                                      <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z"
+                                      />
+                                    </svg>
+                                    <p className="text-md  grid  text-center lg:text-xl ">
+                                      <span className="  ">
+                                        {" "}
+                                        Please Connect Your Wallet
+                                      </span>
+                                    </p>
+                                  </div>
+                                </blockquote>
+                              </figure>
+                            </div>
+                          </section>
+                        </>
+                      );
+                    } else {
+                      return (
+                        <>
+                          <div className="  ">
+                            <p className=" text-md  animate-pulse  p-2 py-3   text-teal-600 lg:p-1 lg:text-lg">
+                              OnChainRace #{String(getSupply)}: Waiting to
+                              Players{" "}
+                            </p>
+                            <hr className="h-px  border-0 bg-slate-200/20 " />
+                            <table className="mt-3 w-full text-center text-sm text-gray-500">
+                              <thead className="text-sm uppercase text-gray-400">
+                                <tr>
+                                  <th scope="col">Color</th>
+                                  <th scope="col">Player ID</th>
+                                  <th scope="col">Wallet Address</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                {resultData &&
+                                  resultData.length !== null &&
+                                  resultData.map((item, index) => (
+                                    <React.Fragment key={index}>
+                                      <tr className="border-b">
+                                        <td
+                                          scope="row"
+                                          className="whitespace-nowrap px-6 py-2 font-medium"
+                                        >
+                                          <span
+                                            className={`text-${colors[index]}`}
+                                          >
+                                            ⬤
+                                          </span>
+                                        </td>
+                                        <td className="px-2 py-2 lg:px-6">{`Player #${
+                                          index + 1
+                                        }`}</td>
+                                        <td className="px-2 py-2 lg:px-6">{`${trunceString(
+                                          item,
+                                        )}`}</td>
+                                      </tr>
+                                    </React.Fragment>
+                                  ))}
+                                <tr className="content-end border-b">
+                                  <td
+                                    scope="row"
+                                    className="whitespace-nowrap px-6 py-2 font-medium"
+                                  ></td>
+                                  <td className="px-6 py-1"></td>
+                                  <td className="px-6 py-1 text-center"></td>
+                                </tr>
+                              </tbody>
+                            </table>
+                            <div className="mt-auto  flex flex-wrap pt-3 text-xs">
+                              <div className="grid   w-full grid-cols-1 divide-x divide-gray-900/5">
+                                <Link to={`/Race/${getSupply}`}>
+                                  <a className="text-md  flex items-center justify-center p-3 text-slate-100">
+                                    Go to Last Race
+                                    <svg
+                                      className="ml-2 -mr-1 h-3 w-3"
+                                      fill="currentColor"
+                                      viewBox="0 0 20 20"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                      <path
+                                        fillRule="evenodd"
+                                        d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                                        clipRule="evenodd"
+                                      ></path>
+                                    </svg>
+                                  </a>
+                                </Link>
+                              </div>
+                            </div>
+                          </div>
+                        </>
+                      );
+                    }
+                  })()}
+                </div>
+              </>
             </div>
           </div>
-
-          {(() => {
-            if (blockchain.account == null) {
-              return (
-                <>
-                  <div className=" mx-x-auto  from-bgc/50 col-span-2 flex max-w-full  flex-col rounded-2xl  border-2 border-solid border-slate-500/20 bg-transparent bg-gradient-to-b shadow-2xl  ">
-                    <section>
-                      <div className="mx-auto max-w-2xl lg:max-w-4xl">
-                        <figure>
-                          <blockquote className="mt-5 animate-pulse text-center text-xl font-semibold leading-8 text-teal-600 sm:text-2xl sm:leading-9">
-                            <div className=" row-start-2 inline-flex animate-pulse items-center  pl-4 pr-4 lg:pl-1 lg:pr-1  ">
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                strokeWidth="1.5"
-                                stroke="currentColor"
-                                className="h-5 w-5 text-teal-600 lg:h-7  lg:w-7"
-                              >
-                                <path
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                  d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z"
-                                />
-                              </svg>
-                              <p className="text-md  grid  text-center lg:text-xl ">
-                                <span className=" ml-2   text-center font-bold ">
-                                  {" "}
-                                  Please Connect Your Wallet
-                                </span>
-                              </p>
-                            </div>
-                          </blockquote>
-                        </figure>
-                      </div>
-                    </section>
-                  </div>
-                </>
-              );
-            } else {
-              return (
-                <>
-                  <div className=" mx-x-auto  from-bgc/50 col-span-2 flex max-w-full  flex-col rounded-2xl  border-2  border-solid border-slate-500/20 bg-transparent bg-gradient-to-b shadow-2xl ">
-                    <p className=" animate-pulse  py-2  text-center text-lg tracking-tight text-teal-600">
-                      OnChainRace #{String(getSupply)}: Waiting to Players{" "}
-                    </p>
-                    <hr className="h-px  border-0 bg-slate-200/20 " />
-                    <table className="mt-3 w-full text-center text-sm text-gray-500">
-                      <thead className="text-sm uppercase text-gray-400">
-                        <tr>
-                          <th scope="col">Color</th>
-                          <th scope="col">Player ID</th>
-                          <th scope="col">Wallet Address</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {resultData &&
-                          resultData.length !== null &&
-                          resultData.map((item, index) => (
-                            <React.Fragment key={index}>
-                              <tr className="border-b">
-                                <td
-                                  scope="row"
-                                  className="whitespace-nowrap px-6 py-2 font-medium"
-                                >
-                                  <span className={`text-${colors[index]}`}>
-                                    ⬤
-                                  </span>
-                                </td>
-                                <td className="px-2 py-2 lg:px-6">{`Player #${
-                                  index + 1
-                                }`}</td>
-                                <td className="px-2 py-2 lg:px-6">{`${trunceString(
-                                  item,
-                                )}`}</td>
-                              </tr>
-                            </React.Fragment>
-                          ))}
-                        <tr className="content-end border-b">
-                          <td
-                            scope="row"
-                            className="whitespace-nowrap px-6 py-2 font-medium"
-                          ></td>
-                          <td className="px-6 py-1"></td>
-                          <td className="px-6 py-1 text-center"></td>
-                        </tr>
-                      </tbody>
-                    </table>
-                    <div className="mt-auto  flex flex-wrap pt-3 text-xs">
-                      <div className="grid   w-full grid-cols-1 divide-x divide-gray-900/5">
-                        <Link to={`/Race/${getSupply}`}>
-                          <a className="text-md  flex items-center justify-center p-3 text-slate-100">
-                            Go to Last Race
-                            <svg
-                              className="ml-2 -mr-1 h-3 w-3"
-                              fill="currentColor"
-                              viewBox="0 0 20 20"
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <path
-                                fillRule="evenodd"
-                                d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                                clipRule="evenodd"
-                              ></path>
-                            </svg>
-                          </a>
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-                </>
-              );
-            }
-          })()}
-        </div>
+        </section>
         <section className="bg-transparent ">
           <div className="mx-auto grid max-w-full p-8 lg:grid-cols-12 lg:gap-8 lg:py-16 xl:gap-0">
             <div className="mr-auto place-self-center tracking-tight lg:col-span-8 ">
@@ -399,7 +407,7 @@ const All = () => {
               <Link to={`/credit/`}>
                 <a
                   href=""
-                  className="text-md justify-left mx-0.5 mr-3  inline-flex items-center rounded-lg border border-solid border-slate-500/30 py-3  px-4  text-base font-medium  text-slate-300 shadow-sm  hover:shadow-slate-500"
+                  className="text-md justify-left mx-0.5 mr-3 mb-3 inline-flex items-center rounded-lg border border-solid border-slate-500/30 py-3  px-4  text-base font-medium  text-slate-300 shadow-sm  hover:shadow-slate-500"
                 >
                   Get Credit and Play !
                 </a>
@@ -408,7 +416,7 @@ const All = () => {
 
             <div className="  mx-x-auto from-bgc/50 max-w-full rounded-2xl  border border-solid border-slate-500/20 bg-gradient-to-b shadow-2xl duration-300 hover:scale-105 lg:col-span-4 lg:mt-0">
               <>
-                <div className="h-100 flex w-full  items-center justify-center">
+                <div className="h-100 flex  w-full items-center justify-center ">
                   <img className={""} src={imageHero} />
                 </div>
               </>
@@ -422,23 +430,23 @@ const All = () => {
                 <section className="bg-transparent ">
                   <div className="mx-auto grid max-w-full p-8 lg:grid-cols-12 lg:gap-8 lg:py-16 xl:gap-0">
                     <div className="mr-auto place-self-center lg:col-span-8">
-                      <h1 className=" mb-4 max-w-2xl text-justify text-4xl font-extrabold leading-none tracking-tight  text-teal-500/80 md:text-5xl xl:text-6xl ">
+                      <h1 className=" mb-4 max-w-2xl text-justify text-xl font-extrabold leading-none tracking-tight text-teal-500/80 md:text-5xl lg:text-4xl xl:text-6xl ">
                         OnChain Races Table{" "}
                       </h1>
                     </div>
                     <div className="  mx-x-auto from-bgc/50 max-w-full rounded-2xl  border border-solid border-slate-500/20 bg-gradient-to-b shadow-2xl duration-300 hover:scale-105 lg:col-span-4 lg:mt-0 ">
                       <>
                         <div className="h-100 flex w-full  items-center justify-center">
-                          <table className=" w-full text-left  text-sm  ">
+                          <table className=" w-full text-left  text-xs lg:text-sm  ">
                             <thead className="text-sm font-bold uppercase text-gray-400 underline  underline-offset-2">
                               <tr>
-                                <th scope="col" className="px-6 py-3">
+                                <th scope="col" className="px-4 py-3">
                                   Race ID
                                 </th>
-                                <th scope="col" className="py-3 px-6">
+                                <th scope="col" className="py-3 px-2">
                                   Winner
                                 </th>
-                                <th scope="col" className="py-3 px-6">
+                                <th scope="col" className="py-3 px-2">
                                   Time
                                 </th>
                               </tr>
@@ -451,17 +459,17 @@ const All = () => {
 
                                   return (
                                     <tr key={key}>
-                                      <td className="whitespace-nowrap px-6 py-2 font-light text-teal-500/60 underline decoration-dashed underline-offset-2">
+                                      <td className="whitespace-nowrap px-4 py-2 font-light text-teal-500/60 underline decoration-dashed underline-offset-2">
                                         <Link to={`/Race/${key}`}>
                                           OnChain Races #{key}{" "}
                                         </Link>
                                       </td>
-                                      <td className="whitespace-nowrap px-6 py-2 font-light text-teal-500/60 underline decoration-dashed underline-offset-2">
+                                      <td className="whitespace-nowrap px-2 py-2 font-light text-teal-500/60 underline decoration-dashed underline-offset-2">
                                         <Link to={`/Address/${name}`}>
                                           {trunceString(name)}
                                         </Link>
                                       </td>
-                                      <td className="whitespace-nowrap px-6 py-2 font-light text-gray-500">
+                                      <td className="whitespace-nowrap px-2 py-2 font-light text-gray-500">
                                         {value}
                                       </td>
                                     </tr>
@@ -478,14 +486,14 @@ const All = () => {
                 <section className="bg-transparent ">
                   <div className="mx-auto grid max-w-full p-8 lg:grid-cols-12 lg:gap-8 lg:py-16 xl:gap-0">
                     <div className="mr-auto place-self-center lg:col-span-8">
-                      <h1 className=" mb-4 max-w-2xl text-justify text-4xl font-extrabold leading-none tracking-tight  text-teal-500/80 md:text-5xl xl:text-6xl ">
+                      <h1 className=" mb-4 max-w-2xl text-justify text-xl font-extrabold leading-none tracking-tight text-teal-500/80 md:text-5xl lg:text-4xl xl:text-6xl ">
                         Top 10
                       </h1>
                     </div>
                     <div className="  mx-x-auto from-bgc/50 max-w-full rounded-2xl  border border-solid border-slate-500/20 bg-gradient-to-b shadow-2xl duration-300 hover:scale-105 lg:col-span-4 lg:mt-0 ">
                       <>
                         <div className="h-100 flex w-full  items-center justify-center">
-                          <table className="w-full text-left  text-sm  ">
+                          <table className="w-full text-left  text-xs lg:text-sm ">
                             <thead className="text-sm font-bold uppercase text-gray-400 underline  underline-offset-2">
                               <tr>
                                 <th scope="col" className="px-6 py-3">
@@ -540,13 +548,13 @@ const All = () => {
           } else {
           }
         })()}
-        <section className="">
-          <div class="rounded-2xl  py-24 shadow-2xl sm:py-32">
-            <div class="mx-auto max-w-full ">
-              <dl class="grid grid-cols-1  gap-y-16 text-center lg:grid-cols-2">
-                <div class="mx-auto flex max-w-md flex-col gap-y-6">
-                  <dt class="leading-7 text-slate-100">
-                    <p className="mt-6 text-justify text-lg leading-8 text-slate-300">
+        <section className="rounded-xl bg-teal-500/5 shadow-2xl">
+          <div className="mx-auto grid max-w-full p-8 ">
+            <div className="mx-auto max-w-full ">
+              <dl className="grid grid-cols-1  gap-y-16 text-center lg:grid-cols-2">
+                <div className="mx-auto flex max-w-md flex-col gap-y-6">
+                  <dt className="leading-7 text-slate-100">
+                    <p className="mt-6 text-justify text-sm  leading-8 text-slate-300 lg:text-lg">
                       The Season 1 map has{" "}
                       <strong className="text-teal-600">3</strong> speed
                       check-points in total. There are{" "}
@@ -560,14 +568,14 @@ const All = () => {
                       in this map.
                     </p>
                   </dt>
-                  <dd class="order-first text-2xl font-semibold tracking-normal text-slate-100 sm:text-4xl">
+                  <dd className="order-first text-2xl font-semibold tracking-normal text-slate-100 sm:text-4xl">
                     OnChain Races: Season #1
                   </dd>
                 </div>
-                <div class="mx-auto flex max-w-full flex-col gap-y-6">
-                  <dd class="order-first text-3xl font-semibold tracking-tight text-gray-900 sm:text-5xl">
+                <div className="mx-auto flex max-w-full flex-col gap-y-6">
+                  <dd className="order-first text-3xl font-semibold tracking-tight text-gray-900 sm:text-5xl">
                     <img
-                      className="w-full rounded-lg "
+                      className="w-full rounded-lg duration-300 hover:scale-110"
                       src="season1.svg"
                       alt="season 1"
                     />
@@ -579,17 +587,26 @@ const All = () => {
         </section>
         <section className="bg-transparent">
           <div className="container mx-auto px-6 py-12">
-            <h1 className="mb-8 text-4xl font-extrabold tracking-tight text-teal-600">
+            <h1
+              className="mb-8 text-4xl font-extrabold tracking-tight text-teal-600"
+              style={{ userSelect: "text" }}
+            >
               Frequently asked questions.
             </h1>
             <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 lg:mt-16 xl:grid-cols-3">
               <div>
                 <div>
-                  <h1 className="text-xl font-semibold text-gray-400 ">
+                  <h1
+                    className="text-xl font-semibold text-gray-400 "
+                    style={{ userSelect: "text" }}
+                  >
                     {" "}
                     What is the OnChain Races ?
                   </h1>
-                  <p className="text-md mt-2  text-justify leading-6 text-gray-500 ">
+                  <p
+                    className="text-md mt-2  text-justify leading-6 text-gray-500 "
+                    style={{ userSelect: "text" }}
+                  >
                     OnChain Races is a Fully On-Chain and Chance-Based racing
                     game available on the Polygon. Players show their luck by
                     participating in an entirely fair race.
@@ -597,17 +614,23 @@ const All = () => {
                 </div>
               </div>
               <div>
-                <h1 className="text-xl font-semibold text-gray-400 ">
+                <h1
+                  className="text-xl font-semibold text-gray-400 "
+                  style={{ userSelect: "text" }}
+                >
                   What are the Rules of the Game?
                 </h1>
-                <ul className="list-disc   text-justify  leading-6 tracking-tight text-gray-500 antialiased ">
+                <ul
+                  className="list-disc   text-justify  leading-6 tracking-tight text-gray-500 antialiased "
+                  style={{ userSelect: "text" }}
+                >
                   <li className=" mb-3 mt-3">
                     The player buys credits to participate in the race.
                   </li>
                   <li className="mb-3 mt-3">
                     Participates in the last race with purchased credits and
-                    spends one credit. A player cannot attend the same race with
-                    the same address more than once.
+                    spends one credit. Player cannot attend the same race with
+                    the same address more than once (Exept Beta).
                   </li>
                   <li className="mb-3 mt-3">
                     The race starts only when a total of 10 player participate.
@@ -644,10 +667,16 @@ const All = () => {
                 </ul>
               </div>
               <div>
-                <h1 className="text-xl font-semibold text-gray-400 ">
+                <h1
+                  className="text-xl font-semibold text-gray-400 "
+                  style={{ userSelect: "text" }}
+                >
                   How to Random Numbers Generate ?
                 </h1>
-                <p className="text-md mt-2   text-justify  leading-6  tracking-tight text-gray-500 ">
+                <p
+                  className="text-md mt-2   text-justify  leading-6  tracking-tight text-gray-500 "
+                  style={{ userSelect: "text" }}
+                >
                   Via
                   <a
                     className="text-sky-400/60 after:content-['↗_']"

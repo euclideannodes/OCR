@@ -224,12 +224,12 @@ console.log(resultWinData)
                 if (blockchain.account !== null) {
                     return (
 
-                        <div class="my-6 container mx-auto "  >
+                        <div className="my-6 container mx-auto "  >
 
                             <div className="container mx-auto bg-[#1b1b1b]/40 rounded-2xl">
                                 <div className="  text-center  shadow-2xl  p-3 rounded-2xl border-solid     lg:mt-0 lg:col-span-5   w-full ">
-                                    <div class="mr-auto place-self-center lg:col-span-8">
-                                        <h1 class="   text-justify  text-slate-300  max-w-2xl mb-4 text-2xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-2xl ">
+                                    <div className="mr-auto place-self-center lg:col-span-8">
+                                        <h1 className=" text-justify   text-slate-300   max-w-2xl mb-4 text-sm lg:text-2xl  font-extrabold tracking-tight leading-none ">
                                             All Race Data:
                                         </h1>
                                         <hr className="h-px mb-5 bg-slate-200/20 border-0 " />
@@ -248,21 +248,21 @@ console.log(resultWinData)
 
                             <div className="container mt-5 mx-auto bg-[#1b1b1b]/40 rounded-2xl ">
                                 <div className="  text-center  shadow-2xl  p-3 border-solid     lg:mt-0 lg:col-span-5   w-full ">
-                                    <div class="mr-auto place-self-center lg:col-span-8">
-                                        <h1 class=" text-justify   text-slate-300   max-w-2xl mb-4 text-2xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-2xl ">
+                                    <div className="mr-auto place-self-center lg:col-span-8">
+                                        <h1 className=" text-justify   text-slate-300   max-w-2xl mb-4 text-sm lg:text-2xl  font-extrabold tracking-tight leading-none ">
                                             All Race Data:
                                         </h1>
                                         <hr className="h-px mb-5 bg-slate-200/20 border-0 " />
-                                        <table class="rounded-lg  w-full text-sm   text-left  bg-[#1b1b1a]" style={{ userSelect: 'text' }}>
-                                            <thead className="text-sm text-slate-300  uppercase">
+                                        <table className="rounded-lg  w-full lg:text-sm text-xs   text-left  " style={{ userSelect: 'text' }}>
+                                            <thead className=" text-slate-300  uppercase">
                                                 <tr>
-                                                    <th scope="col" className="border-solid  border border-slate-500/30 px-6 py-3">
+                                                    <th scope="col" className="  px-1 py-3">
                                                         Race ID
                                                     </th>
-                                                    <th scope="col" className="border-solid  text-center  border border-slate-500/30 py-3 px-6">
-                                                        Wallet
+                                                    <th scope="col" className=" text-center   py-3 px-1">
+                                                         Winner Address
                                                     </th>
-                                                    <th scope="col" className="border-solid  border border-slate-500/30 py-3 px-6">
+                                                    <th scope="col" className="  py-3 px-1">
                                                         Time
                                                     </th>
                                                 </tr>
@@ -271,18 +271,18 @@ console.log(resultWinData)
                                                 {Object.entries(minValues).map(
                                                     ([key, { value, name }]) => (
                                                         <tr key={key}>
-                                                            <td className="border-solid  border border-slate-500/30 px-6 py-2 font-light underline text-slate-400   whitespace-nowrap">
+                                                            <td className="  px-1 py-2 font-light underline text-slate-400   whitespace-nowrap">
                                                                 {" "}
                                                                 <Link to={`/Race/${key}`}>
-                                                                    OnChainRace #{key}{" "}
+                                                                   #{key}{" "}
                                                                 </Link>
                                                             </td>
-                                                            <td className=" border-solid  text-center  border border-slate-500/30 px-6 py-2 font-light underline text-slate-400  whitespace-nowrap">
+                                                            <td className="   text-center  px-1 py-2 font-light underline text-slate-400  whitespace-nowrap">
                                                                 <Link to={`/Address/${name}`}>
                                                                     {name}
                                                                 </Link>
                                                             </td>
-                                                            <td className="border-solid  border border-slate-500/30 px-6 py-2 font-light text-slate-400  whitespace-nowrap">
+                                                            <td className="  px-1 py-2 font-light text-slate-400  whitespace-nowrap">
                                                                 {" "}
                                                                 {value}
                                                             </td>
@@ -297,22 +297,22 @@ console.log(resultWinData)
                             </div>
 
                             <div className="container mt-5 mx-auto bg-[#1b1b1b]/40 rounded-2xl ">
-                                <div className="  shadow-2xl  p-3 rounded-2xl border-solid  lg:mt-0 lg:col-span-5   w-full text-center">
-                                    <div class="mr-auto place-self-center lg:col-span-8">
-                                        <h1 class=" text-justify   text-slate-300   max-w-2xl mb-4 text-2xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-2xl ">
+                                <div className="  text-center  shadow-2xl  p-3 border-solid     lg:mt-0 lg:col-span-5   w-full ">
+                                    <div className="mr-auto place-self-center lg:col-span-8">
+                                        <h1 className=" text-justify   text-slate-300   max-w-2xl mb-4 text-sm lg:text-2xl  font-extrabold tracking-tight leading-none ">
                                             Top 10 Players:
                                         </h1>
                                         <hr className="h-px mb-5 bg-slate-200/20 border-0 " />
-                                        <table class="w-full text-sm  text-left  text-slate-300 bg-[#1b1b1a]" style={{ userSelect: 'text' }} >
-                                            <thead class="text-sm  uppercase ">
+                                        <table className="rounded-lg  w-full lg:text-sm text-xs    " style={{ userSelect: 'text' }}>
+                                            <thead className=" text-slate-300  uppercase">
                                                 <tr>
-                                                    <th scope="col" className="border-solid  text-center  border border-slate-500/30 px-6 py-3">
+                                                       <th scope="col" className="  px-2 py-2">
                                                         #
                                                     </th>
-                                                    <th scope="col" className="border-solid  text-center  border border-slate-500/30 px-6 py-3">
-                                                        Winner Wallet
+                                                    <th scope="col" className=" text-center   py-3 px-2">
+                                                         Winner Address
                                                     </th>
-                                                    <th scope="col" className="border-solid  text-center  border border-slate-500/30 px-6 py-3">
+                                                         <th scope="col" className="  px-2 py-3">
                                                         Total Win
                                                     </th>
                                                 </tr>
@@ -323,20 +323,16 @@ console.log(resultWinData)
                                                     resultArrayWin.length !== null &&
                                                     resultArrayWin.map((item, index) => (
                                                         <React.Fragment key={item.walletAddress}>
-                                                            <tr className="border-solid  text-center  border border-slate-500/30 ">
-                                                                <th scope="row"
-                                                                    className="px-6 py-2 font-light  border-solid  border border-slate-500/30  text-gray-400  whitespace-nowrap">
+                                                            <tr>
+                                                            <td className="  px-2 py-2 font-light  text-slate-400   whitespace-nowrap">
                                                                     {index + 1}
-                                                                </th>
+                                                                </td>
                                                                 <Link to={`/Address/${item.walletAddress}`}>
-                                                                    <th
-                                                                        scope="row"
-                                                                        className="px-6 py-2 font-light text-slate-400  hover:text-gray-100 underline whitespace-nowrap">
+                                                            <td className="   text-center px-2 py-2 font-light underline text-slate-400  whitespace-nowrap">
                                                                         {item.walletAddress}
-                                                                    </th>
+                                                                    </td>
                                                                 </Link>
-
-                                                                <td className="px-6 py-2 border-solid  border border-slate-500/30 text-slate-400   ">
+                                                            <td className="  px-2 py-2 font-light text-slate-400  whitespace-nowrap">
                                                                     {item.wonMaps}
                                                                 </td>
                                                             </tr>
