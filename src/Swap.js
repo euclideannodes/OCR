@@ -3,16 +3,14 @@ import React, { useEffect, useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { connect } from "./redux/blockchain/blockchainActions";
 import { fetchData } from "./redux/data/dataActions";
-
 import * as s from "./styles/globalStyles";
 import { styled } from "@mui/material/styles";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import AppBar from "@mui/material/AppBar";
 import Paper from "@mui/material/Paper";
-
 import ConfirmationNumberIcon from "@mui/icons-material/ConfirmationNumber";
-
 import { makeStyles } from "@mui/styles";
+var Web3 = require("web3");
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -44,6 +42,7 @@ const Swap = () => {
   const [showModal, setShowModal] = React.useState(false);
   const [showModal2, setShowModal2] = useState(false);
   const [showModal3, setShowModal3] = useState(false);
+
   let totalSupply = data.totalSupply;
   let getDataByMap = data.getDataByMap;
   let getBalance = data.getBalance / 1000000000000000000;
@@ -65,6 +64,24 @@ const Swap = () => {
     event.preventDefault();
     swapCredit();
   };
+  const [CONFIG, SET_CONFIG] = useState({
+    CONTRACT_ADDRESS: "",
+    SCAN_LINK: "",
+    NETWORK: {
+      NAME: "",
+      SYMBOL: "",
+      ID: 0,
+    },
+    NFT_NAME: "",
+    SYMBOL: "",
+    MAX_SUPPLY: 1,
+    WEI_COST: 0,
+    DISPLAY_COST: 0,
+    GAS_LIMIT: 0,
+    MARKETPLACE: "",
+    MARKETPLACE_LINK: "",
+    SHOW_BACKGROUND: false,
+  });
 
   const getConfig = async () => {
     const configResponse = await fetch("/config/config.json", {
@@ -82,7 +99,8 @@ const Swap = () => {
         .cost_1()
         .call()
         .then((result) => {
-          setCost1(result / 1000000000000000000);
+          const getCost1 = Web3.utils.fromWei(result, "ether");
+          setCost1(Number(getCost1));
         })
         .catch((error) => {
           console.error(error);
@@ -170,28 +188,28 @@ const Swap = () => {
   useEffect(() => {
     if (blockchain && blockchain.account !== null) {
       var pool = blockchain.smartContract._address;
-
       blockchain.smartContract.methods
         .getBalance(String(pool))
         .call()
         .then((result) => {
-          setResultPoolBalance(result);
+          const resultPoolBalance = Web3.utils.fromWei(result, "ether");
+          setResultPoolBalance(Number(resultPoolBalance));
         })
         .catch((error) => {
           console.error(error);
         });
     }
   }, [blockchain.account, resultPoolBalance]);
-  resultPoolBalance = resultPoolBalance / 1000000000000000000;
+
   useEffect(() => {
     if (blockchain && blockchain.account !== null) {
       blockchain.smartContract.methods
         .getBalance(String(blockchain.account))
         .call()
         .then((result) => {
-          result = result / 1000000000000000000;
-          result = result.toFixed(2);
-          setShowBalance(result);
+          let showBalance = Web3.utils.fromWei(result, "ether");
+          showBalance = Number(showBalance);
+          setShowBalance(showBalance.toFixed(2));
         })
         .catch((error) => {
           console.error(error);
@@ -215,7 +233,7 @@ const Swap = () => {
   useEffect(() => {
     if (
       blockchain.account !== null &&
-      Number(resultPoolBalance) < input1 * getCost1 * 0.5
+      Number(resultPoolBalance) < input1 * getCost1 * 0.9
     ) {
       setShowModal2(true);
     }
@@ -276,13 +294,13 @@ const Swap = () => {
                               xmlns="http://www.w3.org/2000/svg"
                               fill="none"
                               viewBox="0 0 24 24"
-                              stroke-width="1.5"
+                              strokeWidth="1.5"
                               stroke="currentColor"
                               className="h-6 w-6"
                             >
                               <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
                                 d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"
                               />
                             </svg>
@@ -296,7 +314,7 @@ const Swap = () => {
                                 disabled
                                 type="number"
                                 placeholder="0"
-                                value={input1 * getCost1 * 0.5}
+                                value={(input1 * getCost1 * 0.9).toFixed(3)}
                                 onChange={handleInputChange2}
                                 className="block  w-full rounded-md border-0 bg-[#212537]/10 py-1 text-left text-xl placeholder-slate-400 focus:outline-none"
                               />
@@ -321,10 +339,15 @@ const Swap = () => {
                               Balance: {Number(showBalance)}{" "}
                             </div>
                           </div>
-                          {console.log(getSwapStatus)}
+
                           <form onSubmit={handleFormSubmit}>
                             <button
-                              disabled={!getSwapStatus}
+                              disabled={
+                                !getSwapStatus ||
+                                Number(resultPoolBalance) <
+                                  input1 * getCost1 * 0.9 ||
+                                Number(showCredit) < input1
+                              }
                               type="submit"
                               className="lg:text-md text-md my-3 mr-2 w-full rounded-2xl border border-solid border-slate-500/20 bg-teal-900/20 py-4 px-5 font-bold text-slate-50 shadow-2xl hover:bg-teal-500/20 "
                             >
@@ -392,13 +415,13 @@ const Swap = () => {
                                     gradientUnits="userSpaceOnUse"
                                   >
                                     <stop
-                                      stop-color="#3056D3"
-                                      stop-opacity="0.09"
+                                      stopColor="#3056D3"
+                                      stopOpacity="0.09"
                                     />
                                     <stop
                                       offset="1"
-                                      stop-color="#C4C4C4"
-                                      stop-opacity="0"
+                                      stopColor="#C4C4C4"
+                                      stopOpacity="0"
                                     />
                                   </linearGradient>
                                 </defs>
@@ -413,7 +436,7 @@ const Swap = () => {
                           <p className="grid  text-2xl text-amber-300 ">
                             <span className="mb-3 animate-pulse  text-left text-xl font-bold ">
                               {" "}
-                              Swap Page: Please Connect Your Wallet
+                              Please Connect Your Wallet
                             </span>
                             <span className="mb-3 text-left text-xl font-bold ">
                               {" "}
@@ -426,6 +449,7 @@ const Swap = () => {
                             <div className="col-span-2 ">
                               {" "}
                               <input
+                                disabled
                                 type="number"
                                 placeholder="0"
                                 value={input1}
@@ -439,6 +463,7 @@ const Swap = () => {
                             <div className="row-start-2 text-end text-sm ">
                               Balance: {Number(showCredit)}{" "}
                               <button
+                                disabled
                                 className="  border-0 bg-transparent p-0 hover:bg-transparent focus:ring-0 "
                                 type="text"
                                 onClick={() => setInput1(Number(showCredit))}
@@ -457,13 +482,13 @@ const Swap = () => {
                               xmlns="http://www.w3.org/2000/svg"
                               fill="none"
                               viewBox="0 0 24 24"
-                              stroke-width="1.5"
+                              strokeWidth="1.5"
                               stroke="currentColor"
                               className="h-6 w-6"
                             >
                               <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
                                 d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"
                               />
                             </svg>
@@ -477,7 +502,6 @@ const Swap = () => {
                                 disabled
                                 type="number"
                                 placeholder="0"
-                                value={input1 * getCost1 * 0.5}
                                 onChange={handleInputChange2}
                                 className="block  w-full rounded-md border-0 bg-[#212537]/10 py-1 text-left text-xl placeholder-slate-400 focus:outline-none"
                               />
@@ -536,13 +560,13 @@ const Swap = () => {
                                     gradientUnits="userSpaceOnUse"
                                   >
                                     <stop
-                                      stop-color="#3056D3"
-                                      stop-opacity="0.09"
+                                      stopColor="#3056D3"
+                                      stopOpacity="0.09"
                                     />
                                     <stop
                                       offset="1"
-                                      stop-color="#C4C4C4"
-                                      stop-opacity="0"
+                                      stopColor="#C4C4C4"
+                                      stopOpacity="0"
                                     />
                                   </linearGradient>
                                 </defs>

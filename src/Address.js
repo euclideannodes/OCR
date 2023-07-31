@@ -119,7 +119,6 @@ const Address = () => {
         setShowModal3(true);
       })
       .then((receipt) => {
-        console.log(receipt);
         setShowModal2(false);
         setShowModal(true);
         setxNft(false);
@@ -197,7 +196,6 @@ const Address = () => {
     if (resultData && resultData.length !== null) {
       for (let i = 1; i < resultData.length; i++) {
         resultArray.push(resultData[i]);
-        console.log(resultArray);
       }
     }
   }, [resultData]);
@@ -295,7 +293,7 @@ const Address = () => {
         }
         return acc;
       }, []);
-      console.log(filteredData);
+
       setAllValues(filteredData);
     }
   }, [resultWinData, id, getSupply]);
@@ -370,8 +368,10 @@ const Address = () => {
                               Object.keys(allValues).length,
                           )
                             ? 0
-                            : Object.keys(minValues).length /
-                              Object.keys(allValues).length}
+                            : (
+                                Object.keys(minValues).length /
+                                Object.keys(allValues).length
+                              ).toFixed(2)}
                         </dd>
                       </div>
                     </dl>
@@ -441,42 +441,42 @@ const Address = () => {
         </div>
       </div>
 
-      <div className="container  mx-auto   p-5">
+      <div className="container  mx-auto   p-1">
         <div className=" from-bgc/50 rounded-2xl border border-solid border-slate-500/20 bg-gradient-to-b shadow-2xl ">
           <section className="bg-transparent  ">
             <div className="mx-auto grid  max-w-full p-2 lg:grid-cols-12 lg:gap-8 lg:p-8 lg:py-10 xl:gap-0">
               <div className="mr-auto place-self-center  lg:col-span-4">
-                <h1 className=" mb-4  max-w-2xl text-4xl font-extrabold  leading-none tracking-tight text-teal-600 md:text-5xl xl:text-6xl ">
-                  Won Races
+                <h1 className=" mb-4 max-w-2xl  text-lg font-extrabold leading-none  tracking-tight text-teal-600 lg:text-4xl ">
+                  🏆 Won Races 🏆
                 </h1>
               </div>
               <div className="  mx-x-auto from-bgc/50 max-w-full rounded-2xl  border border-solid border-slate-500/20 bg-gradient-to-b shadow-2xl lg:col-span-8 lg:mt-0">
                 <div className="h-100 flex w-full  items-center justify-center">
-                  <table className="w-full table-fixed border border-slate-500  text-center text-sm ">
-                    <thead className="border-b border-solid  border-slate-500 text-sm text-gray-400 ">
+                  <table className="w-full table-fixed border border-slate-500  text-center text-xs lg:text-sm ">
+                    <thead className="border-b border-solid  border-slate-500  text-gray-400 ">
                       <tr>
-                        <th scope="col" className="px-3 py-3">
+                        <th scope="col" className="px-1 py-3">
                           Color
                         </th>
-                        <th scope="col" className="px-3 py-3">
+                        <th scope="col" className="px-1 py-3">
                           Race ID
                         </th>
-                        <th scope="col" className="px-3 py-3">
+                        <th scope="col" className="px-1 py-3">
                           Total Time
                         </th>
-                        <th scope="col" className="px-3 py-3">
-                          Sector 0
-                        </th>
-                        <th scope="col" className="px-3 py-3">
+                        <th scope="col" className="px-1 py-3">
                           Sector 1
                         </th>
-                        <th scope="col" className="px-3 py-3">
+                        <th scope="col" className="px-1 py-3">
                           Sector 2
                         </th>
-                        <th scope="col" className="px-3 py-3">
+                        <th scope="col" className="px-1 py-3">
                           Sector 3
                         </th>
-                        <th scope="col" className="px-3 py-3">
+                        <th scope="col" className="px-1 py-3">
+                          Sector 4
+                        </th>
+                        <th scope="col" className="px-1 py-3">
                           Claim
                         </th>
                       </tr>
@@ -492,18 +492,18 @@ const Address = () => {
                               {" "}
                               ⬤{" "}
                             </td>
-                            <td className=" px-6 py-3 text-gray-500 underline">
+                            <td className=" px-1 py-3 text-gray-500 underline">
                               <Link to={`/Race/${key}`}> #{key} </Link>
                             </td>
-                            <td className="px-3 py-1 text-gray-500">{value}</td>
-                            <td className=" px-3 py-1 text-gray-500">{s0}</td>
-                            <td className=" px-3 py-1 text-gray-500">{s1}</td>
-                            <td className="px-3 py-1 text-gray-500">{s2}</td>
-                            <td className="px-3 py-1 text-gray-500">{s3}</td>
-                            <td className="px-3 py-1 text-gray-500">
-                              <div className="sm:col-span-2 md:grow">
+                            <td className="px-1 py-1 text-gray-500">{value}</td>
+                            <td className=" px-1 py-1 text-gray-500">{s0}</td>
+                            <td className=" px-1 py-1 text-gray-500">{s1}</td>
+                            <td className="px-1 py-1 text-gray-500">{s2}</td>
+                            <td className="px-1 py-1 text-gray-500">{s3}</td>
+                            <td className="px-1 py-1 text-gray-500">
+                              <div className="sm:col-span-2 md:grow ">
                                 <button
-                                  className="  rounded-lg  border border-dotted  border-teal-500/50  p-1  text-sm font-light text-teal-600/70 shadow-sm  transition-all   "
+                                  className="  rounded-lg  border border-dotted  border-teal-500/50  p-1  text-xs font-light text-teal-600/70 shadow-sm transition-all  lg:text-sm   "
                                   onClick={(e) => {
                                     e.preventDefault();
                                     setClaimId(Number(key));
@@ -511,7 +511,7 @@ const Address = () => {
                                     getData();
                                   }}
                                 >
-                                  {xNft ? "Sending..." : "Claim NFT"}
+                                  {xNft ? "Sending..." : "Claim"}
                                 </button>
                               </div>
                             </td>
@@ -527,39 +527,39 @@ const Address = () => {
         </div>
       </div>
 
-      <div className=" container mx-auto p-5">
+      <div className=" container mx-auto p-1">
         <div className=" from-bgc/50 rounded-2xl border border-solid border-slate-500/20 bg-gradient-to-b shadow-2xl ">
           <section className="bg-transparent  ">
             <div className="mx-auto grid  max-w-full p-2 lg:grid-cols-12 lg:gap-8 lg:p-8 lg:py-10 xl:gap-0">
               <div className="place-self-top mr-auto  lg:col-span-4">
-                <h1 className="mb-4  max-w-2xl text-4xl font-extrabold  leading-none tracking-tight text-teal-600 md:text-5xl xl:text-6xl ">
+                <h1 className=" mb-4 max-w-2xl  text-lg font-extrabold leading-none  tracking-tight text-teal-600 lg:text-4xl ">
                   All Races
                 </h1>
               </div>
               <div className="  mx-x-auto from-bgc/50 max-w-full rounded-2xl  border border-solid border-slate-500/20 bg-gradient-to-b shadow-2xl lg:col-span-8 lg:mt-0">
                 <div className="h-100 flex w-full  items-center justify-center">
-                  <table className="w-full table-fixed border border-slate-500  text-center text-sm ">
-                    <thead className="border-b border-solid  border-slate-500 text-sm text-gray-400 ">
+                  <table className="w-full table-fixed border border-slate-500 text-center text-xs lg:text-sm ">
+                    <thead className="border-b border-solid  border-slate-500  text-gray-400  ">
                       <tr>
-                        <th scope="col" className="px-6 py-3">
+                        <th scope="col" className="px-1 py-3">
                           Color
                         </th>
-                        <th scope="col" className="px-6 py-3">
+                        <th scope="col" className="px-1 py-3">
                           Race ID
                         </th>
-                        <th scope="col" className="px-6 py-3">
+                        <th scope="col" className="px-1 py-3">
                           Total Time
                         </th>
-                        <th scope="col" className="px-6 py-3">
+                        <th scope="col" className="px-1 py-3">
                           Sector 0
                         </th>
-                        <th scope="col" className="px-6 py-3">
+                        <th scope="col" className="px-1 py-3">
                           Sector 1
                         </th>
-                        <th scope="col" className="px-6 py-3">
+                        <th scope="col" className="px-1 py-3">
                           Sector 2
                         </th>
-                        <th scope="col" className="px-6 py-3">
+                        <th scope="col" className="px-1 py-3">
                           Sector 3
                         </th>
                       </tr>
@@ -575,14 +575,14 @@ const Address = () => {
                               {" "}
                               ⬤{" "}
                             </td>
-                            <td className="px-6 py-2 text-gray-500 underline">
+                            <td className="px-1 py-2 text-gray-500 underline">
                               <Link to={`/Race/${key}`}> #{key} </Link>
                             </td>
-                            <td className="px-6 py-2 text-gray-500">{value}</td>
-                            <td className="px-6 py-2 text-gray-500">{s0}</td>
-                            <td className="px-6 py-2 text-gray-500">{s1}</td>
-                            <td className="px-6 py-2 text-gray-500">{s2}</td>
-                            <td className="px-6 py-2 text-gray-500">{s3}</td>
+                            <td className="px-1 py-2 text-gray-500">{value}</td>
+                            <td className="px-1 py-2 text-gray-500">{s0}</td>
+                            <td className="px-1 py-2 text-gray-500">{s1}</td>
+                            <td className="px-1 py-2 text-gray-500">{s2}</td>
+                            <td className="px-1 py-2 text-gray-500">{s3}</td>
                           </tr>
                         ),
                       )}

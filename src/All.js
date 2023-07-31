@@ -34,7 +34,7 @@ const All = () => {
   const [getSupply, setSupply] = useState(null);
   const [imageHero] = useState(
     String(
-      "data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDc2IDEwNCA2MjgiIHdpZHRoPSIxMDQiIGhlaWdodD0iNjI4IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDxwYXRoIGZpbGw9IiMxMTE3MjgiIGQ9Ik0gMCA3NiBMIDEwNCA3NiBMIDEwNCA3MDQgTCAwIDcwNCBMIDAgNzYgWiIgc3R5bGU9InN0cm9rZS13aWR0aDogMC4wOTg7Ii8+CiAgPHBhdGggaWQ9Im1hcDMiIGZpbGw9Im5vbmUiIGQ9Ik0gMCA3NiBMIDEwNCA3NiBMIDEwNCA3MDQgTCAwIDcwNCBMIDAgNzYgWiIvPgogIDxnIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGZpbGw9Im5vbmUiIHRyYW5zZm9ybT0ibWF0cml4KDAsIDEsIC0xLjAyNDgxNCwgMCwgNDA5LjkyNTUzNywgLTI1KSI+CiAgICA8cGF0aCBmaWxsPSJub25lIiBkPSJNIDEyNy4zMiAzNTUuOTA1IEMgMTk5LjU4MiAzNTUuNzMzIDcwMCAzNTYgNzAwIDM1NiIgdHJhbnNmb3JtPSJtYXRyaXgoMSwgMCwgMCwgMSwgMCwgMCkiIHN0cm9rZT0iI2UxMmI1MSIgc3Ryb2tlLXdpZHRoPSIyNCIvPgogICAgPHBhdGggZmlsbD0ibm9uZSIgZD0iTSAxMjcuMzIgMzU1LjkwNSBDIDE5OS41ODIgMzU1LjczMyA3MDAgMzU2IDcwMCAzNTYiIHRyYW5zZm9ybT0ibWF0cml4KDEsIDAsIDAsIDEsIDAsIDApIiBzdHJva2U9IiNmZmYiIHN0cm9rZS1kYXNoYXJyYXk9IjI2IDI2IiBzdHJva2Utd2lkdGg9IjI0Ii8+CiAgICA8cGF0aCBmaWxsPSJub25lIiBkPSJNIDEyNy4zMiAzNTUuOTA1IEMgMTk5LjU4MiAzNTUuNzMzIDcwMCAzNTYgNzAwIDM1NiIgdHJhbnNmb3JtPSJtYXRyaXgoMSwgMCwgMCwgMSwgMCwgMCkiIHN0cm9rZT0iIzMzMzMzMyIgc3Ryb2tlLXdpZHRoPSIxOSIvPgogIDwvZz4KCiAgPHBhdGggaWQ9Im1hcDIiIGZpbGw9Im5vbmUiIGQ9Ik0gNDUuMzY1IDEwMi43NjUgTCA0NS4yNDggNjc0LjM4NyIvPgogIDxjaXJjbGUgcj0iMyIgZmlsbD0id2hpdGUiIHRyYW5zZm9ybT0iIiBkPSJNIDAgNzYgTCAxMDQgNzYgTCAxMDQgNzA0IEwgMCA3MDQgTCAwIDc2IFoiPgogICAgPGFuaW1hdGVNb3Rpb24gYmVnaW49IjBzIiBkdXI9IjcuOHMiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIj4KICAgICAgPG1wYXRoIGhyZWY9IiNtYXAyIi8+CiAgICA8L2FuaW1hdGVNb3Rpb24+CiAgPC9jaXJjbGU+CiAgPGNpcmNsZSByPSIzIiBmaWxsPSJwbHVtIiB0cmFuc2Zvcm09IiIgZD0iTSAwIDc2IEwgMTA0IDc2IEwgMTA0IDcwNCBMIDAgNzA0IEwgMCA3NiBaIj4KICAgIDxhbmltYXRlTW90aW9uIGJlZ2luPSIwcyIgZHVyPSI3LjVzIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSI+CiAgICAgIDxtcGF0aCBocmVmPSIjbWFwMiIvPgogICAgPC9hbmltYXRlTW90aW9uPgogIDwvY2lyY2xlPgogIDxjaXJjbGUgcj0iMyIgZmlsbD0iZGVlcHBpbmsiIHRyYW5zZm9ybT0iIiBkPSJNIDAgNzYgTCAxMDQgNzYgTCAxMDQgNzA0IEwgMCA3MDQgTCAwIDc2IFoiPgogICAgPGFuaW1hdGVNb3Rpb24gYmVnaW49IjBzIiBkdXI9IjcuM3MiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIj4KICAgICAgPG1wYXRoIGhyZWY9IiNtYXAyIi8+CiAgICA8L2FuaW1hdGVNb3Rpb24+CiAgPC9jaXJjbGU+CiAgPGNpcmNsZSByPSIzIiBmaWxsPSJkb2RnZXJibHVlIiB0cmFuc2Zvcm09IiIgZD0iTSAwIDc2IEwgMTA0IDc2IEwgMTA0IDcwNCBMIDAgNzA0IEwgMCA3NiBaIj4KICAgIDxhbmltYXRlTW90aW9uIGJlZ2luPSIwcyIgZHVyPSI3LjJzIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSI+CiAgICAgIDxtcGF0aCBocmVmPSIjbWFwMiIvPgogICAgPC9hbmltYXRlTW90aW9uPgogIDwvY2lyY2xlPgogIDxjaXJjbGUgcj0iMyIgZmlsbD0ibGlnaHRjb3JhbCIgdHJhbnNmb3JtPSIiIGQ9Ik0gMCA3NiBMIDEwNCA3NiBMIDEwNCA3MDQgTCAwIDcwNCBMIDAgNzYgWiI+CiAgICA8YW5pbWF0ZU1vdGlvbiBiZWdpbj0iMHMiIGR1cj0iNy4xcyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiPgogICAgICA8bXBhdGggaHJlZj0iI21hcDIiLz4KICAgIDwvYW5pbWF0ZU1vdGlvbj4KICA8L2NpcmNsZT4KICA8Y2lyY2xlIHI9IjMiIGZpbGw9Im9yYW5nZSIgdHJhbnNmb3JtPSIiIGQ9Ik0gMCA3NiBMIDEwNCA3NiBMIDEwNCA3MDQgTCAwIDcwNCBMIDAgNzYgWiI+CiAgICA8YW5pbWF0ZU1vdGlvbiBiZWdpbj0iMHMiIGR1cj0iNS44cyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiPgogICAgICA8bXBhdGggaHJlZj0iI21hcDIiLz4KICAgIDwvYW5pbWF0ZU1vdGlvbj4KICA8L2NpcmNsZT4KICA8Y2lyY2xlIHI9IjMiIGZpbGw9InJlZCIgdHJhbnNmb3JtPSIiIGQ9Ik0gMCA3NiBMIDEwNCA3NiBMIDEwNCA3MDQgTCAwIDcwNCBMIDAgNzYgWiI+CiAgICA8YW5pbWF0ZU1vdGlvbiBiZWdpbj0iMHMiIGR1cj0iNi40cyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiPgogICAgICA8bXBhdGggaHJlZj0iI21hcDIiLz4KICAgIDwvYW5pbWF0ZU1vdGlvbj4KICA8L2NpcmNsZT4KICA8Y2lyY2xlIHI9IjMiIGZpbGw9Im1lZGl1bWJsdWUiIHRyYW5zZm9ybT0iIiBkPSJNIDAgNzYgTCAxMDQgNzYgTCAxMDQgNzA0IEwgMCA3MDQgTCAwIDc2IFoiPgogICAgPGFuaW1hdGVNb3Rpb24gYmVnaW49IjBzIiBkdXI9IjYuNXMiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIj4KICAgICAgPG1wYXRoIGhyZWY9IiNtYXAyIi8+CiAgICA8L2FuaW1hdGVNb3Rpb24+CiAgPC9jaXJjbGU+CiAgPGNpcmNsZSByPSIzIiBmaWxsPSJhcXVhbWFyaW5lIiB0cmFuc2Zvcm09IiIgZD0iTSAwIDc2IEwgMTA0IDc2IEwgMTA0IDcwNCBMIDAgNzA0IEwgMCA3NiBaIj4KICAgIDxhbmltYXRlTW90aW9uIGJlZ2luPSIwcyIgZHVyPSI2LjhzIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSI+CiAgICAgIDxtcGF0aCBocmVmPSIjbWFwMiIvPgogICAgPC9hbmltYXRlTW90aW9uPgogIDwvY2lyY2xlPgogIDxjaXJjbGUgcj0iMyIgZmlsbD0iZm9yZXN0Z3JlZW4iIHRyYW5zZm9ybT0iIiBkPSJNIDAgNzYgTCAxMDQgNzYgTCAxMDQgNzA0IEwgMCA3MDQgTCAwIDc2IFoiPgogICAgPGFuaW1hdGVNb3Rpb24gYmVnaW49IjBzIiBkdXI9IjYuMXMiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIj4KICAgICAgPG1wYXRoIGhyZWY9IiNtYXAyIi8+CiAgICA8L2FuaW1hdGVNb3Rpb24+CiAgPC9jaXJjbGU+Cjwvc3ZnPgo=",
+      "data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDc2IDEwNCA2MjgiIHdpZHRoPSIxMDQiIGhlaWdodD0iNjI4IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDxwYXRoIGZpbGw9IiMxMTE3MjgiIGQ9Ik0wIDc2aDEwNHY2MjhIMFY3NloiIHN0eWxlPSJzdHJva2Utd2lkdGg6LjA5OCIvPgogIDxwYXRoIGZpbGw9Im5vbmUiIGQ9Ik0wIDc2aDEwNHY2MjhIMFY3NloiLz4KICA8ZyBzdHJva2UtbGluZWpvaW49InJvdW5kIiBmaWxsPSJub25lIj4KICAgIDxwYXRoIGQ9Ik0xMjcuMzIgMzU1LjkwNUMxOTkuNTgyIDM1NS43MzMgNzAwIDM1NiA3MDAgMzU2IiBzdHJva2U9IiNlMTJiNTEiIHN0cm9rZS13aWR0aD0iMjQiIHRyYW5zZm9ybT0ibWF0cml4KDAgMSAtMS4wMjQ4MSAwIDQwOS45MjYgLTI1KSIvPgogICAgPHBhdGggZD0iTTEyNy4zMiAzNTUuOTA1QzE5OS41ODIgMzU1LjczMyA3MDAgMzU2IDcwMCAzNTYiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLWRhc2hhcnJheT0iMjYgMjYiIHN0cm9rZS13aWR0aD0iMjQiIHRyYW5zZm9ybT0ibWF0cml4KDAgMSAtMS4wMjQ4MSAwIDQwOS45MjYgLTI1KSIvPgogICAgPHBhdGggZD0iTTEyNy4zMiAzNTUuOTA1QzE5OS41ODIgMzU1LjczMyA3MDAgMzU2IDcwMCAzNTYiIHN0cm9rZT0iIzMzMyIgc3Ryb2tlLXdpZHRoPSIxOSIgdHJhbnNmb3JtPSJtYXRyaXgoMCAxIC0xLjAyNDgxIDAgNDA5LjkyNiAtMjUpIi8+CiAgPC9nPgogIDxwYXRoIGlkPSJhIiBmaWxsPSJub25lIiBkPSJtNDUuMzY1IDEwMi43NjUtLjExNyA1NzEuNjIyIi8+CiAgPGNpcmNsZSByPSIzIiBjeD0iNiIgZmlsbD0iI2ZmZiI+CiAgICA8YW5pbWF0ZU1vdGlvbiBiZWdpbj0iMHMiIGR1cj0iNy44cyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiPgogICAgICA8bXBhdGggaHJlZj0iI2EiLz4KICAgIDwvYW5pbWF0ZU1vdGlvbj4KICA8L2NpcmNsZT4KICA8Y2lyY2xlIHI9IjMiIGN4PSI1IiBmaWxsPSJwbHVtIj4KICAgIDxhbmltYXRlTW90aW9uIGJlZ2luPSIwcyIgZHVyPSI3LjVzIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSI+CiAgICAgIDxtcGF0aCBocmVmPSIjYSIvPgogICAgPC9hbmltYXRlTW90aW9uPgogIDwvY2lyY2xlPgogIDxjaXJjbGUgcj0iMyIgY3g9IjMiIGZpbGw9IiNmZjE0OTMiPgogICAgPGFuaW1hdGVNb3Rpb24gYmVnaW49IjBzIiBkdXI9IjcuM3MiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIj4KICAgICAgPG1wYXRoIGhyZWY9IiNhIi8+CiAgICA8L2FuaW1hdGVNb3Rpb24+CiAgPC9jaXJjbGU+CiAgPGNpcmNsZSByPSIzIiBjeD0iMSIgZmlsbD0iIzFlOTBmZiI+CiAgICA8YW5pbWF0ZU1vdGlvbiBiZWdpbj0iMHMiIGR1cj0iNy4ycyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiPgogICAgICA8bXBhdGggaHJlZj0iI2EiLz4KICAgIDwvYW5pbWF0ZU1vdGlvbj4KICA8L2NpcmNsZT4KICA8Y2lyY2xlIHI9IjMiIGN4PSItNCIgZmlsbD0iI2YwODA4MCI+CiAgICA8YW5pbWF0ZU1vdGlvbiBiZWdpbj0iMHMiIGR1cj0iNy4xcyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiPgogICAgICA8bXBhdGggaHJlZj0iI2EiLz4KICAgIDwvYW5pbWF0ZU1vdGlvbj4KICA8L2NpcmNsZT4KICA8Y2lyY2xlIHI9IjMiIGN4PSItNiIgZmlsbD0ib3JhbmdlIj4KICAgIDxhbmltYXRlTW90aW9uIGJlZ2luPSIwcyIgZHVyPSI1LjhzIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSI+CiAgICAgIDxtcGF0aCBocmVmPSIjYSIvPgogICAgPC9hbmltYXRlTW90aW9uPgogIDwvY2lyY2xlPgogIDxjaXJjbGUgcj0iMyIgY3g9Ii0zIiBmaWxsPSJyZWQiPgogICAgPGFuaW1hdGVNb3Rpb24gYmVnaW49IjBzIiBkdXI9IjYuNHMiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIj4KICAgICAgPG1wYXRoIGhyZWY9IiNhIi8+CiAgICA8L2FuaW1hdGVNb3Rpb24+CiAgPC9jaXJjbGU+CiAgPGNpcmNsZSByPSIzIiBjeD0iLTEiIGZpbGw9IiMwMDAwY2QiPgogICAgPGFuaW1hdGVNb3Rpb24gYmVnaW49IjBzIiBkdXI9IjYuNXMiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIj4KICAgICAgPG1wYXRoIGhyZWY9IiNhIi8+CiAgICA8L2FuaW1hdGVNb3Rpb24+CiAgPC9jaXJjbGU+CiAgPGNpcmNsZSByPSIzIiBjeD0iNCIgZmlsbD0iIzdmZmZkNCI+CiAgICA8YW5pbWF0ZU1vdGlvbiBiZWdpbj0iMHMiIGR1cj0iNi44cyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiPgogICAgICA8bXBhdGggaHJlZj0iI2EiLz4KICAgIDwvYW5pbWF0ZU1vdGlvbj4KICA8L2NpcmNsZT4KICA8Y2lyY2xlIHI9IjMiIGN4PSItNSIgZmlsbD0iIzIyOGIyMiI+CiAgICA8YW5pbWF0ZU1vdGlvbiBiZWdpbj0iMHMiIGR1cj0iNi4xcyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiPgogICAgICA8bXBhdGggaHJlZj0iI2EiLz4KICAgIDwvYW5pbWF0ZU1vdGlvbj4KICA8L2NpcmNsZT4KPC9zdmc+Cg==",
     ),
   );
   const [resultArrayWin, setResultArrayWin] = useState([]);
@@ -211,10 +211,47 @@ const All = () => {
         }
       })()}
       <div className="container my-5 mx-auto ">
-        <section className="bg-transparent ">
+        <section className="from-bgc to-bgc rounded-xl  bg-gradient-to-r via-teal-900/80 ">
+          <div className="mx-auto grid max-w-full p-3 lg:p-8">
+            <div className="mx-auto max-w-full ">
+              <dl className="grid grid-cols-1 gap-y-6 text-center lg:grid-cols-2 lg:gap-y-16">
+                <div className="mx-auto flex max-w-md flex-col gap-y-0 lg:gap-y-6 ">
+                  <dt className="leading-7 text-slate-100">
+                    <p className="mt-0  text-justify text-sm leading-4 text-slate-300  lg:mt-6 lg:text-lg lg:leading-8">
+                      The Season 1 map has{" "}
+                      <strong className="text-teal-600">3</strong> speed
+                      check-points in total. There are{" "}
+                      <strong className="text-teal-600">5</strong> light
+                      corners, <strong className="text-teal-600">7</strong>{" "}
+                      sharp corners,{" "}
+                      <strong className="text-teal-600">3</strong> fast corners,
+                      <strong className="text-teal-600">5</strong> short
+                      straights, and{" "}
+                      <strong className="text-teal-600">1</strong> long straight
+                      in this map.
+                    </p>
+                  </dt>
+                  <dd className="order-first text-xl font-semibold tracking-normal text-slate-100 sm:text-4xl lg:text-2xl">
+                    OnChain Races: Season #1
+                  </dd>
+                </div>
+                <div className="mx-auto flex max-w-full flex-col  lg:gap-y-6">
+                  <dd className="order-first text-3xl font-semibold tracking-tight text-gray-900 sm:text-5xl">
+                    <img
+                      className="w-full rounded-2xl  duration-300 hover:scale-110"
+                      src="season1.svg"
+                      alt="season 1"
+                    />
+                  </dd>
+                </div>
+              </dl>
+            </div>
+          </div>
+        </section>
+        <section className="bg-transparent  ">
           <div className="mx-auto grid max-w-full p-8 lg:grid-cols-12 lg:gap-8 lg:py-16 xl:gap-0">
             <div className="mr-auto place-self-center tracking-tight lg:col-span-8 ">
-              <h1 className=" mb-4  max-w-2xl from-sky-400 text-justify text-4xl font-extrabold leading-none tracking-tight text-teal-600 md:text-5xl xl:text-6xl ">
+              <h1 className=" mb-4   max-w-2xl from-sky-400 text-justify text-4xl font-extrabold leading-none tracking-tight text-teal-600 md:text-5xl xl:text-6xl ">
                 Welcome to OnChain Races!
               </h1>
               <p className="text-md mb-6 max-w-2xl text-justify  font-light  leading-relaxed tracking-tight text-slate-300 md:text-lg lg:mb-8 lg:text-xl ">
@@ -266,7 +303,7 @@ const All = () => {
                       return (
                         <>
                           <section>
-                            <div className="mx-auto max-w-2xl lg:max-w-4xl">
+                            <div className="mx-auto max-w-2xl lg:max-w-4xl ">
                               <figure>
                                 <blockquote className="animate-pulse p-4 text-center text-lg font-semibold  text-teal-600 sm:text-xl sm:leading-9">
                                   <div className=" row-start-2 inline-flex animate-pulse items-center  pl-2 pr-2 lg:pl-1 lg:pr-1  ">
@@ -306,7 +343,7 @@ const All = () => {
                               Players{" "}
                             </p>
                             <hr className="h-px  border-0 bg-slate-200/20 " />
-                            <table className="mt-3 w-full text-center text-sm text-gray-500">
+                            <table className="mt-3 w-full text-center text-sm text-gray-500 ">
                               <thead className="text-sm uppercase text-gray-400">
                                 <tr>
                                   <th scope="col">Color</th>
@@ -339,20 +376,12 @@ const All = () => {
                                       </tr>
                                     </React.Fragment>
                                   ))}
-                                <tr className="content-end border-b">
-                                  <td
-                                    scope="row"
-                                    className="whitespace-nowrap px-6 py-2 font-medium"
-                                  ></td>
-                                  <td className="px-6 py-1"></td>
-                                  <td className="px-6 py-1 text-center"></td>
-                                </tr>
                               </tbody>
                             </table>
-                            <div className="mt-auto  flex flex-wrap pt-3 text-xs">
+                            <div className="mt-auto flex flex-wrap  pt-3 text-xs">
                               <div className="grid   w-full grid-cols-1 divide-x divide-gray-900/5">
                                 <Link to={`/Race/${getSupply}`}>
-                                  <a className="text-md  flex items-center justify-center p-3 text-slate-100">
+                                  <a className="text-md  flex  items-center justify-center p-3 text-slate-100 ">
                                     Go to Last Race
                                     <svg
                                       className="ml-2 -mr-1 h-3 w-3"
@@ -548,43 +577,7 @@ const All = () => {
           } else {
           }
         })()}
-        <section className="rounded-xl bg-teal-500/5 shadow-2xl">
-          <div className="mx-auto grid max-w-full p-8 ">
-            <div className="mx-auto max-w-full ">
-              <dl className="grid grid-cols-1  gap-y-16 text-center lg:grid-cols-2">
-                <div className="mx-auto flex max-w-md flex-col gap-y-6">
-                  <dt className="leading-7 text-slate-100">
-                    <p className="mt-6 text-justify text-sm  leading-8 text-slate-300 lg:text-lg">
-                      The Season 1 map has{" "}
-                      <strong className="text-teal-600">3</strong> speed
-                      check-points in total. There are{" "}
-                      <strong className="text-teal-600">5</strong> light
-                      corners, <strong className="text-teal-600">7</strong>{" "}
-                      sharp corners,{" "}
-                      <strong className="text-teal-600">3</strong> fast corners,
-                      <strong className="text-teal-600">5</strong> short
-                      straights, and{" "}
-                      <strong className="text-teal-600">1</strong> long straight
-                      in this map.
-                    </p>
-                  </dt>
-                  <dd className="order-first text-2xl font-semibold tracking-normal text-slate-100 sm:text-4xl">
-                    OnChain Races: Season #1
-                  </dd>
-                </div>
-                <div className="mx-auto flex max-w-full flex-col gap-y-6">
-                  <dd className="order-first text-3xl font-semibold tracking-tight text-gray-900 sm:text-5xl">
-                    <img
-                      className="w-full rounded-lg duration-300 hover:scale-110"
-                      src="season1.svg"
-                      alt="season 1"
-                    />
-                  </dd>
-                </div>
-              </dl>
-            </div>
-          </div>
-        </section>
+
         <section className="bg-transparent">
           <div className="container mx-auto px-6 py-12">
             <h1

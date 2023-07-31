@@ -60,7 +60,8 @@ const Profile = () => {
         .cost_1()
         .call()
         .then((result) => {
-          setCost1(result);
+          const getCost1 = Web3.utils.fromWei(result, "ether");
+          setCost1(Number(getCost1));
         })
         .catch((error) => {
           console.error(error);
@@ -305,13 +306,13 @@ const Profile = () => {
                                 xmlns="http://www.w3.org/2000/svg"
                                 fill="none"
                                 viewBox="0 0 24 24"
-                                stroke-width="1.5"
+                                strokeWidth="1.5"
                                 stroke="currentColor"
                                 className="h-5 w-5  text-amber-300"
                               >
                                 <path
-                                  stroke-linecap="round"
-                                  stroke-linejoin="round"
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
                                   d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z"
                                 />
                               </svg>
@@ -358,9 +359,9 @@ const Profile = () => {
                   <h2 className="text-dark mb-6 text-[25px] font-bold lg:text-[38px]">
                     {(() => {
                       if (blockchain.account !== null) {
-                        return <>{getCost1 / 1000000000000000000}</>;
+                        return <>{getCost1}</>;
                       } else {
-                        return <>{getCost1 / 1000000000000000000}</>;
+                        return <>{getCost1}</>;
                       }
                     })()}
 
@@ -744,9 +745,11 @@ const Profile = () => {
                   <h2 className="text-dark mb-6 text-[25px] font-bold lg:text-[38px]">
                     {(() => {
                       if (blockchain.account !== null) {
-                        return <>{(creditAmount * 80) / 10000}</>;
+                        return (
+                          <>{(creditAmount * getCost1 * 0.8).toFixed(2)}</>
+                        );
                       } else {
-                        return <>{getCost1 / 1000000000000000000}</>;
+                        return <>{getCost1}</>;
                       }
                     })()}
 
@@ -1085,10 +1088,15 @@ const Profile = () => {
                "
                 >
                   <span className="text-primary mb-4 block text-sm font-semibold lg:text-lg">
-                    10 Credits
+                    5 Credits
                   </span>
                   <h2 className="text-dark mb-6 text-[25px] font-bold lg:text-[38px]">
-                    {(getCost1 * 80) / 10000000000000000000}
+                    {(() => {
+                      if (blockchain.account !== null) {
+                        return <> {getCost1 * 5}</>;
+                      }
+                    })()}
+
                     <span className="text-body-color text-base font-medium">
                       / MATIC
                     </span>

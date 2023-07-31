@@ -162,7 +162,7 @@ const Header = () => {
                 blockchain.smartContract === null ? (
                   <Container ai={"center"} jc={"center"}>
                     <button
-                      className=" lg:text-md mr-2 rounded-lg  py-2.5 px-5 text-xs text-slate-50 shadow shadow-teal-500/50 "
+                      className=" lg:text-md mr-2 rounded-lg  py-2 px-2 text-xs text-slate-50 shadow shadow-teal-500/50 lg:py-2.5 lg:px-5 "
                       onClick={(e) => {
                         e.preventDefault();
                         dispatch(connect());
@@ -383,38 +383,83 @@ const Header = () => {
           </div>
         </nav>
       </header>
-      <div className="from-bgc to-bgc animate-pulse bg-gradient-to-r via-rose-900/30 text-center leading-normal tracking-normal hs-removing:-translate-y-full">
-        <div className="mx-auto max-w-full px-4 py-2 text-justify text-xs   text-white  antialiased sm:px-6 lg:px-8 lg:text-center lg:text-lg">
-          <div className="">
-            <span>
-               OnChain Races Public Beta is LIVE on{" "}
-              <div className="   inline-flex items-center   ">
-                <svg
-                  className=" mr-2 h-4 w-4"
-                  fill="#8247E5"
-                  viewBox="0 0 38 33"
-                  xmlns="http://www.w3.org/2000/svg"
+
+      <div className="hidden sm:block">
+        <div className="from-bgc text- to-bgc animate-pulse bg-gradient-to-r via-rose-900/30 text-center leading-normal tracking-normal hs-removing:-translate-y-full ">
+          <div className="mx-auto max-w-full px-4 py-2 text-justify text-xs   text-white  antialiased sm:px-6 lg:px-8 lg:text-center lg:text-lg">
+            <div className="">
+              <span>
+                 OnChain Races Public Beta is LIVE on{" "}
+                <div className="   inline-flex items-center   ">
+                  <svg
+                    className=" mr-2 h-4 w-4"
+                    fill="#8247E5"
+                    viewBox="0 0 38 33"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M29,10.2c-0.7-0.4-1.6-0.4-2.4,0L21,13.5l-3.8,2.1l-5.5,3.3c-0.7,0.4-1.6,0.4-2.4,0L5,16.3 c-0.7-0.4-1.2-1.2-1.2-2.1v-5c0-0.8,0.4-1.6,1.2-2.1l4.3-2.5c0.7-0.4,1.6-0.4,2.4,0L16,7.2c0.7,0.4,1.2,1.2,1.2,2.1v3.3l3.8-2.2V7 c0-0.8-0.4-1.6-1.2-2.1l-8-4.7c-0.7-0.4-1.6-0.4-2.4,0L1.2,5C0.4,5.4,0,6.2,0,7v9.4c0,0.8,0.4,1.6,1.2,2.1l8.1,4.7 c0.7,0.4,1.6,0.4,2.4,0l5.5-3.2l3.8-2.2l5.5-3.2c0.7-0.4,1.6-0.4,2.4,0l4.3,2.5c0.7,0.4,1.2,1.2,1.2,2.1v5c0,0.8-0.4,1.6-1.2,2.1 L29,28.8c-0.7,0.4-1.6,0.4-2.4,0l-4.3-2.5c-0.7-0.4-1.2-1.2-1.2-2.1V21l-3.8,2.2v3.3c0,0.8,0.4,1.6,1.2,2.1l8.1,4.7 c0.7,0.4,1.6,0.4,2.4,0l8.1-4.7c0.7-0.4,1.2-1.2,1.2-2.1V17c0-0.8-0.4-1.6-1.2-2.1L29,10.2z"
+                      clipRule="evenodd"
+                    ></path>
+                  </svg>
+                </div>
+                Polygon Mumbai Testnet. Please Test the Web App and Game. We
+                Want Your Feedback via{" "}
+                <a
+                  className="text-sky-400/60 underline"
+                  href="https://twitter.com/OnChainRace/"
+                  rel="noreferrer"
+                  target="_blank"
                 >
-                  <path
-                    fillRule="evenodd"
-                    d="M29,10.2c-0.7-0.4-1.6-0.4-2.4,0L21,13.5l-3.8,2.1l-5.5,3.3c-0.7,0.4-1.6,0.4-2.4,0L5,16.3 c-0.7-0.4-1.2-1.2-1.2-2.1v-5c0-0.8,0.4-1.6,1.2-2.1l4.3-2.5c0.7-0.4,1.6-0.4,2.4,0L16,7.2c0.7,0.4,1.2,1.2,1.2,2.1v3.3l3.8-2.2V7 c0-0.8-0.4-1.6-1.2-2.1l-8-4.7c-0.7-0.4-1.6-0.4-2.4,0L1.2,5C0.4,5.4,0,6.2,0,7v9.4c0,0.8,0.4,1.6,1.2,2.1l8.1,4.7 c0.7,0.4,1.6,0.4,2.4,0l5.5-3.2l3.8-2.2l5.5-3.2c0.7-0.4,1.6-0.4,2.4,0l4.3,2.5c0.7,0.4,1.2,1.2,1.2,2.1v5c0,0.8-0.4,1.6-1.2,2.1 L29,28.8c-0.7,0.4-1.6,0.4-2.4,0l-4.3-2.5c-0.7-0.4-1.2-1.2-1.2-2.1V21l-3.8,2.2v3.3c0,0.8,0.4,1.6,1.2,2.1l8.1,4.7 c0.7,0.4,1.6,0.4,2.4,0l8.1-4.7c0.7-0.4,1.2-1.2,1.2-2.1V17c0-0.8-0.4-1.6-1.2-2.1L29,10.2z"
-                    clipRule="evenodd"
-                  ></path>
-                </svg>
-              </div>
-              Polygon Mumbai Testnet. Please Test the Web App and Game. We Want
-              Your Feedback via{" "}
-              <a
-                className="text-sky-400/60 underline"
-                href="https://twitter.com/OnChainRace/"
-                rel="noreferrer"
-                target="_blank"
-              >
-                {" "}
-                Twitter DM
-              </a>
-              . You will be Rewarded.
-            </span>
+                  {" "}
+                  Twitter DM
+                </a>
+                . You will be Rewarded.
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="sm:hidden">
+        <div className="from-bgc text- to-bgc animate-pulse bg-gradient-to-r via-rose-900/30 text-center leading-normal tracking-normal hs-removing:-translate-y-full ">
+          <div className="mx-auto max-w-full px-4 py-1 text-justify text-xs   text-white  antialiased sm:px-6 lg:px-8 lg:text-center lg:text-lg">
+            <marquee
+              behavior="scroll"
+              direction="left"
+              scrollamount="5"
+              className=""
+            >
+              <span>
+                 OnChain Races Public Beta is LIVE on{" "}
+                <div className="inline-flex items-center">
+                  <svg
+                    className=" mr-2 h-2 w-2"
+                    fill="#8247E5"
+                    viewBox="0 0 38 33"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M29,10.2c-0.7-0.4-1.6-0.4-2.4,0L21,13.5l-3.8,2.1l-5.5,3.3c-0.7,0.4-1.6,0.4-2.4,0L5,16.3 c-0.7-0.4-1.2-1.2-1.2-2.1v-5c0-0.8,0.4-1.6,1.2-2.1l4.3-2.5c0.7-0.4,1.6-0.4,2.4,0L16,7.2c0.7,0.4,1.2,1.2,1.2,2.1v3.3l3.8-2.2V7 c0-0.8-0.4-1.6-1.2-2.1l-8-4.7c-0.7-0.4-1.6-0.4-2.4,0L1.2,5C0.4,5.4,0,6.2,0,7v9.4c0,0.8,0.4,1.6,1.2,2.1l8.1,4.7 c0.7,0.4,1.6,0.4,2.4,0l5.5-3.2l3.8-2.2l5.5-3.2c0.7-0.4,1.6-0.4,2.4,0l4.3,2.5c0.7,0.4,1.2,1.2,1.2,2.1v5c0,0.8-0.4,1.6-1.2,2.1 L29,28.8c-0.7,0.4-1.6,0.4-2.4,0l-4.3-2.5c-0.7-0.4-1.2-1.2-1.2-2.1V21l-3.8,2.2v3.3c0,0.8,0.4,1.6,1.2,2.1l8.1,4.7 c0.7,0.4,1.6,0.4,2.4,0l8.1-4.7c0.7-0.4,1.2-1.2,1.2-2.1V17c0-0.8-0.4-1.6-1.2-2.1L29,10.2z"
+                      clipRule="evenodd"
+                    ></path>
+                  </svg>
+                </div>
+                Polygon Mumbai Testnet. Please Test the Web App and Game. We
+                Want Your Feedback via{" "}
+                <a
+                  className="text-sky-400/60 underline"
+                  href="https://twitter.com/OnChainRace/"
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  {" "}
+                  Twitter DM
+                </a>
+                . You will be Rewarded.
+              </span>
+            </marquee>
           </div>
         </div>
       </div>
