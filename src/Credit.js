@@ -24,6 +24,8 @@ const Profile = () => {
   const [mintAmount, setMintAmount] = useState(1);
   const [creditAmount, setCreditAmount] = useState(10);
   const [getCost1, setCost1] = useState(null);
+  const [getCostWei1, setCostWei1] = useState(null);
+  const [getCostWei2, setCostWei2] = useState(null);
   const [getCost2, setCost2] = useState(null);
   const [shouldRefreshCredit, setShouldRefreshCredit] = useState(false);
   const [shouldRefreshBalance, setShouldRefreshBalance] = useState(false);
@@ -60,6 +62,7 @@ const Profile = () => {
         .cost_1()
         .call()
         .then((result) => {
+          setCostWei1(Number(result));
           const getCost1 = Web3.utils.fromWei(result, "ether");
           setCost1(Number(getCost1));
         })
@@ -75,7 +78,9 @@ const Profile = () => {
         .cost_2()
         .call()
         .then((result) => {
-          setCost2(result);
+          setCostWei2(Number(result));
+          const getCost2 = Web3.utils.fromWei(result, "ether");
+          setCost2(Number(getCost2));
         })
         .catch((error) => {
           console.error(error);
@@ -84,7 +89,7 @@ const Profile = () => {
   }, [blockchain.account, getCost2]);
 
   const buyCredits = () => {
-    let cost2 = getCost2;
+    let cost2 = getCostWei2;
     let gasLimit = CONFIG.GAS_LIMIT;
     let totalCostWei = String(cost2 * creditAmount);
     let totalGasLimit = String(gasLimit * creditAmount);
@@ -117,7 +122,7 @@ const Profile = () => {
       });
   };
   const buyCredit1 = () => {
-    let cost1 = getCost1;
+    let cost1 = getCostWei1;
     let gasLimit = CONFIG.GAS_LIMIT;
     let totalCostWei = String(cost1 * mintAmount);
     let totalGasLimit = String(gasLimit * mintAmount);
@@ -150,7 +155,7 @@ const Profile = () => {
       });
   };
   const buyCredits2 = () => {
-    let cost2 = getCost2;
+    let cost2 = getCostWei2;
     let gasLimit = CONFIG.GAS_LIMIT;
     let totalCostWei = String(cost2 * creditAmount);
     let totalGasLimit = String(gasLimit * creditAmount);
@@ -158,7 +163,7 @@ const Profile = () => {
     console.log("Gas limit: ", totalGasLimit);
 
     blockchain.smartContract.methods
-      .buyCredit(10)
+      .buyCredit(5)
       .send({
         gasLimit: String(totalGasLimit),
         to: CONFIG.CONTRACT_ADDRESS,
@@ -745,11 +750,9 @@ const Profile = () => {
                   <h2 className="text-dark mb-6 text-[25px] font-bold lg:text-[38px]">
                     {(() => {
                       if (blockchain.account !== null) {
-                        return (
-                          <>{(creditAmount * getCost1 * 0.8).toFixed(2)}</>
-                        );
+                        return <>{(creditAmount * getCost2).toFixed(2)}</>;
                       } else {
-                        return <>{getCost1}</>;
+                        return <></>;
                       }
                     })()}
 
@@ -1093,7 +1096,7 @@ const Profile = () => {
                   <h2 className="text-dark mb-6 text-[25px] font-bold lg:text-[38px]">
                     {(() => {
                       if (blockchain.account !== null) {
-                        return <> {getCost1 * 5}</>;
+                        return <> {getCost2 * 5}</>;
                       }
                     })()}
 

@@ -268,7 +268,7 @@ const All = () => {
                 <Link to={`/credit/`}>
                   <a
                     href=""
-                    className="text-md justify-left mx-0.5 mr-3  inline-flex items-center rounded-lg border border-solid border-slate-500/30 py-3  px-4  text-base font-medium  text-slate-300 shadow-sm  hover:shadow-slate-500"
+                    className="text-md justify-left mx-0.5 mr-3 mb-2 inline-flex items-center rounded-lg border border-solid border-slate-500/30 py-3  px-4  text-base font-medium  text-slate-300 shadow-sm  hover:shadow-slate-500"
                   >
                     Get Credit and Play !
                   </a>
@@ -313,7 +313,7 @@ const All = () => {
                                       viewBox="0 0 24 24"
                                       strokeWidth="1.5"
                                       stroke="currentColor"
-                                      className="mr-2 h-5 w-5 text-teal-600 lg:h-7  lg:w-7"
+                                      className="mr-2 h-6 w-6 text-teal-600 lg:h-7  lg:w-7"
                                     >
                                       <path
                                         strokeLinecap="round"
