@@ -32,9 +32,9 @@ const All = () => {
   let [resultAllData, setResultAllData] = useState([]);
   const [minValues, setMinValues] = useState({});
   const [getSupply, setSupply] = useState(null);
-  const [imageHero] = useState(
+  let [imageHero, setImage] = useState(
     String(
-      "data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDc2IDEwNCA2MjgiIHdpZHRoPSIxMDQiIGhlaWdodD0iNjI4IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDxwYXRoIGZpbGw9IiMxMTE3MjgiIGQ9Ik0wIDc2aDEwNHY2MjhIMFY3NloiIHN0eWxlPSJzdHJva2Utd2lkdGg6LjA5OCIvPgogIDxwYXRoIGZpbGw9Im5vbmUiIGQ9Ik0wIDc2aDEwNHY2MjhIMFY3NloiLz4KICA8ZyBzdHJva2UtbGluZWpvaW49InJvdW5kIiBmaWxsPSJub25lIj4KICAgIDxwYXRoIGQ9Ik0xMjcuMzIgMzU1LjkwNUMxOTkuNTgyIDM1NS43MzMgNzAwIDM1NiA3MDAgMzU2IiBzdHJva2U9IiNlMTJiNTEiIHN0cm9rZS13aWR0aD0iMjQiIHRyYW5zZm9ybT0ibWF0cml4KDAgMSAtMS4wMjQ4MSAwIDQwOS45MjYgLTI1KSIvPgogICAgPHBhdGggZD0iTTEyNy4zMiAzNTUuOTA1QzE5OS41ODIgMzU1LjczMyA3MDAgMzU2IDcwMCAzNTYiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLWRhc2hhcnJheT0iMjYgMjYiIHN0cm9rZS13aWR0aD0iMjQiIHRyYW5zZm9ybT0ibWF0cml4KDAgMSAtMS4wMjQ4MSAwIDQwOS45MjYgLTI1KSIvPgogICAgPHBhdGggZD0iTTEyNy4zMiAzNTUuOTA1QzE5OS41ODIgMzU1LjczMyA3MDAgMzU2IDcwMCAzNTYiIHN0cm9rZT0iIzMzMyIgc3Ryb2tlLXdpZHRoPSIxOSIgdHJhbnNmb3JtPSJtYXRyaXgoMCAxIC0xLjAyNDgxIDAgNDA5LjkyNiAtMjUpIi8+CiAgPC9nPgogIDxwYXRoIGlkPSJhIiBmaWxsPSJub25lIiBkPSJtNDUuMzY1IDEwMi43NjUtLjExNyA1NzEuNjIyIi8+CiAgPGNpcmNsZSByPSIzIiBjeD0iNiIgZmlsbD0iI2ZmZiI+CiAgICA8YW5pbWF0ZU1vdGlvbiBiZWdpbj0iMHMiIGR1cj0iNy44cyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiPgogICAgICA8bXBhdGggaHJlZj0iI2EiLz4KICAgIDwvYW5pbWF0ZU1vdGlvbj4KICA8L2NpcmNsZT4KICA8Y2lyY2xlIHI9IjMiIGN4PSI1IiBmaWxsPSJwbHVtIj4KICAgIDxhbmltYXRlTW90aW9uIGJlZ2luPSIwcyIgZHVyPSI3LjVzIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSI+CiAgICAgIDxtcGF0aCBocmVmPSIjYSIvPgogICAgPC9hbmltYXRlTW90aW9uPgogIDwvY2lyY2xlPgogIDxjaXJjbGUgcj0iMyIgY3g9IjMiIGZpbGw9IiNmZjE0OTMiPgogICAgPGFuaW1hdGVNb3Rpb24gYmVnaW49IjBzIiBkdXI9IjcuM3MiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIj4KICAgICAgPG1wYXRoIGhyZWY9IiNhIi8+CiAgICA8L2FuaW1hdGVNb3Rpb24+CiAgPC9jaXJjbGU+CiAgPGNpcmNsZSByPSIzIiBjeD0iMSIgZmlsbD0iIzFlOTBmZiI+CiAgICA8YW5pbWF0ZU1vdGlvbiBiZWdpbj0iMHMiIGR1cj0iNy4ycyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiPgogICAgICA8bXBhdGggaHJlZj0iI2EiLz4KICAgIDwvYW5pbWF0ZU1vdGlvbj4KICA8L2NpcmNsZT4KICA8Y2lyY2xlIHI9IjMiIGN4PSItNCIgZmlsbD0iI2YwODA4MCI+CiAgICA8YW5pbWF0ZU1vdGlvbiBiZWdpbj0iMHMiIGR1cj0iNy4xcyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiPgogICAgICA8bXBhdGggaHJlZj0iI2EiLz4KICAgIDwvYW5pbWF0ZU1vdGlvbj4KICA8L2NpcmNsZT4KICA8Y2lyY2xlIHI9IjMiIGN4PSItNiIgZmlsbD0ib3JhbmdlIj4KICAgIDxhbmltYXRlTW90aW9uIGJlZ2luPSIwcyIgZHVyPSI1LjhzIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSI+CiAgICAgIDxtcGF0aCBocmVmPSIjYSIvPgogICAgPC9hbmltYXRlTW90aW9uPgogIDwvY2lyY2xlPgogIDxjaXJjbGUgcj0iMyIgY3g9Ii0zIiBmaWxsPSJyZWQiPgogICAgPGFuaW1hdGVNb3Rpb24gYmVnaW49IjBzIiBkdXI9IjYuNHMiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIj4KICAgICAgPG1wYXRoIGhyZWY9IiNhIi8+CiAgICA8L2FuaW1hdGVNb3Rpb24+CiAgPC9jaXJjbGU+CiAgPGNpcmNsZSByPSIzIiBjeD0iLTEiIGZpbGw9IiMwMDAwY2QiPgogICAgPGFuaW1hdGVNb3Rpb24gYmVnaW49IjBzIiBkdXI9IjYuNXMiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIj4KICAgICAgPG1wYXRoIGhyZWY9IiNhIi8+CiAgICA8L2FuaW1hdGVNb3Rpb24+CiAgPC9jaXJjbGU+CiAgPGNpcmNsZSByPSIzIiBjeD0iNCIgZmlsbD0iIzdmZmZkNCI+CiAgICA8YW5pbWF0ZU1vdGlvbiBiZWdpbj0iMHMiIGR1cj0iNi44cyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiPgogICAgICA8bXBhdGggaHJlZj0iI2EiLz4KICAgIDwvYW5pbWF0ZU1vdGlvbj4KICA8L2NpcmNsZT4KICA8Y2lyY2xlIHI9IjMiIGN4PSItNSIgZmlsbD0iIzIyOGIyMiI+CiAgICA8YW5pbWF0ZU1vdGlvbiBiZWdpbj0iMHMiIGR1cj0iNi4xcyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiPgogICAgICA8bXBhdGggaHJlZj0iI2EiLz4KICAgIDwvYW5pbWF0ZU1vdGlvbj4KICA8L2NpcmNsZT4KPC9zdmc+Cg==",
+      "data:image/svg+xml;base64, PHN2ZyB2aWV3Qm94PSIwIDUgMjUwIDUwMCIgaGVpZ2h0PSI1MDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPHBhdGggaWQ9ImEiIGZpbGw9Im5vbmUiIGQ9Ik00Mi41NTMgNDAwcy0uMTE5LTEyMy45NzItLjEwOC0xODUuOTU4Yy4wMDctMzguMDE0LjEwOC0xMTQuMDQyLjEwOC0xMTQuMDQyIi8+CiAgPHBhdGggaWQ9ImIiIGZpbGw9Im5vbmUiIGQ9Ik0xOTkuNTczIDk4Ljg5NiAyMDAgNDAwIi8+CiAgPHBhdGggaWQ9ImMiIHN0eWxlPSJmaWxsOm5vbmU7dHJhbnNmb3JtLW9yaWdpbjo3My4zMzNweCA0NTMuOTY3cHgiIGQ9Ik0xOTkuNTczIDQwMGMwIDEwMC0xNTcuMDIgMTAwLTE1Ny4wMiAwIi8+CiAgPHBhdGggaWQ9ImQiIHN0eWxlPSJmaWxsOm5vbmU7dHJhbnNmb3JtLW9yaWdpbjoyNjMuMzg5cHggMTAwLjg5NHB4IiBkPSJNNDIuNTUzIDEwMmMwLTEwMiAxNTcuMDItMTAyIDE1Ny4wMi0zIi8+CiAgPHBhdGggc3R5bGU9ImZpbGw6IzEwMTcyOSIgZD0iTTAgMGgzMzYuMTY1djUwMEgweiIvPgogIDxnIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGZpbGw9Im5vbmUiPgogICAgPHVzZSBocmVmPSIjYSIgc3Ryb2tlPSJyZWQiIHN0cm9rZS13aWR0aD0iMjQiLz4KICAgIDx1c2UgaHJlZj0iI2EiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLWRhc2hhcnJheT0iMjYgMjYiIHN0cm9rZS13aWR0aD0iMjQiLz4KICAgIDx1c2UgaHJlZj0iI2EiIHN0cm9rZT0iIzMzMyIgc3Ryb2tlLXdpZHRoPSIxOSIvPgogIDwvZz4KICA8ZyBzdHJva2UtbGluZWpvaW49InJvdW5kIiBmaWxsPSJub25lIj4KICAgIDx1c2UgaHJlZj0iI2IiIHN0cm9rZT0icmVkIiBzdHJva2Utd2lkdGg9IjI0Ii8+CiAgICA8dXNlIGhyZWY9IiNiIiBzdHJva2U9IiNmZmYiIHN0cm9rZS1kYXNoYXJyYXk9IjI2IDI2IiBzdHJva2Utd2lkdGg9IjI0Ii8+CiAgICA8dXNlIGhyZWY9IiNiIiBzdHJva2U9IiMzMzMiIHN0cm9rZS13aWR0aD0iMTkiLz4KICA8L2c+CiAgPGcgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgZmlsbD0ibm9uZSI+CiAgICA8dXNlIGhyZWY9IiNjIiBzdHJva2U9InJlZCIgc3Ryb2tlLXdpZHRoPSIyNCIvPgogICAgPHVzZSBocmVmPSIjYyIgc3Ryb2tlPSIjZmZmIiBzdHJva2UtZGFzaGFycmF5PSIyNiAyNiIgc3Ryb2tlLXdpZHRoPSIyNCIvPgogICAgPHVzZSBocmVmPSIjYyIgc3Ryb2tlPSIjMzMzIiBzdHJva2Utd2lkdGg9IjE5Ii8+CiAgPC9nPgogIDxnIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGZpbGw9Im5vbmUiPgogICAgPHVzZSBocmVmPSIjZCIgc3Ryb2tlPSJyZWQiIHN0cm9rZS13aWR0aD0iMjQiLz4KICAgIDx1c2UgaHJlZj0iI2QiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLWRhc2hhcnJheT0iMjYgMjYiIHN0cm9rZS13aWR0aD0iMjQiLz4KICAgIDx1c2UgaHJlZj0iI2QiIHN0cm9rZT0iIzMzMyIgc3Ryb2tlLXdpZHRoPSIxOSIvPgogIDwvZz4KICA8cGF0aCBmaWxsPSJub25lIiBkPSJtNDUuMzY1IDEwMi43NjUtLjExNyA1NzEuNjIyIi8+CiAgPHBhdGggc3R5bGU9ImZpbGw6IzVlNWVjNiIgZD0iTTE5MC41IDM5NC40ODdoMTl2NmgtMTl6bS0xNTcuNSAwaDE5djZIMzN6TTMzIDk2aDE5djZIMzN6Ii8+CiAgPHBhdGggc3R5bGU9ImZpbGw6I2ZmZiIgZD0iTTEyLjMzNiA0MDMuNTMyaDEwdjEwaC0xMHoiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDE4NC4wNjYgLTkxLjE2KSBzY2FsZSguNDgxNDQpIi8+CiAgPHBhdGggZD0iTTE5MC4wMDUgOTguMzAyaDQuODE0djQuODE0aC00LjgxNHoiLz4KICA8cGF0aCBzdHlsZT0iZmlsbDojZmZmIiBkPSJNMTIuMzM2IDM4My41MzJoMTB2MTBoLTEweiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTg0LjA2NiAtOTEuMTYpIHNjYWxlKC40ODE0NCkiLz4KICA8cGF0aCBkPSJNMTk0LjgyIDkzLjQ4OGg0LjgxNHY0LjgxNGgtNC44MTV6Ii8+CiAgPHBhdGggc3R5bGU9ImZpbGw6I2ZmZiIgZD0iTTMyLjMzNiAzODMuNTMyaDEwdjEwaC0xMHptLTEwIDEwaDEwdjEwaC0xMHoiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDE4NC4wNjYgLTkxLjE2KSBzY2FsZSguNDgxNDQpIi8+CiAgPHBhdGggZD0iTTE5NC44MiAxMDMuMTE2aDQuODE0djQuODE1aC00LjgxNXoiLz4KICA8cGF0aCBzdHlsZT0iZmlsbDojZmZmIiBkPSJNMzIuMzM2IDQwMy41MzJoMTB2MTBoLTEweiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTg0LjA2NiAtOTEuMTYpIHNjYWxlKC40ODE0NCkiLz4KICA8cGF0aCBkPSJNMTk5LjYzNCA5OC4zMDJoNC44MTR2NC44MTRoLTQuODE0em00LjgxNCA0LjgxNGg0LjgxNXY0LjgxNWgtNC44MTV6bTAtOS42MjhoNC44MTV2NC44MTRoLTQuODE1eiIvPgogIDxwYXRoIHN0eWxlPSJmaWxsOiNmZmYiIGQ9Ik00Mi4zMzYgMzkzLjUzMmgxMHYxMGgtMTB6IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxODQuMDY2IC05MS4xNikgc2NhbGUoLjQ4MTQ0KSIvPgoKPC9zdmc+Cg==",
     ),
   );
   const [resultArrayWin, setResultArrayWin] = useState([]);
@@ -176,31 +176,74 @@ const All = () => {
         if (blockchain.account == null) {
           return (
             <>
-              <div className="from-bgc to-bgc animate-pulse bg-gradient-to-r via-teal-900 text-center leading-normal tracking-normal hs-removing:-translate-y-full">
-                <div className="mx-auto max-w-full px-4 py-1 sm:px-6 lg:px-8">
-                  <div className="">
-                    <span className=" text-xs font-bold  text-white lg:text-lg">
-                      <strong className="text-amber-600"> Win </strong>
-                      the Race → Get{" "}
-                      <strong className="text-amber-600">5 Free</strong> Credits
-                      →<strong className="text-amber-600"> Swap</strong>{" "}
-                      <div className="   inline-flex items-center   ">
-                        MATIC
-                        <svg
-                          className=" ml-2 h-3 w-3"
-                          fill="#8247E5"
-                          viewBox="0 0 38 33"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M29,10.2c-0.7-0.4-1.6-0.4-2.4,0L21,13.5l-3.8,2.1l-5.5,3.3c-0.7,0.4-1.6,0.4-2.4,0L5,16.3 c-0.7-0.4-1.2-1.2-1.2-2.1v-5c0-0.8,0.4-1.6,1.2-2.1l4.3-2.5c0.7-0.4,1.6-0.4,2.4,0L16,7.2c0.7,0.4,1.2,1.2,1.2,2.1v3.3l3.8-2.2V7 c0-0.8-0.4-1.6-1.2-2.1l-8-4.7c-0.7-0.4-1.6-0.4-2.4,0L1.2,5C0.4,5.4,0,6.2,0,7v9.4c0,0.8,0.4,1.6,1.2,2.1l8.1,4.7 c0.7,0.4,1.6,0.4,2.4,0l5.5-3.2l3.8-2.2l5.5-3.2c0.7-0.4,1.6-0.4,2.4,0l4.3,2.5c0.7,0.4,1.2,1.2,1.2,2.1v5c0,0.8-0.4,1.6-1.2,2.1 L29,28.8c-0.7,0.4-1.6,0.4-2.4,0l-4.3-2.5c-0.7-0.4-1.2-1.2-1.2-2.1V21l-3.8,2.2v3.3c0,0.8,0.4,1.6,1.2,2.1l8.1,4.7 c0.7,0.4,1.6,0.4,2.4,0l8.1-4.7c0.7-0.4,1.2-1.2,1.2-2.1V17c0-0.8-0.4-1.6-1.2-2.1L29,10.2z"
-                            clipRule="evenodd"
-                          ></path>
-                        </svg>
-                      </div>
-                        or use for the Next Races! 
-                    </span>
+              <div className="hidden sm:block">
+                <div className="from-bgc to-bgc animate-pulse bg-gradient-to-r via-teal-900 text-center leading-normal tracking-normal hs-removing:-translate-y-full">
+                  <div className="mx-auto max-w-full px-4 py-1 sm:px-6 lg:px-8">
+                    <div className="">
+                      <span className=" text-xs font-bold  text-white lg:text-lg">
+                        <strong className="text-amber-600"> Win </strong>
+                        the Race → Get{" "}
+                        <strong className="text-amber-600">5 Free</strong>{" "}
+                        Credits →
+                        <strong className="text-amber-600"> Swap</strong>{" "}
+                        <div className="   inline-flex items-center   ">
+                          MATIC
+                          <svg
+                            className=" ml-2 h-3 w-3"
+                            fill="#8247E5"
+                            viewBox="0 0 38 33"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              fillRule="evenodd"
+                              d="M29,10.2c-0.7-0.4-1.6-0.4-2.4,0L21,13.5l-3.8,2.1l-5.5,3.3c-0.7,0.4-1.6,0.4-2.4,0L5,16.3 c-0.7-0.4-1.2-1.2-1.2-2.1v-5c0-0.8,0.4-1.6,1.2-2.1l4.3-2.5c0.7-0.4,1.6-0.4,2.4,0L16,7.2c0.7,0.4,1.2,1.2,1.2,2.1v3.3l3.8-2.2V7 c0-0.8-0.4-1.6-1.2-2.1l-8-4.7c-0.7-0.4-1.6-0.4-2.4,0L1.2,5C0.4,5.4,0,6.2,0,7v9.4c0,0.8,0.4,1.6,1.2,2.1l8.1,4.7 c0.7,0.4,1.6,0.4,2.4,0l5.5-3.2l3.8-2.2l5.5-3.2c0.7-0.4,1.6-0.4,2.4,0l4.3,2.5c0.7,0.4,1.2,1.2,1.2,2.1v5c0,0.8-0.4,1.6-1.2,2.1 L29,28.8c-0.7,0.4-1.6,0.4-2.4,0l-4.3-2.5c-0.7-0.4-1.2-1.2-1.2-2.1V21l-3.8,2.2v3.3c0,0.8,0.4,1.6,1.2,2.1l8.1,4.7 c0.7,0.4,1.6,0.4,2.4,0l8.1-4.7c0.7-0.4,1.2-1.2,1.2-2.1V17c0-0.8-0.4-1.6-1.2-2.1L29,10.2z"
+                              clipRule="evenodd"
+                            ></path>
+                          </svg>
+                        </div>
+                          or use for the Next Races! 
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="sm:hidden">
+                <div className="from-bgc to-bgc animate-pulse bg-gradient-to-r via-teal-900 text-center leading-normal tracking-normal hs-removing:-translate-y-full">
+                  <div className="mx-auto max-w-full px-4  sm:px-6 lg:px-8">
+                    <div className="">
+                      <marquee
+                        behavior="scroll"
+                        direction="left"
+                        scrollamount="5"
+                        className=""
+                      >
+                        <span className=" text-xs font-bold  text-white lg:text-lg">
+                          <strong className="text-amber-600"> Win </strong>
+                          the Races → Get{" "}
+                          <strong className="text-amber-600">
+                            5 Free
+                          </strong>{" "}
+                          Credits →
+                          <strong className="text-amber-600"> Swap</strong>{" "}
+                          <div className="   inline-flex items-center   ">
+                            MATIC
+                            <svg
+                              className=" ml-2 h-3 w-3"
+                              fill="#8247E5"
+                              viewBox="0 0 38 33"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                fillRule="evenodd"
+                                d="M29,10.2c-0.7-0.4-1.6-0.4-2.4,0L21,13.5l-3.8,2.1l-5.5,3.3c-0.7,0.4-1.6,0.4-2.4,0L5,16.3 c-0.7-0.4-1.2-1.2-1.2-2.1v-5c0-0.8,0.4-1.6,1.2-2.1l4.3-2.5c0.7-0.4,1.6-0.4,2.4,0L16,7.2c0.7,0.4,1.2,1.2,1.2,2.1v3.3l3.8-2.2V7 c0-0.8-0.4-1.6-1.2-2.1l-8-4.7c-0.7-0.4-1.6-0.4-2.4,0L1.2,5C0.4,5.4,0,6.2,0,7v9.4c0,0.8,0.4,1.6,1.2,2.1l8.1,4.7 c0.7,0.4,1.6,0.4,2.4,0l5.5-3.2l3.8-2.2l5.5-3.2c0.7-0.4,1.6-0.4,2.4,0l4.3,2.5c0.7,0.4,1.2,1.2,1.2,2.1v5c0,0.8-0.4,1.6-1.2,2.1 L29,28.8c-0.7,0.4-1.6,0.4-2.4,0l-4.3-2.5c-0.7-0.4-1.2-1.2-1.2-2.1V21l-3.8,2.2v3.3c0,0.8,0.4,1.6,1.2,2.1l8.1,4.7 c0.7,0.4,1.6,0.4,2.4,0l8.1-4.7c0.7-0.4,1.2-1.2,1.2-2.1V17c0-0.8-0.4-1.6-1.2-2.1L29,10.2z"
+                                clipRule="evenodd"
+                              ></path>
+                            </svg>
+                          </div>
+                            or use for the Next Races! 
+                        </span>
+                      </marquee>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -254,17 +297,29 @@ const All = () => {
               <h1 className=" mb-4   max-w-2xl from-sky-400 text-justify text-4xl font-extrabold leading-none tracking-tight text-teal-600 md:text-5xl xl:text-6xl ">
                 Welcome to OnChain Races!
               </h1>
-              <p className="text-md mb-6 max-w-2xl text-justify  font-light  leading-relaxed tracking-tight text-slate-300 md:text-lg lg:mb-8 lg:text-xl ">
-                Real-Time Excitement and Rewards on the Polygon! Get credits and
-                join thrilling races. In races where a total of 10 racers
-                compete in a race, your speeds change completely randomly,
-                offering an on-chain experience in each race. The blue 3
-                checkpoints on the map are lines that alter your vehicle's
-                speed. The winners not only become the owner of the map but also
-                receive 5 credit rewards. You can use these credits to join
-                another races or Swap them to MATIC.{" "}
+              <p className="text-md mb-6 max-w-2xl text-justify  font-normal  leading-relaxed tracking-tight text-slate-300 md:text-lg lg:mb-8 lg:text-xl ">
+                Get credits and participate in On-Chain Races!{" "}
+                <p className="mt-1">
+                  A total of 10 racers compete in a race. The 3 blue lines on
+                  the map are the lines where the speed of the vehicles change.
+                  The winners not only own the NFT of the map but also get 5
+                  credits rewards. You can use these credits to participate in
+                  other races or swap them for MATIC.
+                  <p className="mt-3">
+                    {" "}
+                    <a
+                      className=" text-sky-400/60 underline"
+                      href="https://mumbaifaucet.com/"
+                      rel="noreferrer"
+                      target="_blank"
+                    >
+                      {" "}
+                      Get Mumbai MATIC
+                    </a>
+                  </p>
+                </p>
               </p>
-              <div className="mt-auto flex flex-wrap pt-3 text-xs">
+              <div className="mt-auto flex flex-wrap  text-xs">
                 <Link to={`/credit/`}>
                   <a
                     href=""
@@ -273,6 +328,7 @@ const All = () => {
                     Get Credit and Play !
                   </a>
                 </Link>
+
                 <p className="text-md  text-justify  leading-6  tracking-tight text-gray-500 ">
                   <a
                     className="text-sky-400/60"
@@ -416,7 +472,21 @@ const All = () => {
                 Fully-OnChain!
               </h1>
               <p className="font-tight mb-6 max-w-2xl  text-justify font-light leading-relaxed text-slate-300 md:text-lg lg:mb-8 lg:text-xl ">
-                OnChain Races is empowered with
+                <p className="mb-3">
+                  Even without this Web-App, all users can buy credits, trade,
+                  participate in races, claiming maps, thanks to{" "}
+                  <a
+                    className="text-sky-600 after:content-['↗_']"
+                    href="   https://www.monetsociety.io/post/on-chain-nfts-vs-off-chain-nfts"
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    {" "}
+                    On-Chain
+                  </a>
+                  technology.
+                </p>
+                OnChain Races speed calculation is empowered with
                 <a
                   className="text-sky-600 after:content-['↗_']"
                   href="https://docs.chain.link/vrf/v2/introduction"
@@ -426,13 +496,17 @@ const All = () => {
                   {" "}
                   Chainlink VRF (VERIFIABLE RANDOM FUNCTION)
                 </a>
-                for unforgettable racing experiences. Chainlink VRF is an Oracle
-                solution that enables transparent and fair random speed
-                calculations. When our racers pass the blue 3 points on the map,
-                Chainlink VRF's reliable data comes into play, changing their
-                speeds randomly. This integration ensures fair races and
-                real-time excitement.
+                for unforgettable racing experiences.
+                <p className="mt-3">
+                  {" "}
+                  Chainlink VRF is an Oracle solution that enables transparent
+                  and fair random speed calculations. When our racers pass each
+                  of the blue 3 points on the map, Chainlink VRFs change their
+                  speeds randomly. This integration ensures fair races and
+                  real-time excitement.
+                </p>
               </p>
+
               <Link to={`/credit/`}>
                 <a
                   href=""
@@ -443,10 +517,43 @@ const All = () => {
               </Link>
             </div>
 
-            <div className="  mx-x-auto from-bgc/50 max-w-full rounded-2xl  border border-solid border-slate-500/20 bg-gradient-to-b shadow-2xl duration-300 hover:scale-105 lg:col-span-4 lg:mt-0">
+            <div className=" mx-x-auto from-bgc/50 mt-3 max-w-full rounded-2xl  border border-solid border-slate-500/20 bg-gradient-to-b shadow-2xl duration-300 hover:scale-105 lg:col-span-4 lg:mt-0">
               <>
                 <div className="h-100 flex  w-full items-center justify-center ">
                   <img className={""} src={imageHero} />
+                </div>
+                <div className="h-100 flex  w-full items-center justify-center ">
+                  <button
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setImage(
+                        String(
+                          "data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDUgMjUwIDUwMCIgaGVpZ2h0PSI1MDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPHBhdGggaWQ9ImEiIGZpbGw9Im5vbmUiIGQ9Ik00Mi41NTMgNDAwcy0uMTE5LTEyMy45NzItLjEwOC0xODUuOTU4Yy4wMDctMzguMDE0LjEwOC0xMTQuMDQyLjEwOC0xMTQuMDQyIi8+CiAgPHBhdGggaWQ9ImIiIGZpbGw9Im5vbmUiIGQ9Ik0xOTkuNTczIDk4Ljg5NiAyMDAgNDAwIi8+CiAgPHBhdGggaWQ9ImMiIHN0eWxlPSJmaWxsOm5vbmU7dHJhbnNmb3JtLW9yaWdpbjo3My4zMzNweCA0NTMuOTY3cHgiIGQ9Ik0xOTkuNTczIDQwMGMwIDEwMC0xNTcuMDIgMTAwLTE1Ny4wMiAwIi8+CiAgPHBhdGggaWQ9ImQiIHN0eWxlPSJmaWxsOm5vbmU7dHJhbnNmb3JtLW9yaWdpbjoyNjMuMzg5cHggMTAwLjg5NHB4IiBkPSJNNDIuNTUzIDEwMmMwLTEwMiAxNTcuMDItMTAyIDE1Ny4wMi0zIi8+CiAgPHBhdGggc3R5bGU9ImZpbGw6IzEwMTcyOSIgZD0iTTAgMGgzMzYuMTY1djUwMEgweiIvPgogIDxnIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGZpbGw9Im5vbmUiPgogICAgPHVzZSBocmVmPSIjYSIgc3Ryb2tlPSJyZWQiIHN0cm9rZS13aWR0aD0iMjQiLz4KICAgIDx1c2UgaHJlZj0iI2EiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLWRhc2hhcnJheT0iMjYgMjYiIHN0cm9rZS13aWR0aD0iMjQiLz4KICAgIDx1c2UgaHJlZj0iI2EiIHN0cm9rZT0iIzMzMyIgc3Ryb2tlLXdpZHRoPSIxOSIvPgogIDwvZz4KICA8ZyBzdHJva2UtbGluZWpvaW49InJvdW5kIiBmaWxsPSJub25lIj4KICAgIDx1c2UgaHJlZj0iI2IiIHN0cm9rZT0icmVkIiBzdHJva2Utd2lkdGg9IjI0Ii8+CiAgICA8dXNlIGhyZWY9IiNiIiBzdHJva2U9IiNmZmYiIHN0cm9rZS1kYXNoYXJyYXk9IjI2IDI2IiBzdHJva2Utd2lkdGg9IjI0Ii8+CiAgICA8dXNlIGhyZWY9IiNiIiBzdHJva2U9IiMzMzMiIHN0cm9rZS13aWR0aD0iMTkiLz4KICA8L2c+CiAgPGcgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgZmlsbD0ibm9uZSI+CiAgICA8dXNlIGhyZWY9IiNjIiBzdHJva2U9InJlZCIgc3Ryb2tlLXdpZHRoPSIyNCIvPgogICAgPHVzZSBocmVmPSIjYyIgc3Ryb2tlPSIjZmZmIiBzdHJva2UtZGFzaGFycmF5PSIyNiAyNiIgc3Ryb2tlLXdpZHRoPSIyNCIvPgogICAgPHVzZSBocmVmPSIjYyIgc3Ryb2tlPSIjMzMzIiBzdHJva2Utd2lkdGg9IjE5Ii8+CiAgPC9nPgogIDxnIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGZpbGw9Im5vbmUiPgogICAgPHVzZSBocmVmPSIjZCIgc3Ryb2tlPSJyZWQiIHN0cm9rZS13aWR0aD0iMjQiLz4KICAgIDx1c2UgaHJlZj0iI2QiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLWRhc2hhcnJheT0iMjYgMjYiIHN0cm9rZS13aWR0aD0iMjQiLz4KICAgIDx1c2UgaHJlZj0iI2QiIHN0cm9rZT0iIzMzMyIgc3Ryb2tlLXdpZHRoPSIxOSIvPgogIDwvZz4KICA8cGF0aCBmaWxsPSJub25lIiBkPSJtNDUuMzY1IDEwMi43NjUtLjExNyA1NzEuNjIyIi8+CiAgPHBhdGggc3R5bGU9ImZpbGw6IzVlNWVjNiIgZD0iTTE5MC41IDM5NC40ODdoMTl2NmgtMTl6bS0xNTcuNSAwaDE5djZIMzN6TTMzIDk2aDE5djZIMzN6Ii8+CiAgPHBhdGggc3R5bGU9ImZpbGw6I2ZmZiIgZD0iTTEyLjMzNiA0MDMuNTMyaDEwdjEwaC0xMHoiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDE4NC4wNjYgLTkxLjE2KSBzY2FsZSguNDgxNDQpIi8+CiAgPHBhdGggZD0iTTE5MC4wMDUgOTguMzAyaDQuODE0djQuODE0aC00LjgxNHoiLz4KICA8cGF0aCBzdHlsZT0iZmlsbDojZmZmIiBkPSJNMTIuMzM2IDM4My41MzJoMTB2MTBoLTEweiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTg0LjA2NiAtOTEuMTYpIHNjYWxlKC40ODE0NCkiLz4KICA8cGF0aCBkPSJNMTk0LjgyIDkzLjQ4OGg0LjgxNHY0LjgxNGgtNC44MTV6Ii8+CiAgPHBhdGggc3R5bGU9ImZpbGw6I2ZmZiIgZD0iTTMyLjMzNiAzODMuNTMyaDEwdjEwaC0xMHptLTEwIDEwaDEwdjEwaC0xMHoiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDE4NC4wNjYgLTkxLjE2KSBzY2FsZSguNDgxNDQpIi8+CiAgPHBhdGggZD0iTTE5NC44MiAxMDMuMTE2aDQuODE0djQuODE1aC00LjgxNXoiLz4KICA8cGF0aCBzdHlsZT0iZmlsbDojZmZmIiBkPSJNMzIuMzM2IDQwMy41MzJoMTB2MTBoLTEweiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTg0LjA2NiAtOTEuMTYpIHNjYWxlKC40ODE0NCkiLz4KICA8cGF0aCBkPSJNMTk5LjYzNCA5OC4zMDJoNC44MTR2NC44MTRoLTQuODE0em00LjgxNCA0LjgxNGg0LjgxNXY0LjgxNWgtNC44MTV6bTAtOS42MjhoNC44MTV2NC44MTRoLTQuODE1eiIvPgogIDxwYXRoIHN0eWxlPSJmaWxsOiNmZmYiIGQ9Ik00Mi4zMzYgMzkzLjUzMmgxMHYxMGgtMTB6IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxODQuMDY2IC05MS4xNikgc2NhbGUoLjQ4MTQ0KSIvPgogIDxjaXJjbGUgY3g9IjMuMzcxIiByPSIzIiBmaWxsPSJwbHVtIj4KICAgIDxhbmltYXRlTW90aW9uIGJlZ2luPSIwcyIgZHVyPSI1LjEyMyIgcmVwZWF0Q291bnQ9IjAiPgogICAgICA8bXBhdGggaHJlZj0iI2IiLz4KICAgIDwvYW5pbWF0ZU1vdGlvbj4KICA8L2NpcmNsZT4KICA8Y2lyY2xlIGN4PSIzLjM3MSIgcj0iMyIgZmlsbD0icGx1bSI+CiAgICA8YW5pbWF0ZU1vdGlvbiBiZWdpbj0iNS4xMjMiIGR1cj0iNC4xMTkiIHJlcGVhdENvdW50PSIwIj4KICAgICAgPG1wYXRoIGhyZWY9IiNjIi8+CiAgICA8L2FuaW1hdGVNb3Rpb24+CiAgPC9jaXJjbGU+CiAgPGNpcmNsZSBjeD0iMy4zNzEiIHI9IjMiIGZpbGw9InBsdW0iPgogICAgPGFuaW1hdGVNb3Rpb24gYmVnaW49IjkuMjQyIiBkdXI9IjMuNDMiIHJlcGVhdENvdW50PSIwIj4KICAgICAgPG1wYXRoIGhyZWY9IiNhIi8+CiAgICA8L2FuaW1hdGVNb3Rpb24+CiAgPC9jaXJjbGU+CiAgPGNpcmNsZSBjeD0iMy4zNzEiIHI9IjMiIGZpbGw9InBsdW0iPgogICAgPGFuaW1hdGVNb3Rpb24gYmVnaW49IjEyLjY3MiIgZHVyPSIzLjg2NiIgcmVwZWF0Q291bnQ9IjAiPgogICAgICA8bXBhdGggaHJlZj0iI2QiLz4KICAgIDwvYW5pbWF0ZU1vdGlvbj4KICA8L2NpcmNsZT4KICA8Y2lyY2xlIGN4PSItNS4zMTkiIHI9IjMiIGZpbGw9IiNmZjE0OTMiPgogICAgPGFuaW1hdGVNb3Rpb24gYmVnaW49IjBzIiBkdXI9IjUuNTc3IiByZXBlYXRDb3VudD0iMCI+CiAgICAgIDxtcGF0aCBocmVmPSIjYiIvPgogICAgPC9hbmltYXRlTW90aW9uPgogIDwvY2lyY2xlPgogIDxjaXJjbGUgY3g9Ii01LjMxOSIgcj0iMyIgZmlsbD0iI2ZmMTQ5MyI+CiAgICA8YW5pbWF0ZU1vdGlvbiBiZWdpbj0iNS41NzciIGR1cj0iNC41OTQiIHJlcGVhdENvdW50PSIwIj4KICAgICAgPG1wYXRoIGhyZWY9IiNjIi8+CiAgICA8L2FuaW1hdGVNb3Rpb24+CiAgPC9jaXJjbGU+CiAgPGNpcmNsZSBjeD0iLTUuMzE5IiByPSIzIiBmaWxsPSIjZmYxNDkzIj4KICAgIDxhbmltYXRlTW90aW9uIGJlZ2luPSIxMC4xNyIgZHVyPSIzLjk0NSIgcmVwZWF0Q291bnQ9IjAiPgogICAgICA8bXBhdGggaHJlZj0iI2EiLz4KICAgIDwvYW5pbWF0ZU1vdGlvbj4KICA8L2NpcmNsZT4KICA8Y2lyY2xlIGN4PSItNS4zMTkiIHI9IjMiIGZpbGw9IiNmZjE0OTMiPgogICAgPGFuaW1hdGVNb3Rpb24gYmVnaW49IjE0LjExNSIgZHVyPSIzLjU0OSIgcmVwZWF0Q291bnQ9IjAiPgogICAgICA8bXBhdGggaHJlZj0iI2QiLz4KICAgIDwvYW5pbWF0ZU1vdGlvbj4KICA8L2NpcmNsZT4KICA8Y2lyY2xlIGN4PSI2LjE4MSIgcj0iMyIgZmlsbD0iIzFlOTBmZiI+CiAgICA8YW5pbWF0ZU1vdGlvbiBiZWdpbj0iMHMiIGR1cj0iNS42NDEiIHJlcGVhdENvdW50PSIwIj4KICAgICAgPG1wYXRoIGhyZWY9IiNiIi8+CiAgICA8L2FuaW1hdGVNb3Rpb24+CiAgPC9jaXJjbGU+CiAgPGNpcmNsZSBjeD0iNi4xODEiIHI9IjMiIGZpbGw9IiMxZTkwZmYiPgogICAgPGFuaW1hdGVNb3Rpb24gYmVnaW49IjUuNjQxIiBkdXI9IjQuNTE0IiByZXBlYXRDb3VudD0iMCI+CiAgICAgIDxtcGF0aCBocmVmPSIjYyIvPgogICAgPC9hbmltYXRlTW90aW9uPgogIDwvY2lyY2xlPgogIDxjaXJjbGUgY3g9IjYuMTgxIiByPSIzIiBmaWxsPSIjMWU5MGZmIj4KICAgIDxhbmltYXRlTW90aW9uIGJlZ2luPSIxMC4xNTUiIGR1cj0iMy42MjQiIHJlcGVhdENvdW50PSIwIj4KICAgICAgPG1wYXRoIGhyZWY9IiNhIi8+CiAgICA8L2FuaW1hdGVNb3Rpb24+CiAgPC9jaXJjbGU+CiAgPGNpcmNsZSBjeD0iNi4xODEiIHI9IjMiIGZpbGw9IiMxZTkwZmYiPgogICAgPGFuaW1hdGVNb3Rpb24gYmVnaW49IjEzLjc3OSIgZHVyPSIzLjYzMiIgcmVwZWF0Q291bnQ9IjAiPgogICAgICA8bXBhdGggaHJlZj0iI2QiLz4KICAgIDwvYW5pbWF0ZU1vdGlvbj4KICA8L2NpcmNsZT4KICA8Y2lyY2xlIGN4PSItMy40IiByPSIzIiBmaWxsPSIjZjA4MDgwIj4KICAgIDxhbmltYXRlTW90aW9uIGJlZ2luPSIwcyIgZHVyPSI1LjY1NiIgcmVwZWF0Q291bnQ9IjAiPgogICAgICA8bXBhdGggaHJlZj0iI2IiLz4KICAgIDwvYW5pbWF0ZU1vdGlvbj4KICA8L2NpcmNsZT4KICA8Y2lyY2xlIGN4PSItMy40IiByPSIzIiBmaWxsPSIjZjA4MDgwIj4KICAgIDxhbmltYXRlTW90aW9uIGJlZ2luPSI1LjY1NiIgZHVyPSI0LjYxMyIgcmVwZWF0Q291bnQ9IjAiPgogICAgICA8bXBhdGggaHJlZj0iI2MiLz4KICAgIDwvYW5pbWF0ZU1vdGlvbj4KICA8L2NpcmNsZT4KICA8Y2lyY2xlIGN4PSItMy40IiByPSIzIiBmaWxsPSIjZjA4MDgwIj4KICAgIDxhbmltYXRlTW90aW9uIGJlZ2luPSIxMC4yNjgiIGR1cj0iMy4xOTkiIHJlcGVhdENvdW50PSIwIj4KICAgICAgPG1wYXRoIGhyZWY9IiNhIi8+CiAgICA8L2FuaW1hdGVNb3Rpb24+CiAgPC9jaXJjbGU+CiAgPGNpcmNsZSBjeD0iLTMuNCIgcj0iMyIgZmlsbD0iI2YwODA4MCI+CiAgICA8YW5pbWF0ZU1vdGlvbiBiZWdpbj0iMTMuNDY4IiBkdXI9IjMuNDQ1IiByZXBlYXRDb3VudD0iMCI+CiAgICAgIDxtcGF0aCBocmVmPSIjZCIvPgogICAgPC9hbmltYXRlTW90aW9uPgogIDwvY2lyY2xlPgogIDxjaXJjbGUgY3g9Ii0zLjQ2MyIgcj0iMyIgZmlsbD0ib3JhbmdlIj4KICAgIDxhbmltYXRlTW90aW9uIGJlZ2luPSIwcyIgZHVyPSI1LjgxMiIgcmVwZWF0Q291bnQ9IjAiPgogICAgICA8bXBhdGggaHJlZj0iI2IiLz4KICAgIDwvYW5pbWF0ZU1vdGlvbj4KICA8L2NpcmNsZT4KICA8Y2lyY2xlIGN4PSItMy40NjMiIHI9IjMiIGZpbGw9Im9yYW5nZSI+CiAgICA8YW5pbWF0ZU1vdGlvbiBiZWdpbj0iNS44MTIiIGR1cj0iNC4xODMiIHJlcGVhdENvdW50PSIwIj4KICAgICAgPG1wYXRoIGhyZWY9IiNjIi8+CiAgICA8L2FuaW1hdGVNb3Rpb24+CiAgPC9jaXJjbGU+CiAgPGNpcmNsZSBjeD0iLTMuNDYzIiByPSIzIiBmaWxsPSJvcmFuZ2UiPgogICAgPGFuaW1hdGVNb3Rpb24gYmVnaW49IjkuOTk2IiBkdXI9IjMuODU0IiByZXBlYXRDb3VudD0iMCI+CiAgICAgIDxtcGF0aCBocmVmPSIjYSIvPgogICAgPC9hbmltYXRlTW90aW9uPgogIDwvY2lyY2xlPgogIDxjaXJjbGUgY3g9Ii0zLjQ2MyIgcj0iMyIgZmlsbD0ib3JhbmdlIj4KICAgIDxhbmltYXRlTW90aW9uIGJlZ2luPSIxMy44NSIgZHVyPSIzLjY2MSIgcmVwZWF0Q291bnQ9IjAiPgogICAgICA8bXBhdGggaHJlZj0iI2QiLz4KICAgIDwvYW5pbWF0ZU1vdGlvbj4KICA8L2NpcmNsZT4KICA8Y2lyY2xlIGN4PSIxLjM1NyIgcj0iMyIgZmlsbD0icmVkIj4KICAgIDxhbmltYXRlTW90aW9uIGJlZ2luPSIwcyIgZHVyPSI1LjU2MyIgcmVwZWF0Q291bnQ9IjAiPgogICAgICA8bXBhdGggaHJlZj0iI2IiLz4KICAgIDwvYW5pbWF0ZU1vdGlvbj4KICA8L2NpcmNsZT4KICA8Y2lyY2xlIGN4PSIxLjM1NyIgcj0iMyIgZmlsbD0icmVkIj4KICAgIDxhbmltYXRlTW90aW9uIGJlZ2luPSI1LjU2MyIgZHVyPSI0LjIyMSIgcmVwZWF0Q291bnQ9IjAiPgogICAgICA8bXBhdGggaHJlZj0iI2MiLz4KICAgIDwvYW5pbWF0ZU1vdGlvbj4KICA8L2NpcmNsZT4KICA8Y2lyY2xlIGN4PSIxLjM1NyIgcj0iMyIgZmlsbD0icmVkIj4KICAgIDxhbmltYXRlTW90aW9uIGJlZ2luPSI5Ljc4NCIgZHVyPSIzLjMyMSIgcmVwZWF0Q291bnQ9IjAiPgogICAgICA8bXBhdGggaHJlZj0iI2EiLz4KICAgIDwvYW5pbWF0ZU1vdGlvbj4KICA8L2NpcmNsZT4KICA8Y2lyY2xlIGN4PSIxLjM1NyIgcj0iMyIgZmlsbD0icmVkIj4KICAgIDxhbmltYXRlTW90aW9uIGJlZ2luPSIxMy4xMDUiIGR1cj0iMy4yNSIgcmVwZWF0Q291bnQ9IjAiPgogICAgICA8bXBhdGggaHJlZj0iI2QiLz4KICAgIDwvYW5pbWF0ZU1vdGlvbj4KICA8L2NpcmNsZT4KICA8Y2lyY2xlIGN4PSI2LjY5NiIgcj0iMyIgZmlsbD0iI2ZmZiI+CiAgICA8YW5pbWF0ZU1vdGlvbiBiZWdpbj0iMHMiIGR1cj0iNS42NTQiIHJlcGVhdENvdW50PSIwIj4KICAgICAgPG1wYXRoIGhyZWY9IiNiIi8+CiAgICA8L2FuaW1hdGVNb3Rpb24+CiAgPC9jaXJjbGU+CiAgPGNpcmNsZSBjeD0iNi42OTYiIHI9IjMiIGZpbGw9IiNmZmYiPgogICAgPGFuaW1hdGVNb3Rpb24gYmVnaW49IjUuNjU0IiBkdXI9IjQuMzQ4IiByZXBlYXRDb3VudD0iMCI+CiAgICAgIDxtcGF0aCBocmVmPSIjYyIvPgogICAgPC9hbmltYXRlTW90aW9uPgogIDwvY2lyY2xlPgogIDxjaXJjbGUgY3g9IjYuNjk2IiByPSIzIiBmaWxsPSIjZmZmIj4KICAgIDxhbmltYXRlTW90aW9uIGJlZ2luPSIxMC4wMDIiIGR1cj0iMy41MDUiIHJlcGVhdENvdW50PSIwIj4KICAgICAgPG1wYXRoIGhyZWY9IiNhIi8+CiAgICA8L2FuaW1hdGVNb3Rpb24+CiAgPC9jaXJjbGU+CiAgPGNpcmNsZSBjeD0iNi42OTYiIHI9IjMiIGZpbGw9IiNmZmYiPgogICAgPGFuaW1hdGVNb3Rpb24gYmVnaW49IjEzLjUwNyIgZHVyPSIzLjMyIiByZXBlYXRDb3VudD0iMCI+CiAgICAgIDxtcGF0aCBocmVmPSIjZCIvPgogICAgPC9hbmltYXRlTW90aW9uPgogIDwvY2lyY2xlPgogIDxjaXJjbGUgY3g9IjMuMDczIiByPSIzIiBmaWxsPSIjMDAwMGNkIj4KICAgIDxhbmltYXRlTW90aW9uIGJlZ2luPSIwcyIgZHVyPSI1LjQ3MyIgcmVwZWF0Q291bnQ9IjAiPgogICAgICA8bXBhdGggaHJlZj0iI2IiLz4KICAgIDwvYW5pbWF0ZU1vdGlvbj4KICA8L2NpcmNsZT4KICA8Y2lyY2xlIGN4PSIzLjA3MyIgcj0iMyIgZmlsbD0iIzAwMDBjZCI+CiAgICA8YW5pbWF0ZU1vdGlvbiBiZWdpbj0iNS40NzMiIGR1cj0iNC4xMjkiIHJlcGVhdENvdW50PSIwIj4KICAgICAgPG1wYXRoIGhyZWY9IiNjIi8+CiAgICA8L2FuaW1hdGVNb3Rpb24+CiAgPC9jaXJjbGU+CiAgPGNpcmNsZSBjeD0iMy4wNzMiIHI9IjMiIGZpbGw9IiMwMDAwY2QiPgogICAgPGFuaW1hdGVNb3Rpb24gYmVnaW49IjkuNjAyIiBkdXI9IjMuNDQiIHJlcGVhdENvdW50PSIwIj4KICAgICAgPG1wYXRoIGhyZWY9IiNhIi8+CiAgICA8L2FuaW1hdGVNb3Rpb24+CiAgPC9jaXJjbGU+CiAgPGNpcmNsZSBjeD0iMy4wNzMiIHI9IjMiIGZpbGw9IiMwMDAwY2QiPgogICAgPGFuaW1hdGVNb3Rpb24gYmVnaW49IjEzLjA0MiIgZHVyPSIzLjY1NiIgcmVwZWF0Q291bnQ9IjAiPgogICAgICA8bXBhdGggaHJlZj0iI2QiLz4KICAgIDwvYW5pbWF0ZU1vdGlvbj4KICA8L2NpcmNsZT4KICA8Y2lyY2xlIGN4PSI1Ljk2NyIgcj0iMyIgZmlsbD0iIzdmZmZkNCI+CiAgICA8YW5pbWF0ZU1vdGlvbiBiZWdpbj0iMHMiIGR1cj0iNS4zNzMiIHJlcGVhdENvdW50PSIwIj4KICAgICAgPG1wYXRoIGhyZWY9IiNiIi8+CiAgICA8L2FuaW1hdGVNb3Rpb24+CiAgPC9jaXJjbGU+CiAgPGNpcmNsZSBjeD0iNS45NjciIHI9IjMiIGZpbGw9IiM3ZmZmZDQiPgogICAgPGFuaW1hdGVNb3Rpb24gYmVnaW49IjUuMzczIiBkdXI9IjQuMTc5IiByZXBlYXRDb3VudD0iMCI+CiAgICAgIDxtcGF0aCBocmVmPSIjYyIvPgogICAgPC9hbmltYXRlTW90aW9uPgogIDwvY2lyY2xlPgogIDxjaXJjbGUgY3g9IjUuOTY3IiByPSIzIiBmaWxsPSIjN2ZmZmQ0Ij4KICAgIDxhbmltYXRlTW90aW9uIGJlZ2luPSI5LjU1MSIgZHVyPSIzLjM3NSIgcmVwZWF0Q291bnQ9IjAiPgogICAgICA8bXBhdGggaHJlZj0iI2EiLz4KICAgIDwvYW5pbWF0ZU1vdGlvbj4KICA8L2NpcmNsZT4KICA8Y2lyY2xlIGN4PSI1Ljk2NyIgcj0iMyIgZmlsbD0iIzdmZmZkNCI+CiAgICA8YW5pbWF0ZU1vdGlvbiBiZWdpbj0iMTIuOTI2IiBkdXI9IjMuNTQyIiByZXBlYXRDb3VudD0iMCI+CiAgICAgIDxtcGF0aCBocmVmPSIjZCIvPgogICAgPC9hbmltYXRlTW90aW9uPgogIDwvY2lyY2xlPgogIDxjaXJjbGUgY3g9IjQuNDc1IiByPSIzIiBmaWxsPSIjMjI4YjIyIj4KICAgIDxhbmltYXRlTW90aW9uIGJlZ2luPSIwcyIgZHVyPSI1LjcwOSIgcmVwZWF0Q291bnQ9IjAiPgogICAgICA8bXBhdGggaHJlZj0iI2IiLz4KICAgIDwvYW5pbWF0ZU1vdGlvbj4KICA8L2NpcmNsZT4KICA8Y2lyY2xlIGN4PSI0LjQ3NSIgcj0iMyIgZmlsbD0iIzIyOGIyMiI+CiAgICA8YW5pbWF0ZU1vdGlvbiBiZWdpbj0iNS43MDkiIGR1cj0iNC4yMTIiIHJlcGVhdENvdW50PSIwIj4KICAgICAgPG1wYXRoIGhyZWY9IiNjIi8+CiAgICA8L2FuaW1hdGVNb3Rpb24+CiAgPC9jaXJjbGU+CiAgPGNpcmNsZSBjeD0iNC40NzUiIHI9IjMiIGZpbGw9IiMyMjhiMjIiPgogICAgPGFuaW1hdGVNb3Rpb24gYmVnaW49IjkuOTIxIiBkdXI9IjMuODUiIHJlcGVhdENvdW50PSIwIj4KICAgICAgPG1wYXRoIGhyZWY9IiNhIi8+CiAgICA8L2FuaW1hdGVNb3Rpb24+CiAgPC9jaXJjbGU+CiAgPGNpcmNsZSBjeD0iNC40NzUiIHI9IjMiIGZpbGw9IiMyMjhiMjIiPgogICAgPGFuaW1hdGVNb3Rpb24gYmVnaW49IjEzLjc3MiIgZHVyPSIzLjIxMyIgcmVwZWF0Q291bnQ9IjAiPgogICAgICA8bXBhdGggaHJlZj0iI2QiLz4KICAgIDwvYW5pbWF0ZU1vdGlvbj4KICA8L2NpcmNsZT4KPC9zdmc+Cg==",
+                        ),
+                      );
+                    }}
+                    className="
+                  text-md justify-left mx-0.5 mr-3 mb-3 inline-flex items-center rounded-lg border border-solid border-slate-500/30 py-2  px-2  text-base font-medium  text-slate-300 shadow-sm  hover:shadow-slate-500
+                  "
+                  >
+                    <div className="   inline-flex items-center   ">
+                      Start Race 
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="h-4 w-4"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"
+                        />
+                      </svg>
+                    </div>
+                  </button>
                 </div>
               </>
             </div>
