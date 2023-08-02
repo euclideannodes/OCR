@@ -155,10 +155,10 @@ const Profile = () => {
       });
   };
   const buyCredits2 = () => {
-    let cost2 = getCostWei2;
+    let cost1 = getCostWei1;
     let gasLimit = CONFIG.GAS_LIMIT;
-    let totalCostWei = String(cost2 * creditAmount);
-    let totalGasLimit = String(gasLimit * creditAmount);
+    let totalCostWei = String(cost1 * 5);
+    let totalGasLimit = String(gasLimit * 5);
     console.log("Cost: ", totalCostWei);
     console.log("Gas limit: ", totalGasLimit);
 
@@ -1096,7 +1096,7 @@ const Profile = () => {
                   <h2 className="text-dark mb-6 text-[25px] font-bold lg:text-[38px]">
                     {(() => {
                       if (blockchain.account !== null) {
-                        return <> {getCost2 * 5}</>;
+                        return <> {getCost1 * 5}</>;
                       }
                     })()}
 

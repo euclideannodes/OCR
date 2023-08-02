@@ -42,6 +42,7 @@ const Swap = () => {
   const [showModal, setShowModal] = React.useState(false);
   const [showModal2, setShowModal2] = useState(false);
   const [showModal3, setShowModal3] = useState(false);
+  const [showModal4, setShowModal4] = useState(false);
 
   let totalSupply = data.totalSupply;
   let getDataByMap = data.getDataByMap;
@@ -107,19 +108,6 @@ const Swap = () => {
         });
     }
   }, [blockchain.account, getCost1]);
-  useEffect(() => {
-    if (blockchain.account !== null) {
-      blockchain.smartContract.methods
-        .cost_1()
-        .call()
-        .then((result) => {
-          setSwapFee(result);
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-    }
-  }, [blockchain.account, getSwapFee]);
 
   useEffect(() => {
     if (blockchain.account !== null) {
@@ -135,7 +123,6 @@ const Swap = () => {
     }
   }, [blockchain.account, getSwapStatus]);
   const swapCredit = () => {
-    let cost1 = 0;
     let gasLimit = 3000000;
     let totalCostWei = String(mintAmount);
     let totalGasLimit = String(gasLimit * mintAmount);
@@ -175,12 +162,25 @@ const Swap = () => {
         });
     }
   }, [blockchain.account, getDataByMap]);
+  useEffect(() => {
+    if (blockchain.account !== null) {
+      blockchain.smartContract.methods
+        .swap_fee()
+        .call()
+        .then((result) => {
+          setSwapFee(result);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
+  }, [blockchain.account, getSwapFee]);
+
   let resultArray = [];
   useEffect(() => {
     if (resultData && resultData.length !== null) {
       for (let i = 1; i < resultData.length; i++) {
         resultArray.push(resultData[i]);
-        console.log(resultArray);
       }
     }
   }, [resultData]);
@@ -355,7 +355,7 @@ const Swap = () => {
                             </button>
                           </form>
                           <div>
-                            <p className="grid pt-5 font-mono text-sm font-thin text-slate-400 ">
+                            <p className="grid pt-3 font-mono text-sm font-thin text-slate-400 ">
                               <span className="text-left   ">
                                 <div className=" inline-flex  items-center  justify-center    ">
                                   {" "}
@@ -377,7 +377,29 @@ const Swap = () => {
                                 </div>
                               </span>
                             </p>
-                            <p className="grid pt-5 font-mono text-sm font-thin text-slate-400 ">
+                            <p className="grid pt-2 font-mono text-sm font-thin text-slate-400 ">
+                              <span className="text-left   ">
+                                <div className=" inline-flex  items-center  justify-center    ">
+                                  {" "}
+                                  Swap Ratio: 1 Credit = {}{" "}
+                                  {(getCost1 * 0.9).toFixed(3)}{" "}
+                                  <svg
+                                    className="mr-1 ml-2 h-3 w-3"
+                                    fill="#8247E5"
+                                    viewBox="0 0 38 33"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                  >
+                                    <path
+                                      fillRule="evenodd"
+                                      d="M29,10.2c-0.7-0.4-1.6-0.4-2.4,0L21,13.5l-3.8,2.1l-5.5,3.3c-0.7,0.4-1.6,0.4-2.4,0L5,16.3 c-0.7-0.4-1.2-1.2-1.2-2.1v-5c0-0.8,0.4-1.6,1.2-2.1l4.3-2.5c0.7-0.4,1.6-0.4,2.4,0L16,7.2c0.7,0.4,1.2,1.2,1.2,2.1v3.3l3.8-2.2V7 c0-0.8-0.4-1.6-1.2-2.1l-8-4.7c-0.7-0.4-1.6-0.4-2.4,0L1.2,5C0.4,5.4,0,6.2,0,7v9.4c0,0.8,0.4,1.6,1.2,2.1l8.1,4.7 c0.7,0.4,1.6,0.4,2.4,0l5.5-3.2l3.8-2.2l5.5-3.2c0.7-0.4,1.6-0.4,2.4,0l4.3,2.5c0.7,0.4,1.2,1.2,1.2,2.1v5c0,0.8-0.4,1.6-1.2,2.1 L29,28.8c-0.7,0.4-1.6,0.4-2.4,0l-4.3-2.5c-0.7-0.4-1.2-1.2-1.2-2.1V21l-3.8,2.2v3.3c0,0.8,0.4,1.6,1.2,2.1l8.1,4.7 c0.7,0.4,1.6,0.4,2.4,0l8.1-4.7c0.7-0.4,1.2-1.2,1.2-2.1V17c0-0.8-0.4-1.6-1.2-2.1L29,10.2z"
+                                      clipRule="evenodd"
+                                    ></path>
+                                  </svg>
+                                  MATIC
+                                </div>
+                              </span>
+                            </p>
+                            <p className="grid pt-2 font-mono text-sm font-thin text-slate-400 ">
                               <span
                                 className={`text-left ${
                                   getSwapStatus
@@ -386,9 +408,8 @@ const Swap = () => {
                                 }`}
                               >
                                 {" "}
-                                Swap Status: {getSwapStatus
-                                  ? "Open"
-                                  : "Closed"}{" "}
+                                Swap Service:{" "}
+                                {getSwapStatus ? "Open" : "Closed"}{" "}
                               </span>
                             </p>
                             <span className="absolute right-0 top-7 z-[-1]">
@@ -709,6 +730,58 @@ const Swap = () => {
                         <span className="sr-only">Close</span>
                         <svg
                           className="h-3.5 w-3.5"
+                          width="16"
+                          height="16"
+                          viewBox="0 0 16 16"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M0.92524 0.687069C1.126 0.486219 1.39823 0.373377 1.68209 0.373377C1.96597 0.373377 2.2382 0.486219 2.43894 0.687069L8.10514 6.35813L13.7714 0.687069C13.8701 0.584748 13.9882 0.503105 14.1188 0.446962C14.2494 0.39082 14.3899 0.361248 14.5321 0.360026C14.6742 0.358783 14.8151 0.38589 14.9468 0.439762C15.0782 0.493633 15.1977 0.573197 15.2983 0.673783C15.3987 0.774389 15.4784 0.894026 15.5321 1.02568C15.5859 1.15736 15.6131 1.29845 15.6118 1.44071C15.6105 1.58297 15.5809 1.72357 15.5248 1.85428C15.4688 1.98499 15.3872 2.10324 15.2851 2.20206L9.61883 7.87312L15.2851 13.5441C15.4801 13.7462 15.588 14.0168 15.5854 14.2977C15.5831 14.5787 15.4705 14.8474 15.272 15.046C15.0735 15.2449 14.805 15.3574 14.5244 15.3599C14.2437 15.3623 13.9733 15.2543 13.7714 15.0591L8.10514 9.38812L2.43894 15.0591C2.23704 15.2543 1.96663 15.3623 1.68594 15.3599C1.40526 15.3574 1.13677 15.2449 0.938279 15.046C0.739807 14.8474 0.627232 14.5787 0.624791 14.2977C0.62235 14.0168 0.730236 13.7462 0.92524 13.5441L6.59144 7.87312L0.92524 2.20206C0.724562 2.00115 0.611816 1.72867 0.611816 1.44457C0.611816 1.16047 0.724562 0.887983 0.92524 0.687069Z"
+                            fill="currentColor"
+                          />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </>
+          ) : null}
+          {showModal4 ? (
+            <>
+              <div>
+                <div
+                  class="fixed bottom-5 right-5 z-50  max-w-sm rounded-md  bg-blue-700/40 text-sm font-bold text-white shadow-lg "
+                  role="alert"
+                >
+                  <div class="flex p-4">
+                    <svg
+                      aria-hidden="true"
+                      class="mr-2 h-5 w-5 animate-spin fill-blue-500 text-gray-200 "
+                      viewBox="0 0 100 101"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+                        fill="currentColor"
+                      />
+                      <path
+                        d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+                        fill="currentFill"
+                      />
+                    </svg>
+                    Swapping Credits...
+                    <div class="ml-auto">
+                      <button
+                        onClick={() => setShowModal4(false)}
+                        type="button"
+                        class="ml-2 inline-flex h-4 w-4 flex-shrink-0 items-center justify-center rounded-md text-sm text-white/[.9] transition-all hover:text-white focus:outline-none focus:ring-2 focus:ring-gray-600 focus:ring-offset-2 focus:ring-offset-gray-800 "
+                      >
+                        <span class="sr-only">Close</span>
+                        <svg
+                          class="h-3.5 w-3.5"
                           width="16"
                           height="16"
                           viewBox="0 0 16 16"

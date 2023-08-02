@@ -91,13 +91,13 @@ const Address = () => {
   let [totalTicket, setTotalTicket] = useState(0);
   const [minValues, setMinValues] = useState({});
   const [getSupply, setSupply] = useState(null);
-  let [claimId, setClaimId] = useState(null);
+
   const [xNft, setxNft] = useState(false);
   useEffect(() => {
     getConfig();
   }, []);
 
-  const xNFTs = () => {
+  const xNFTs = (claimId) => {
     let gasLimit = CONFIG.GAS_LIMIT;
     let totalGasLimit = String(gasLimit);
 
@@ -500,21 +500,41 @@ const Address = () => {
                             <td className=" px-1 py-1 text-gray-500">{s1}</td>
                             <td className="px-1 py-1 text-gray-500">{s2}</td>
                             <td className="px-1 py-1 text-gray-500">{s3}</td>
-                            <td className="px-1 py-1 text-gray-500">
-                              <div className="sm:col-span-2 md:grow ">
-                                <button
-                                  className="  rounded-lg  border border-dotted  border-teal-500/50  p-1  text-xs font-light text-teal-600/70 shadow-sm transition-all  lg:text-sm   "
-                                  onClick={(e) => {
-                                    e.preventDefault();
-                                    setClaimId(Number(key));
-                                    xNFTs();
-                                    getData();
-                                  }}
-                                >
-                                  {xNft ? "Sending..." : "Claim"}
-                                </button>
-                              </div>
-                            </td>
+                            {(() => {
+                              if (
+                                blockchain.account.toLowerCase() !==
+                                name.toLowerCase()
+                              ) {
+                                return (
+                                  <>
+                                    {" "}
+                                    <td className="px-1 py-1 text-gray-500">
+                                      N/A
+                                    </td>
+                                  </>
+                                );
+                              } else {
+                                return (
+                                  <>
+                                    {" "}
+                                    <td className="px-1 py-1 text-gray-500">
+                                      <div className="sm:col-span-2 md:grow ">
+                                        <button
+                                          className="  rounded-lg  border border-dotted  border-teal-500/50  p-1  text-xs font-light text-teal-600/70 shadow-sm transition-all  lg:text-sm   "
+                                          onClick={(e) => {
+                                            e.preventDefault();
+                                            xNFTs(key);
+                                            getData();
+                                          }}
+                                        >
+                                          {xNft ? "Sending..." : "Claim"}
+                                        </button>
+                                      </div>
+                                    </td>
+                                  </>
+                                );
+                              }
+                            })()}
                           </tr>
                         ),
                       )}

@@ -221,14 +221,14 @@ const All = () => {
                       The Season 1 map has{" "}
                       <strong className="text-teal-600">3</strong> speed
                       check-points in total. There are{" "}
-                      <strong className="text-teal-600">5</strong> light
+                      <strong className="text-teal-600"> 5</strong> light
                       corners, <strong className="text-teal-600">7</strong>{" "}
                       sharp corners,{" "}
                       <strong className="text-teal-600">3</strong> fast corners,
-                      <strong className="text-teal-600">5</strong> short
+                      <strong className="text-teal-600"> 5</strong> short
                       straights, and{" "}
                       <strong className="text-teal-600">1</strong> long straight
-                      in this map.
+                      in this map. Season 1 will end after a total of 250 races.
                     </p>
                   </dt>
                   <dd className="order-first text-xl font-semibold tracking-normal text-slate-100 sm:text-4xl lg:text-2xl">
@@ -623,7 +623,7 @@ const All = () => {
                   <li className="mb-3 mt-3">
                     Participates in the last race with purchased credits and
                     spends one credit. Player cannot attend the same race with
-                    the same address more than once (Exept Beta).
+                    the same address more than once (Except Teta).
                   </li>
                   <li className="mb-3 mt-3">
                     The race starts only when a total of 10 player participate.
