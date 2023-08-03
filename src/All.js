@@ -12,7 +12,8 @@ import Paper from "@mui/material/Paper";
 import Toolbar from "@mui/material/Toolbar";
 import Menu from "@mui/material/Menu";
 import { makeStyles } from "@mui/styles";
-import ReactGA from "react-ga";
+import ReactGA from "react-ga4";
+
 ReactGA.initialize("G-WKRBXV0N00");
 ReactGA.pageview(window.location.pathname + window.location.search);
 
