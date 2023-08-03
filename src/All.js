@@ -167,6 +167,12 @@ const All = () => {
         }
         return acc;
       }, {});
+
+      const keys = Object.keys(groupedData);
+      if (keys.length > 0) {
+        delete groupedData[keys[keys.length - 1]];
+      }
+
       setMinValues(groupedData);
     }
   }, [resultAllData]);
@@ -567,7 +573,7 @@ const All = () => {
                   <div className="mx-auto grid max-w-full p-8 lg:grid-cols-12 lg:gap-8 lg:py-16 xl:gap-0">
                     <div className="mr-auto place-self-center lg:col-span-8">
                       <h1 className=" mb-4 max-w-2xl text-justify text-xl font-extrabold leading-none tracking-tight text-teal-500/80 md:text-5xl lg:text-4xl xl:text-6xl ">
-                        OnChain Races Table{" "}
+                        All OnChain Races{" "}
                       </h1>
                     </div>
                     <div className="  mx-x-auto from-bgc/50 max-w-full rounded-2xl  border border-solid border-slate-500/20 bg-gradient-to-b shadow-2xl duration-300 hover:scale-105 lg:col-span-4 lg:mt-0 ">
